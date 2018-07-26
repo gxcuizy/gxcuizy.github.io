@@ -518,9 +518,6 @@
   <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
 
 
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODM2NC8xNDg5Mg"></div>
-
-
 
   
   
@@ -574,6 +571,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'wROinty9rwhkmksGHfecnhTP-gzGzoHsz',
+        appKey: 'PbESEvuTejxDH31XqBEDnxvX',
+        placeholder: '请输入您的留言',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
