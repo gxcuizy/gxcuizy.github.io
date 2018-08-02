@@ -88,7 +88,7 @@
 <meta property="og:description" content="为什么要用Python脚本下载以及基本介绍经常会有人需要从远程服务器下载一些文件资源，下载个别小文件可以直接用sz等命令，但是，需要下载一个文件夹呢？sz就不行了，这时候当然可以先压缩文件夹，然后下载，这样也是可以的，只要文件不是很大，那么，有没有其他办法下载文件夹呢？办法当然是有的，就是写Python脚本，然后通过paramiko模块就可以从远程传输下载文件夹到本地了，是不是很方便呢…… par">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="gxcuizy.github.io/2018/08/02/Python通过paramiko从远处服务器下载文件资源到本地/images/sftp_download.png">
-<meta property="og:updated_time" content="2018-08-02T02:11:30.000Z">
+<meta property="og:updated_time" content="2018-08-02T02:13:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python通过paramiko从远处服务器下载文件资源到本地">
 <meta name="twitter:description" content="为什么要用Python脚本下载以及基本介绍经常会有人需要从远程服务器下载一些文件资源，下载个别小文件可以直接用sz等命令，但是，需要下载一个文件夹呢？sz就不行了，这时候当然可以先压缩文件夹，然后下载，这样也是可以的，只要文件不是很大，那么，有没有其他办法下载文件夹呢？办法当然是有的，就是写Python脚本，然后通过paramiko模块就可以从远程传输下载文件夹到本地了，是不是很方便呢…… par">
@@ -339,6 +339,7 @@
       
         <h3 id="为什么要用Python脚本下载以及基本介绍"><a href="#为什么要用Python脚本下载以及基本介绍" class="headerlink" title="为什么要用Python脚本下载以及基本介绍"></a>为什么要用Python脚本下载以及基本介绍</h3><p>经常会有人需要从远程服务器下载一些文件资源，下载个别小文件可以直接用sz等命令，但是，需要下载一个文件夹呢？sz就不行了，这时候当然可以先压缩文件夹，然后下载，这样也是可以的，只要文件不是很大，那么，有没有其他办法下载文件夹呢？办法当然是有的，就是写Python脚本，然后通过paramiko模块就可以从远程传输下载文件夹到本地了，是不是很方便呢……</p>
 <p>paramiko模块提供了ssh及sftp进行远程登录服务器执行命令和上传下载文件的功能。这是一个第三方的软件包，使用之前需要先进行安装，我们这里主要利用sftp进行下载传输文件</p>
+<a id="more"></a>
 <p>就像下图中的运行，可以一个一个的循环下载文件</p>
 <p><img src="images/sftp_download.png" alt="sftp_download"></p>
 <h3 id="使用时候的基本配置"><a href="#使用时候的基本配置" class="headerlink" title="使用时候的基本配置"></a>使用时候的基本配置</h3><p>下面的这些信息需要自己配置一下，即初始化一些参数，包括服务器信息以及远程文件和本地文件的存放路径配置</p>
