@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Python,paramiko," />
+  <meta name="keywords" content="php," />
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="为什么要用Python脚本下载以及基本介绍经常会有人需要从远程服务器下载一些文件资源，下载个别小文件可以直接用sz等命令，但是，需要下载一个文件夹呢？sz就不行了，这时候当然可以先压缩文件夹，然后下载，这样也是可以的，只要文件不是很大，那么，有没有其他办法下载文件夹呢？办法当然是有的，就是写Python脚本，然后通过paramiko模块就可以从远程传输下载文件夹到本地了，是不是很方便呢…… par">
-<meta name="keywords" content="Python,paramiko">
+<meta name="description" content="什么是短链接 短链接，通俗来说，就是将长的URL网址，通过程序计算等方式，转换为简短的网址字符串。  短链接服务国内各大微博都推出了自己的短链接服务。例如新浪微博、腾讯微博等。 为什么选用新浪微博API 新浪微博短链接API是开放的 新浪微博短链接API不需要用户登录  文档查询链接 short_url/shorten接口地址 网上的一些公开的AppKey 新浪微博短链接在线生成  使用方法拿到自">
+<meta name="keywords" content="php">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python通过paramiko从远处服务器下载文件资源到本地">
-<meta property="og:url" content="blog.y0701.com/2018/08/02/Python通过paramiko从远处服务器下载文件资源到本地/index.html">
+<meta property="og:title" content="新浪微博API生成短链接">
+<meta property="og:url" content="blog.y0701.com/2018/08/14/新浪微博API生成短链接/index.html">
 <meta property="og:site_name" content="gxcuizy&#39;s blog">
-<meta property="og:description" content="为什么要用Python脚本下载以及基本介绍经常会有人需要从远程服务器下载一些文件资源，下载个别小文件可以直接用sz等命令，但是，需要下载一个文件夹呢？sz就不行了，这时候当然可以先压缩文件夹，然后下载，这样也是可以的，只要文件不是很大，那么，有没有其他办法下载文件夹呢？办法当然是有的，就是写Python脚本，然后通过paramiko模块就可以从远程传输下载文件夹到本地了，是不是很方便呢…… par">
+<meta property="og:description" content="什么是短链接 短链接，通俗来说，就是将长的URL网址，通过程序计算等方式，转换为简短的网址字符串。  短链接服务国内各大微博都推出了自己的短链接服务。例如新浪微博、腾讯微博等。 为什么选用新浪微博API 新浪微博短链接API是开放的 新浪微博短链接API不需要用户登录  文档查询链接 short_url/shorten接口地址 网上的一些公开的AppKey 新浪微博短链接在线生成  使用方法拿到自">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="blog.y0701.com/2018/08/02/Python通过paramiko从远处服务器下载文件资源到本地/images/sftp_download.png">
-<meta property="og:updated_time" content="2018-08-02T02:13:34.000Z">
+<meta property="og:updated_time" content="2018-08-14T11:13:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python通过paramiko从远处服务器下载文件资源到本地">
-<meta name="twitter:description" content="为什么要用Python脚本下载以及基本介绍经常会有人需要从远程服务器下载一些文件资源，下载个别小文件可以直接用sz等命令，但是，需要下载一个文件夹呢？sz就不行了，这时候当然可以先压缩文件夹，然后下载，这样也是可以的，只要文件不是很大，那么，有没有其他办法下载文件夹呢？办法当然是有的，就是写Python脚本，然后通过paramiko模块就可以从远程传输下载文件夹到本地了，是不是很方便呢…… par">
-<meta name="twitter:image" content="blog.y0701.com/2018/08/02/Python通过paramiko从远处服务器下载文件资源到本地/images/sftp_download.png">
+<meta name="twitter:title" content="新浪微博API生成短链接">
+<meta name="twitter:description" content="什么是短链接 短链接，通俗来说，就是将长的URL网址，通过程序计算等方式，转换为简短的网址字符串。  短链接服务国内各大微博都推出了自己的短链接服务。例如新浪微博、腾讯微博等。 为什么选用新浪微博API 新浪微博短链接API是开放的 新浪微博短链接API不需要用户登录  文档查询链接 short_url/shorten接口地址 网上的一些公开的AppKey 新浪微博短链接在线生成  使用方法拿到自">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="blog.y0701.com/2018/08/02/Python通过paramiko从远处服务器下载文件资源到本地/"/>
+  <link rel="canonical" href="blog.y0701.com/2018/08/14/新浪微博API生成短链接/"/>
 
 
 
 
 
-  <title>Python通过paramiko从远处服务器下载文件资源到本地 | gxcuizy's blog</title>
+  <title>新浪微博API生成短链接 | gxcuizy's blog</title>
   
 
 
@@ -255,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="blog.y0701.com/2018/08/02/Python通过paramiko从远处服务器下载文件资源到本地/">
+    <link itemprop="mainEntityOfPage" href="blog.y0701.com/2018/08/14/新浪微博API生成短链接/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gxcuizy">
@@ -272,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python通过paramiko从远处服务器下载文件资源到本地</h1>
+          <h1 class="post-title" itemprop="name headline">新浪微博API生成短链接</h1>
         
 
         <div class="post-meta">
@@ -284,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-02T09:30:28+08:00">
-                2018-08-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-14T19:11:29+08:00">
+                2018-08-14
               </time>
             
 
@@ -303,8 +301,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/02/Python通过paramiko从远处服务器下载文件资源到本地/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/08/02/Python通过paramiko从远处服务器下载文件资源到本地/" itemprop="commentCount"></span>
+                <a href="/2018/08/14/新浪微博API生成短链接/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/08/14/新浪微博API生成短链接/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -337,15 +335,25 @@
       
 
       
-        <h3 id="为什么要用Python脚本下载以及基本介绍"><a href="#为什么要用Python脚本下载以及基本介绍" class="headerlink" title="为什么要用Python脚本下载以及基本介绍"></a>为什么要用Python脚本下载以及基本介绍</h3><p>经常会有人需要从远程服务器下载一些文件资源，下载个别小文件可以直接用sz等命令，但是，需要下载一个文件夹呢？sz就不行了，这时候当然可以先压缩文件夹，然后下载，这样也是可以的，只要文件不是很大，那么，有没有其他办法下载文件夹呢？办法当然是有的，就是写Python脚本，然后通过paramiko模块就可以从远程传输下载文件夹到本地了，是不是很方便呢……</p>
-<p>paramiko模块提供了ssh及sftp进行远程登录服务器执行命令和上传下载文件的功能。这是一个第三方的软件包，使用之前需要先进行安装，我们这里主要利用sftp进行下载传输文件</p>
-<a id="more"></a>
-<p>就像下图中的运行，可以一个一个的循环下载文件</p>
-<p><img src="images/sftp_download.png" alt="sftp_download"></p>
-<h3 id="使用时候的基本配置"><a href="#使用时候的基本配置" class="headerlink" title="使用时候的基本配置"></a>使用时候的基本配置</h3><p>下面的这些信息需要自己配置一下，即初始化一些参数，包括服务器信息以及远程文件和本地文件的存放路径配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 服务器连接信息</span><br><span class="line">host_name = &apos;172.0.0.1&apos;</span><br><span class="line">user_name = &apos;root&apos;</span><br><span class="line">password = &apos;root&apos;</span><br><span class="line">port = 22</span><br><span class="line"># 远程文件路径（需要绝对路径）</span><br><span class="line">remote_dir = &apos;/data/nfs/zdlh/pdf/2018/07/31&apos;</span><br><span class="line"># 本地文件存放路径（绝对路径或者相对路径都可以）</span><br><span class="line">local_dir = &apos;file_download/&apos;</span><br></pre></td></tr></table></figure>
-<h3 id="实现源码"><a href="#实现源码" class="headerlink" title="实现源码"></a>实现源码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">通过paramiko从远处服务器下载文件资源到本地</span><br><span class="line">author: gxcuizy</span><br><span class="line">time: 2018-08-01</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">import paramiko</span><br><span class="line">import os</span><br><span class="line">from stat import S_ISDIR as isdir</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def down_from_remote(sftp_obj, remote_dir_name, local_dir_name):</span><br><span class="line">    &quot;&quot;&quot;远程下载文件&quot;&quot;&quot;</span><br><span class="line">    remote_file = sftp_obj.stat(remote_dir_name)</span><br><span class="line">    if isdir(remote_file.st_mode):</span><br><span class="line">        # 文件夹，不能直接下载，需要继续循环</span><br><span class="line">        check_local_dir(local_dir_name)</span><br><span class="line">        print(&apos;开始下载文件夹：&apos; + remote_dir_name)</span><br><span class="line">        for remote_file_name in sftp.listdir(remote_dir_name):</span><br><span class="line">            sub_remote = os.path.join(remote_dir_name, remote_file_name)</span><br><span class="line">            sub_remote = sub_remote.replace(&apos;\\&apos;, &apos;/&apos;)</span><br><span class="line">            sub_local = os.path.join(local_dir_name, remote_file_name)</span><br><span class="line">            sub_local = sub_local.replace(&apos;\\&apos;, &apos;/&apos;)</span><br><span class="line">            down_from_remote(sftp_obj, sub_remote, sub_local)</span><br><span class="line">    else:</span><br><span class="line">        # 文件，直接下载</span><br><span class="line">        print(&apos;开始下载文件：&apos; + remote_dir_name)</span><br><span class="line">        sftp.get(remote_dir_name, local_dir_name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def check_local_dir(local_dir_name):</span><br><span class="line">    &quot;&quot;&quot;本地文件夹是否存在，不存在则创建&quot;&quot;&quot;</span><br><span class="line">    if not os.path.exists(local_dir_name):</span><br><span class="line">        os.makedirs(local_dir_name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    &quot;&quot;&quot;程序主入口&quot;&quot;&quot;</span><br><span class="line">    # 服务器连接信息</span><br><span class="line">    host_name = &apos;172.17.2.18&apos;</span><br><span class="line">    user_name = &apos;dev&apos;</span><br><span class="line">    password = &apos;dev@zdlh&apos;</span><br><span class="line">    port = 22</span><br><span class="line">    # 远程文件路径（需要绝对路径）</span><br><span class="line">    remote_dir = &apos;/data/nfs/zdlh/pdf/2018/07/31&apos;</span><br><span class="line">    # 本地文件存放路径（绝对路径或者相对路径都可以）</span><br><span class="line">    local_dir = &apos;file_download/&apos;</span><br><span class="line"></span><br><span class="line">    # 连接远程服务器</span><br><span class="line">    t = paramiko.Transport((host_name, port))</span><br><span class="line">    t.connect(username=user_name, password=password)</span><br><span class="line">    sftp = paramiko.SFTPClient.from_transport(t)</span><br><span class="line"></span><br><span class="line">    # 远程文件开始下载</span><br><span class="line">    down_from_remote(sftp, remote_dir, local_dir)</span><br><span class="line"></span><br><span class="line">    # 关闭连接</span><br><span class="line">    t.close()</span><br></pre></td></tr></table></figure>
-<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>在Python中，可以很好地利用Parmmiko的sftp完成文件传输操作。大家有什么疑问或者想法，可以留言或者联系我。</p>
+        <h3 id="什么是短链接"><a href="#什么是短链接" class="headerlink" title="什么是短链接"></a>什么是短链接</h3><blockquote>
+<p>短链接，通俗来说，就是将长的URL网址，通过程序计算等方式，转换为简短的网址字符串。</p>
+</blockquote>
+<h3 id="短链接服务"><a href="#短链接服务" class="headerlink" title="短链接服务"></a>短链接服务</h3><p>国内各大微博都推出了自己的短链接服务。例如新浪微博、腾讯微博等。</p>
+<h3 id="为什么选用新浪微博API"><a href="#为什么选用新浪微博API" class="headerlink" title="为什么选用新浪微博API"></a>为什么选用新浪微博API</h3><ol>
+<li>新浪微博短链接API是开放的</li>
+<li>新浪微博短链接API不需要用户登录</li>
+</ol>
+<h3 id="文档查询链接"><a href="#文档查询链接" class="headerlink" title="文档查询链接"></a>文档查询链接</h3><ul>
+<li><a href="http://open.weibo.com/wiki/2/short_url/shorten" target="_blank" rel="noopener">short_url/shorten接口地址</a></li>
+<li><a href="https://fengmk2.com/blog/appkey.html" target="_blank" rel="noopener">网上的一些公开的AppKey</a></li>
+<li><a href="http://dwz.wailian.work/" target="_blank" rel="noopener">新浪微博短链接在线生成</a></li>
+</ul>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>拿到自己的AppKey后，替换类的成员属性$appKey的值即可，如下这样的，$shortUrl是API请求地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// APPkey，我在网上找的（https://fengmk2.com/blog/appkey.html），可以自己申请</span><br><span class="line">protected $appKey = &apos;569452181&apos;;</span><br><span class="line">// 转短连接API地址</span><br><span class="line">protected $shortUrl = &apos;https://api.weibo.com/2/short_url/shorten.json?&apos;;</span><br></pre></td></tr></table></figure>
+<p>其他的，基本不需要配置，直接实例化类ShortLink，然后调用方法getShortUrl即可，需要说明的是长链接URL数组$longUrl里的值可以传多个值</p>
+<p>当然了，为了方便，我写为一个类，可以根据自己的需要，进行调整，满足自己的需求即可。</p>
+<h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 通过新浪微博API，生成短链接，支持一次性转多个长链接</span><br><span class="line"> * Class shortClass</span><br><span class="line"> * @time 2018-08-14</span><br><span class="line"> * @author gxcuizy</span><br><span class="line"> */</span><br><span class="line">Class ShortLink &#123;</span><br><span class="line">    // APPkey，我在网上找的（https://fengmk2.com/blog/appkey.html），可以自己申请</span><br><span class="line">    protected $appKey = &apos;569452181&apos;;</span><br><span class="line">    // 转短连接API地址</span><br><span class="line">    protected $shortUrl = &apos;https://api.weibo.com/2/short_url/shorten.json?&apos;;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 生成短链接</span><br><span class="line">     * @param array $longUrl 长链接数组</span><br><span class="line">     * @return array 返回短连接数据</span><br><span class="line">     */</span><br><span class="line">    public function getShortUrl($longUrl = []) &#123;</span><br><span class="line">        $code = true;</span><br><span class="line">        $msg = &apos;请求成功！&apos;;</span><br><span class="line">        $result = [];</span><br><span class="line">        // 长链接数组为空，不处理</span><br><span class="line">        if (empty($longUrl)) &#123;</span><br><span class="line">            $code = false;</span><br><span class="line">            $msg = &apos;长链接数据不能为空&apos;;</span><br><span class="line">            return [&apos;code&apos; =&gt; $code, &apos;msg&apos; =&gt; $msg, &apos;result&apos; =&gt; $result];</span><br><span class="line">        &#125;</span><br><span class="line">        // 拼接请求URL</span><br><span class="line">        $longUrlStr = $this-&gt;_getLongUrl($longUrl);</span><br><span class="line">        $shortUrl = $this-&gt;shortUrl;</span><br><span class="line">        $appKey = $this-&gt;appKey;</span><br><span class="line">        $param = &apos;source=&apos; . $appKey . &apos;&amp;&apos; . $longUrlStr;</span><br><span class="line">        $curlUrl = $shortUrl . $param;</span><br><span class="line">        // 发送CURL请求</span><br><span class="line">        $result = $this-&gt;_sendCurl($curlUrl);</span><br><span class="line">        return [&apos;code&apos; =&gt; $code, &apos;msg&apos; =&gt; $msg, &apos;result&apos; =&gt; $result];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 获取请求URL字符串</span><br><span class="line">     * @param array $longUrl 长链接数组</span><br><span class="line">     * @return string 长链接URL字符串</span><br><span class="line">     */</span><br><span class="line">    private function _getLongUrl($longUrl = []) &#123;</span><br><span class="line">        $str = &apos;&apos;;</span><br><span class="line">        foreach ($longUrl as $url) &#123;</span><br><span class="line">            $str .= (&apos;url_long=&apos; . $url . &apos;&amp;&apos;);</span><br><span class="line">        &#125;</span><br><span class="line">        $newStr = substr($str, 0, strlen($str) - 1);</span><br><span class="line">        return $newStr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 发送CURL请求（GET）</span><br><span class="line">     * @param string $curlUrl 请求地址</span><br><span class="line">     * @return array 返回信息</span><br><span class="line">     */</span><br><span class="line">    private function _sendCurl($curlUrl) &#123;</span><br><span class="line">        // 初始化</span><br><span class="line">        $ch = curl_init();</span><br><span class="line">        // 设置选项，包括URL</span><br><span class="line">        curl_setopt($ch, CURLOPT_URL, $curlUrl);</span><br><span class="line">        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);</span><br><span class="line">        curl_setopt($ch, CURLOPT_HEADER, 0);</span><br><span class="line">        // 执行并获取HTML文档内容</span><br><span class="line">        $output = curl_exec($ch);</span><br><span class="line">        // 释放curl句柄</span><br><span class="line">        curl_close($ch);</span><br><span class="line">        // Json数据转为数组</span><br><span class="line">        $result = json_decode($output, true);</span><br><span class="line">        return $result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 实例化对象</span><br><span class="line">$shortObj = new ShortLink();</span><br><span class="line">// 多个连接可以直接放到数组中，类似$longUrl = [&apos;url1&apos;, &apos;url2&apos;, ……]</span><br><span class="line">$longUrl = [&apos;http://blog.y0701.com/index.html&apos;];</span><br><span class="line">// 开始转长链接为短链接</span><br><span class="line">$result = $shortObj-&gt;getShortUrl($longUrl);</span><br><span class="line">print_r($result);</span><br></pre></td></tr></table></figure>
+<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>上面说到的网上查找得到的一些AppKey，因为来源不明，所以，不建议用于生产环境，需要用于生产环境的话，建议直接在新浪微博开发者平台里创建自己的应用就行。</p>
 
       
     </div>
@@ -363,9 +371,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag"># Python</a>
-          
-            <a href="/tags/paramiko/" rel="tag"># paramiko</a>
+            <a href="/tags/php/" rel="tag"># php</a>
           
         </div>
       
@@ -378,8 +384,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/31/抓包工具推荐：Fiddler、Charles/" rel="next" title="抓包工具推荐：Fiddler、Charles">
-                <i class="fa fa-chevron-left"></i> 抓包工具推荐：Fiddler、Charles
+              <a href="/2018/08/10/Markdown基础语法和入门/" rel="next" title="Markdown基础语法和入门">
+                <i class="fa fa-chevron-left"></i> Markdown基础语法和入门
               </a>
             
           </div>
@@ -387,10 +393,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/08/Python下载网易云歌曲（版权限制的怎么播放和下载呢？）/" rel="prev" title="Python下载网易云歌曲（版权限制的怎么播放和下载呢？）">
-                Python下载网易云歌曲（版权限制的怎么播放和下载呢？） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -459,8 +461,8 @@
 
   
     <div class="comments" id="comments">
-      <div class="ds-thread" data-thread-key="2018/08/02/Python通过paramiko从远处服务器下载文件资源到本地/"
-           data-title="Python通过paramiko从远处服务器下载文件资源到本地" data-url="blog.y0701.com/2018/08/02/Python通过paramiko从远处服务器下载文件资源到本地/">
+      <div class="ds-thread" data-thread-key="2018/08/14/新浪微博API生成短链接/"
+           data-title="新浪微博API生成短链接" data-url="blog.y0701.com/2018/08/14/新浪微博API生成短链接/">
       </div>
     </div>
 
@@ -586,7 +588,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要用Python脚本下载以及基本介绍"><span class="nav-number">1.</span> <span class="nav-text">为什么要用Python脚本下载以及基本介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用时候的基本配置"><span class="nav-number">2.</span> <span class="nav-text">使用时候的基本配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现源码"><span class="nav-number">3.</span> <span class="nav-text">实现源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结束语"><span class="nav-number">4.</span> <span class="nav-text">结束语</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是短链接"><span class="nav-number">1.</span> <span class="nav-text">什么是短链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#短链接服务"><span class="nav-number">2.</span> <span class="nav-text">短链接服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么选用新浪微博API"><span class="nav-number">3.</span> <span class="nav-text">为什么选用新浪微博API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文档查询链接"><span class="nav-number">4.</span> <span class="nav-text">文档查询链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方法"><span class="nav-number">5.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码"><span class="nav-number">6.</span> <span class="nav-text">源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结束语"><span class="nav-number">7.</span> <span class="nav-text">结束语</span></a></li></ol></div>
             
 
           </div>
