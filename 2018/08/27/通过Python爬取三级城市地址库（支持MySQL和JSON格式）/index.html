@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="Python 数据来源通过Python脚本，自动抓取国家统计局最新的中国省市区三级城市信息，目前抓取的最新数据为2017年统计用区划代码和城乡划分代码(截止2017年10月31日)，我会关注，时刻保持更新。 数据格式目前支持MySQL格式和JSON格式，其中MySQL的有两个版本，分别为三张表和一张表的，即三张表的为省市区三张表，而一张表的则把省市区三级城市通过关联关系都存在一张表中，可以根据自己">
+<meta name="description" content="数据来源通过Python脚本，自动抓取国家统计局最新的中国省市区三级城市信息，目前抓取的最新数据为2017年统计用区划代码和城乡划分代码(截止2017年10月31日)，我会关注，时刻保持更新。 数据格式目前支持MySQL格式和JSON格式，其中MySQL的有两个版本，分别为三张表和一张表的，即三张表的为省市区三张表，而一张表的则把省市区三级城市通过关联关系都存在一张表中，可以根据自己的需求进行选">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过Python爬取国家统计局省市区三级地址库（支持MySQL和JSON格式）">
 <meta property="og:url" content="blog.y0701.com/2018/08/27/通过Python爬取三级城市地址库（支持MySQL和JSON格式）/index.html">
 <meta property="og:site_name" content="gxcuizy&#39;s blog">
-<meta property="og:description" content="Python 数据来源通过Python脚本，自动抓取国家统计局最新的中国省市区三级城市信息，目前抓取的最新数据为2017年统计用区划代码和城乡划分代码(截止2017年10月31日)，我会关注，时刻保持更新。 数据格式目前支持MySQL格式和JSON格式，其中MySQL的有两个版本，分别为三张表和一张表的，即三张表的为省市区三张表，而一张表的则把省市区三级城市通过关联关系都存在一张表中，可以根据自己">
+<meta property="og:description" content="数据来源通过Python脚本，自动抓取国家统计局最新的中国省市区三级城市信息，目前抓取的最新数据为2017年统计用区划代码和城乡划分代码(截止2017年10月31日)，我会关注，时刻保持更新。 数据格式目前支持MySQL格式和JSON格式，其中MySQL的有两个版本，分别为三张表和一张表的，即三张表的为省市区三张表，而一张表的则把省市区三级城市通过关联关系都存在一张表中，可以根据自己的需求进行选">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-27T03:17:12.000Z">
+<meta property="og:image" content="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?ixlib=rb-0.3.5&s=1cca0d0544f25ab7c6e171d80692ed62&auto=format&fit=crop&w=1189&q=80">
+<meta property="og:updated_time" content="2018-08-27T03:23:12.295Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过Python爬取国家统计局省市区三级地址库（支持MySQL和JSON格式）">
-<meta name="twitter:description" content="Python 数据来源通过Python脚本，自动抓取国家统计局最新的中国省市区三级城市信息，目前抓取的最新数据为2017年统计用区划代码和城乡划分代码(截止2017年10月31日)，我会关注，时刻保持更新。 数据格式目前支持MySQL格式和JSON格式，其中MySQL的有两个版本，分别为三张表和一张表的，即三张表的为省市区三张表，而一张表的则把省市区三级城市通过关联关系都存在一张表中，可以根据自己">
+<meta name="twitter:description" content="数据来源通过Python脚本，自动抓取国家统计局最新的中国省市区三级城市信息，目前抓取的最新数据为2017年统计用区划代码和城乡划分代码(截止2017年10月31日)，我会关注，时刻保持更新。 数据格式目前支持MySQL格式和JSON格式，其中MySQL的有两个版本，分别为三张表和一张表的，即三张表的为省市区三张表，而一张表的则把省市区三级城市通过关联关系都存在一张表中，可以根据自己的需求进行选">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?ixlib=rb-0.3.5&s=1cca0d0544f25ab7c6e171d80692ed62&auto=format&fit=crop&w=1189&q=80">
 
 
 
@@ -335,7 +337,7 @@
       
 
       
-        <p><a href="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?ixlib=rb-0.3.5&amp;s=1cca0d0544f25ab7c6e171d80692ed62&amp;auto=format&amp;fit=crop&amp;w=1189&amp;q=80" target="_blank" rel="noopener">Python</a></p>
+        <p><img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?ixlib=rb-0.3.5&amp;s=1cca0d0544f25ab7c6e171d80692ed62&amp;auto=format&amp;fit=crop&amp;w=1189&amp;q=80" alt="Python"></p>
 <h3 id="数据来源"><a href="#数据来源" class="headerlink" title="数据来源"></a>数据来源</h3><p>通过Python脚本，自动抓取<a href="http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/" target="_blank" rel="noopener">国家统计局</a>最新的中国省市区三级城市信息，目前抓取的最新数据为<a href="http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2017/index.html" target="_blank" rel="noopener">2017年统计用区划代码和城乡划分代码(截止2017年10月31日)</a>，我会关注，时刻保持更新。</p>
 <h3 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h3><p>目前支持MySQL格式和JSON格式，其中MySQL的有两个版本，分别为三张表和一张表的，即三张表的为省市区三张表，而一张表的则把省市区三级城市通过关联关系都存在一张表中，可以根据自己的需求进行选择，如果有其他格式需求，可以联系我或者自己修改脚本。</p>
 <h3 id="脚本目录结构"><a href="#脚本目录结构" class="headerlink" title="脚本目录结构"></a>脚本目录结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">├── json                     # 存储JSON数据格式</span><br><span class="line">├── mysql                    # 存储三张表的数据格式</span><br><span class="line">├── mysql_v2                 # 存储一张表的数据格式</span><br><span class="line">├── city_to_json.py          # 抓取JSON数据格式的脚本</span><br><span class="line">├── city_mysql.py            # 抓取三张表的数据格式的脚本</span><br><span class="line">├── city_to_mysql_v2.py      # 抓取一张表的数据格式的考平贝母</span><br><span class="line">├── mysql_init.sql           # 存储三张表的数据的表结构</span><br><span class="line">├── mysql_v2_init            # 存储一张表的数据的表结构</span><br></pre></td></tr></table></figure>
