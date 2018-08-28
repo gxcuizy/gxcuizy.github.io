@@ -88,11 +88,11 @@
 <meta property="og:description" content="前言这个脚本的文章，之前我有发布在掘金和SegmentFault上面过，现在想整理到个人博客中，分享给大家，所以，才在这里重新发布。如有问题，请给我留言沟通，谢谢！">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images.unsplash.com/photo-1517940539453-517b8afbe85e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8efe33fb334f99f195bc9a13de4e8735&auto=format&fit=crop&w=500&q=60">
-<meta property="og:image" content="https://segmentfault.com/img/bVbbFwn?w=784&h=252">
-<meta property="og:image" content="https://segmentfault.com/img/bVbbFwx?w=729&h=423">
-<meta property="og:image" content="https://segmentfault.com/img/bVbbFxd?w=999&h=558">
-<meta property="og:image" content="https://segmentfault.com/img/bVbbFxZ?w=738&h=171">
-<meta property="og:updated_time" content="2018-08-28T02:29:28.000Z">
+<meta property="og:image" content="https://image-static.segmentfault.com/621/565/621565255-5b11010992996_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/278/844/2788444369-5b110130073d4_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/394/808/3948089187-5b11019115486_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/374/287/3742879033-5b1101d53c77f_articlex">
+<meta property="og:updated_time" content="2018-08-28T02:33:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python实现12306火车票自动抢票，并短信和邮件通知">
 <meta name="twitter:description" content="前言这个脚本的文章，之前我有发布在掘金和SegmentFault上面过，现在想整理到个人博客中，分享给大家，所以，才在这里重新发布。如有问题，请给我留言沟通，谢谢！">
@@ -346,10 +346,10 @@
 <a id="more"></a>
 <h3 id="脚本实现及实践"><a href="#脚本实现及实践" class="headerlink" title="脚本实现及实践"></a>脚本实现及实践</h3><p>最近在学Python，所以用Python写了这个12306抢票脚本，分享出来，与大家共同交流和学习，有不对的地方，请大家多多指正。话不多说，进入正题：</p>
 <p>这个脚本目前只能刷一趟车的，人数可以是多个，支持选取作为类型等。<br>实现思路是splinter.browser模拟浏览器登陆和操作，由于12306的验证码不好自动识别，所以，验证码需要用户进行手动识别，并进行登陆操作，之后的事情，就交由脚本来操作就可以了，下面是我测试时候的一些截图：</p>
-<p>第一步：如下图，首先输入抢票基本信息<br><img src="https://segmentfault.com/img/bVbbFwn?w=784&amp;h=252" alt="图片描述"></p>
-<p>第二步：然后进入登录页，需要手动输入验证码，并点击登陆操作<br><img src="https://segmentfault.com/img/bVbbFwx?w=729&amp;h=423" alt="图片描述"></p>
-<p>第三步：登陆后，自动进入到抢票页面，如下图这样的<br><img src="https://segmentfault.com/img/bVbbFxd?w=999&amp;h=558" alt="图片描述"></p>
-<p>最后：就是坐等刷票结果就好了，如下图这样，就说是刷票成功了，刷到票后，会进行短信和邮件的通知，请记得及时前往12306进行支付，不然就白抢了。<br><img src="https://segmentfault.com/img/bVbbFxZ?w=738&amp;h=171" alt="图片描述"></p>
+<p>第一步：如下图，首先输入抢票基本信息<br><img src="https://image-static.segmentfault.com/621/565/621565255-5b11010992996_articlex" alt="图片描述"></p>
+<p>第二步：然后进入登录页，需要手动输入验证码，并点击登陆操作<br><img src="https://image-static.segmentfault.com/278/844/2788444369-5b110130073d4_articlex" alt="图片描述"></p>
+<p>第三步：登陆后，自动进入到抢票页面，如下图这样的<br><img src="https://image-static.segmentfault.com/394/808/3948089187-5b11019115486_articlex" alt="图片描述"></p>
+<p>最后：就是坐等刷票结果就好了，如下图这样，就说是刷票成功了，刷到票后，会进行短信和邮件的通知，请记得及时前往12306进行支付，不然就白抢了。<br><img src="https://image-static.segmentfault.com/374/287/3742879033-5b1101d53c77f_articlex" alt="图片描述"></p>
 <h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Python运行环境：python3.6<br>用到的模块：re、splinter、time、sys、httplib2、urllib、smtplib、email<br>未安装的模块，请使用pip instatll进行安装，例如：pip install splinter<br>如下代码是这个脚本所有用到的模块引入：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">from splinter.browser import Browser</span><br><span class="line">from time import sleep</span><br><span class="line">import sys</span><br><span class="line">import httplib2</span><br><span class="line">from urllib import parse</span><br><span class="line">import smtplib</span><br><span class="line">from email.mime.text import MIMEText</span><br></pre></td></tr></table></figure>
 <h3 id="准备城市名COOKIE"><a href="#准备城市名COOKIE" class="headerlink" title="准备城市名COOKIE"></a>准备城市名COOKIE</h3><p>刷票前信息准备，我主要说一下始发站和目的地的cookie值获取，因为输入城市的时候，需要通过cookie值，cookie值可以通过12306官网，然后在F12（相信所有的coder都知道这个吧）的network里面的查询请求cookie中可以看到，在请求的header里面可以找到，_jc_save_fromStation值是出发站的cookie，_jc_save_toStation的值是目的地的cookie，然后加入到代码里的城市的cookie字典city_list里即可，键是城市的首字母，值是cookie值的形式。</p>
