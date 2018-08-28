@@ -253,6 +253,152 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="blog.y0701.com/2018/08/28/Python实现12306火车票自动抢票，并短信和邮件通知/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gxcuizy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gxcuizy's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/28/Python实现12306火车票自动抢票，并短信和邮件通知/" itemprop="url">Python3.6实现12306火车票自动抢票，并短信和邮件通知</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-28T10:00:48+08:00">
+                2018-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/28/Python实现12306火车票自动抢票，并短信和邮件通知/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/08/28/Python实现12306火车票自动抢票，并短信和邮件通知/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这个脚本的文章，之前我有发布在<a href="https://juejin.im/post/5b116504f265da6e0636cbc2" target="_blank" rel="noopener">掘金</a>和<a href="https://segmentfault.com/a/1190000015136244" target="_blank" rel="noopener">SegmentFault</a>上面过，现在想整理到个人博客中，分享给大家，所以，才在这里重新发布。如有问题，请给我留言沟通，谢谢！</p>
+<h3 id="脚本实现及实践"><a href="#脚本实现及实践" class="headerlink" title="脚本实现及实践"></a>脚本实现及实践</h3><p>最近在学Python，所以用Python写了这个12306抢票脚本，分享出来，与大家共同交流和学习，有不对的地方，请大家多多指正。话不多说，进入正题：</p>
+<p>这个脚本目前只能刷一趟车的，人数可以是多个，支持选取作为类型等。<br>实现思路是splinter.browser模拟浏览器登陆和操作，由于12306的验证码不好自动识别，所以，验证码需要用户进行手动识别，并进行登陆操作，之后的事情，就交由脚本来操作就可以了，下面是我测试时候的一些截图：</p>
+<p>第一步：如下图，首先输入抢票基本信息<br><img src="https://segmentfault.com/img/bVbbFwn?w=784&amp;h=252" alt="图片描述"></p>
+<p>第二步：然后进入登录页，需要手动输入验证码，并点击登陆操作<br><img src="https://segmentfault.com/img/bVbbFwx?w=729&amp;h=423" alt="图片描述"></p>
+<p>第三步：登陆后，自动进入到抢票页面，如下图这样的<br><img src="https://segmentfault.com/img/bVbbFxd?w=999&amp;h=558" alt="图片描述"></p>
+<p>最后：就是坐等刷票结果就好了，如下图这样，就说是刷票成功了，刷到票后，会进行短信和邮件的通知，请记得及时前往12306进行支付，不然就白抢了。<br><img src="https://segmentfault.com/img/bVbbFxZ?w=738&amp;h=171" alt="图片描述"></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Python运行环境：python3.6<br>用到的模块：re、splinter、time、sys、httplib2、urllib、smtplib、email<br>未安装的模块，请使用pip instatll进行安装，例如：pip install splinter<br>如下代码是这个脚本所有用到的模块引入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">from splinter.browser import Browser</span><br><span class="line">from time import sleep</span><br><span class="line">import sys</span><br><span class="line">import httplib2</span><br><span class="line">from urllib import parse</span><br><span class="line">import smtplib</span><br><span class="line">from email.mime.text import MIMEText</span><br></pre></td></tr></table></figure>
+<h3 id="准备城市名COOKIE"><a href="#准备城市名COOKIE" class="headerlink" title="准备城市名COOKIE"></a>准备城市名COOKIE</h3><p>刷票前信息准备，我主要说一下始发站和目的地的cookie值获取，因为输入城市的时候，需要通过cookie值，cookie值可以通过12306官网，然后在F12（相信所有的coder都知道这个吧）的network里面的查询请求cookie中可以看到，在请求的header里面可以找到，_jc_save_fromStation值是出发站的cookie，_jc_save_toStation的值是目的地的cookie，然后加入到代码里的城市的cookie字典city_list里即可，键是城市的首字母，值是cookie值的形式。</p>
+<h3 id="模拟登陆操作"><a href="#模拟登陆操作" class="headerlink" title="模拟登陆操作"></a>模拟登陆操作</h3><p>抢票，肯定需要先登录，我这里模拟的登录操作，会自动填充12306的账号名和密码，当然，你也可以在打开的浏览器中修改账号和密码，实现的关键代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def do_login(self):</span><br><span class="line">    &quot;&quot;&quot;登录功能实现，手动识别验证码进行登录&quot;&quot;&quot;</span><br><span class="line">    self.driver.visit(self.login_url)</span><br><span class="line">    sleep(1)</span><br><span class="line">    self.driver.fill(&apos;loginUserDTO.user_name&apos;, self.user_name)</span><br><span class="line">    self.driver.fill(&apos;userDTO.password&apos;, self.password)</span><br><span class="line">    print(&apos;请输入验证码……&apos;)</span><br><span class="line">    while True:</span><br><span class="line">        if self.driver.url != self.init_my_url:</span><br><span class="line">            sleep(1)</span><br><span class="line">        else:</span><br><span class="line">            break</span><br></pre></td></tr></table></figure>
+<p>登录之后，就是控制刷票的各种操作处理了，这里，我就不贴代码了，因为代码比较多，别担心，在最后，我会贴出完整的代码的。</p>
+<h3 id="短信和邮件通知"><a href="#短信和邮件通知" class="headerlink" title="短信和邮件通知"></a>短信和邮件通知</h3><p>当刷票成功后，我会进行短信和邮件的双重通知，当然，这里短信通知的平台，就看你用那个具体来修改代码了，我用的是<a href="http://www.ihuyi.com/" target="_blank" rel="noopener">互亿无线</a>的体验版的免费短信通知接口；发送邮件模块我用的是smtplib，发送邮件服务器用的是163邮箱，如果用163邮箱的话，你还没有设置客户端授权密码，记得先设置客户端授权密码就好了，挺方便的。以下是主要实现代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">def send_sms(self, mobile, sms_info):</span><br><span class="line">    &quot;&quot;&quot;发送手机通知短信，用的是-互亿无线-的测试短信&quot;&quot;&quot;</span><br><span class="line">    host = &quot;106.ihuyi.com&quot;</span><br><span class="line">    sms_send_uri = &quot;/webservice/sms.php?method=Submit&quot;</span><br><span class="line">    account = &quot;C59782899&quot;</span><br><span class="line">    pass_word = &quot;19d4d9c0796532c7328e8b82e2812655&quot;</span><br><span class="line">    params = parse.urlencode(</span><br><span class="line">        &#123;&apos;account&apos;: account, &apos;password&apos;: pass_word, &apos;content&apos;: sms_info, &apos;mobile&apos;: mobile, &apos;format&apos;: &apos;json&apos;&#125;</span><br><span class="line">    )</span><br><span class="line">    headers = &#123;&quot;Content-type&quot;: &quot;application/x-www-form-urlencoded&quot;, &quot;Accept&quot;: &quot;text/plain&quot;&#125;</span><br><span class="line">    conn = httplib2.HTTPConnectionWithTimeout(host, port=80, timeout=30)</span><br><span class="line">    conn.request(&quot;POST&quot;, sms_send_uri, params, headers)</span><br><span class="line">    response = conn.getresponse()</span><br><span class="line">    response_str = response.read()</span><br><span class="line">    conn.close()</span><br><span class="line">    return response_str</span><br><span class="line"></span><br><span class="line">def send_mail(self, receiver_address, content):</span><br><span class="line">    &quot;&quot;&quot;发送邮件通知&quot;&quot;&quot;</span><br><span class="line">    # 连接邮箱服务器信息</span><br><span class="line">    host = &apos;smtp.163.com&apos;</span><br><span class="line">    port = 25</span><br><span class="line">    sender = &apos;xxxxxx@163.com&apos;  # 你的发件邮箱号码</span><br><span class="line">    pwd = &apos;******&apos;  # 不是登陆密码，是客户端授权密码</span><br><span class="line">    # 发件信息</span><br><span class="line">    receiver = receiver_address</span><br><span class="line">    body = &apos;&lt;h2&gt;温馨提醒：&lt;/h2&gt;&lt;p&gt;&apos; + content + &apos;&lt;/p&gt;&apos;</span><br><span class="line">    msg = MIMEText(body, &apos;html&apos;, _charset=&quot;utf-8&quot;)</span><br><span class="line">    msg[&apos;subject&apos;] = &apos;抢票成功通知！&apos;</span><br><span class="line">    msg[&apos;from&apos;] = sender</span><br><span class="line">    msg[&apos;to&apos;] = receiver</span><br><span class="line">    s = smtplib.SMTP(host, port)</span><br><span class="line">    # 开始登陆邮箱，并发送邮件</span><br><span class="line">    s.login(sender, pwd)</span><br><span class="line">    s.sendmail(sender, receiver, msg.as_string())</span><br></pre></td></tr></table></figure>
+<h3 id="源码分享"><a href="#源码分享" class="headerlink" title="源码分享"></a>源码分享</h3><p>说了那么多，感觉都是说了好多废话啊，哈哈，不好意思，耽误大家时间来看我瞎扯了，我贴上大家最关心的源码，请接码，大家在尝试运行过程中，有任何问题，可以给我留言或者私信我，我看到都会及时回复大家的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">通过splinter刷12306火车票</span><br><span class="line">可以自动填充账号密码，同时，在登录时，也可以修改账号密码</span><br><span class="line">然后手动识别验证码，并登陆，接下来的事情，交由脚本来做了，静静的等待抢票结果就好（刷票过程中，浏览器不可关闭）</span><br><span class="line">author: cuizy</span><br><span class="line">time: 2018-05-30</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">import re</span><br><span class="line">from splinter.browser import Browser</span><br><span class="line">from time import sleep</span><br><span class="line">import sys</span><br><span class="line">import httplib2</span><br><span class="line">from urllib import parse</span><br><span class="line">import smtplib</span><br><span class="line">from email.mime.text import MIMEText</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class BrushTicket(object):</span><br><span class="line">    &quot;&quot;&quot;买票类及实现方法&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    def __init__(self, user_name, password, passengers, from_time, from_station, to_station, number, seat_type, receiver_mobile, receiver_email):</span><br><span class="line">        &quot;&quot;&quot;定义实例属性，初始化&quot;&quot;&quot;</span><br><span class="line">        # 1206账号密码</span><br><span class="line">        self.user_name = user_name</span><br><span class="line">        self.password = password</span><br><span class="line">        # 乘客姓名</span><br><span class="line">        self.passengers = passengers</span><br><span class="line">        # 起始站和终点站</span><br><span class="line">        self.from_station = from_station</span><br><span class="line">        self.to_station = to_station</span><br><span class="line">        # 乘车日期</span><br><span class="line">        self.from_time = from_time</span><br><span class="line">        # 车次编号</span><br><span class="line">        self.number = number.capitalize()</span><br><span class="line">        # 座位类型所在td位置</span><br><span class="line">        if seat_type == &apos;商务座特等座&apos;:</span><br><span class="line">            seat_type_index = 1</span><br><span class="line">            seat_type_value = 9</span><br><span class="line">        elif seat_type == &apos;一等座&apos;:</span><br><span class="line">            seat_type_index = 2</span><br><span class="line">            seat_type_value = &apos;M&apos;</span><br><span class="line">        elif seat_type == &apos;二等座&apos;:</span><br><span class="line">            seat_type_index = 3</span><br><span class="line">            seat_type_value = 0</span><br><span class="line">        elif seat_type == &apos;高级软卧&apos;:</span><br><span class="line">            seat_type_index = 4</span><br><span class="line">            seat_type_value = 6</span><br><span class="line">        elif seat_type == &apos;软卧&apos;:</span><br><span class="line">            seat_type_index = 5</span><br><span class="line">            seat_type_value = 4</span><br><span class="line">        elif seat_type == &apos;动卧&apos;:</span><br><span class="line">            seat_type_index = 6</span><br><span class="line">            seat_type_value = &apos;F&apos;</span><br><span class="line">        elif seat_type == &apos;硬卧&apos;:</span><br><span class="line">            seat_type_index = 7</span><br><span class="line">            seat_type_value = 3</span><br><span class="line">        elif seat_type == &apos;软座&apos;:</span><br><span class="line">            seat_type_index = 8</span><br><span class="line">            seat_type_value = 2</span><br><span class="line">        elif seat_type == &apos;硬座&apos;:</span><br><span class="line">            seat_type_index = 9</span><br><span class="line">            seat_type_value = 1</span><br><span class="line">        elif seat_type == &apos;无座&apos;:</span><br><span class="line">            seat_type_index = 10</span><br><span class="line">            seat_type_value = 1</span><br><span class="line">        elif seat_type == &apos;其他&apos;:</span><br><span class="line">            seat_type_index = 11</span><br><span class="line">            seat_type_value = 1</span><br><span class="line">        else:</span><br><span class="line">            seat_type_index = 7</span><br><span class="line">            seat_type_value = 3</span><br><span class="line">        self.seat_type_index = seat_type_index</span><br><span class="line">        self.seat_type_value = seat_type_value</span><br><span class="line">        # 通知信息</span><br><span class="line">        self.receiver_mobile = receiver_mobile</span><br><span class="line">        self.receiver_email = receiver_email</span><br><span class="line">        # 主要页面网址</span><br><span class="line">        self.login_url = &apos;https://kyfw.12306.cn/otn/login/init&apos;</span><br><span class="line">        self.init_my_url = &apos;https://kyfw.12306.cn/otn/index/initMy12306&apos;</span><br><span class="line">        self.ticket_url = &apos;https://kyfw.12306.cn/otn/leftTicket/init&apos;</span><br><span class="line">        # 浏览器驱动信息，驱动下载页：https://sites.google.com/a/chromium.org/chromedriver/downloads</span><br><span class="line">        self.driver_name = &apos;chrome&apos;</span><br><span class="line">        self.executable_path = &apos;C:\\Users\cuizy\AppData\Local\Programs\Python\Python36\Scripts\chromedriver.exe&apos;</span><br><span class="line"></span><br><span class="line">    def do_login(self):</span><br><span class="line">        &quot;&quot;&quot;登录功能实现，手动识别验证码进行登录&quot;&quot;&quot;</span><br><span class="line">        self.driver.visit(self.login_url)</span><br><span class="line">        sleep(1)</span><br><span class="line">        self.driver.fill(&apos;loginUserDTO.user_name&apos;, self.user_name)</span><br><span class="line">        self.driver.fill(&apos;userDTO.password&apos;, self.password)</span><br><span class="line">        print(&apos;请输入验证码……&apos;)</span><br><span class="line">        while True:</span><br><span class="line">            if self.driver.url != self.init_my_url:</span><br><span class="line">                sleep(1)</span><br><span class="line">            else:</span><br><span class="line">                break</span><br><span class="line"></span><br><span class="line">    def start_brush(self):</span><br><span class="line">        &quot;&quot;&quot;买票功能实现&quot;&quot;&quot;</span><br><span class="line">        self.driver = Browser(driver_name=self.driver_name, executable_path=self.executable_path)</span><br><span class="line">        # 浏览器窗口的大小</span><br><span class="line">        self.driver.driver.set_window_size(900, 700)</span><br><span class="line">        self.do_login()</span><br><span class="line">        self.driver.visit(self.ticket_url)</span><br><span class="line">        try:</span><br><span class="line">            print(&apos;开始刷票……&apos;)</span><br><span class="line">            # 加载车票查询信息</span><br><span class="line">            self.driver.cookies.add(&#123;&quot;_jc_save_fromStation&quot;: self.from_station&#125;)</span><br><span class="line">            self.driver.cookies.add(&#123;&quot;_jc_save_toStation&quot;: self.to_station&#125;)</span><br><span class="line">            self.driver.cookies.add(&#123;&quot;_jc_save_fromDate&quot;: self.from_time&#125;)</span><br><span class="line">            self.driver.reload()</span><br><span class="line">            count = 0</span><br><span class="line">            while self.driver.url.split(&apos;?&apos;)[0] == self.ticket_url:</span><br><span class="line">                self.driver.find_by_text(&apos;查询&apos;).click()</span><br><span class="line">                sleep(1)</span><br><span class="line">                count += 1</span><br><span class="line">                print(&apos;第%d次点击查询……&apos; % count)</span><br><span class="line">                try:</span><br><span class="line">                    car_no_location = self.driver.find_by_id(&quot;queryLeftTable&quot;)[0].find_by_text(self.number)[1]</span><br><span class="line">                    current_tr = car_no_location.find_by_xpath(&quot;./../../../../..&quot;)</span><br><span class="line">                    if current_tr.find_by_tag(&apos;td&apos;)[self.seat_type_index].text == &apos;--&apos;:</span><br><span class="line">                        print(&apos;无此座位类型出售，已结束当前刷票，请重新开启！&apos;)</span><br><span class="line">                        sys.exit(1)</span><br><span class="line">                    elif current_tr.find_by_tag(&apos;td&apos;)[self.seat_type_index].text == &apos;无&apos;:</span><br><span class="line">                        print(&apos;无票，继续尝试……&apos;)</span><br><span class="line">                    else:</span><br><span class="line">                        # 有票，尝试预订</span><br><span class="line">                        print(&apos;刷到票了（余票数：&apos; + str(current_tr.find_by_tag(&apos;td&apos;)[self.seat_type_index].text) + &apos;），开始尝试预订……&apos;)</span><br><span class="line">                        current_tr.find_by_css(&apos;td.no-br&gt;a&apos;)[0].click()</span><br><span class="line">                        sleep(1)</span><br><span class="line">                        key_value = 1</span><br><span class="line">                        for p in self.passengers:</span><br><span class="line">                            # 选择用户</span><br><span class="line">                            print(&apos;开始选择用户……&apos;)</span><br><span class="line">                            self.driver.find_by_text(p).last.click()</span><br><span class="line">                            # 选择座位类型</span><br><span class="line">                            print(&apos;开始选择席别……&apos;)</span><br><span class="line">                            if self.seat_type_value != 0:</span><br><span class="line">                                seat_select = self.driver.find_by_id(&quot;seatType_&quot; + str(key_value))[0]</span><br><span class="line">                                seat_select.find_by_xpath(&quot;//option[@value=&apos;&quot; + str(self.seat_type_value) + &quot;&apos;]&quot;)[0].click()</span><br><span class="line">                            key_value += 1</span><br><span class="line">                            sleep(0.5)</span><br><span class="line">                            if p[-1] == &apos;)&apos;:</span><br><span class="line">                                self.driver.find_by_id(&apos;dialog_xsertcj_ok&apos;).click()</span><br><span class="line">                        print(&apos;正在提交订单……&apos;)</span><br><span class="line">                        self.driver.find_by_id(&apos;submitOrder_id&apos;).click()</span><br><span class="line">                        sleep(2)</span><br><span class="line">                        # 查看放回结果是否正常</span><br><span class="line">                        submit_false_info = self.driver.find_by_id(&apos;orderResultInfo_id&apos;)[0].text</span><br><span class="line">                        if submit_false_info != &apos;&apos;:</span><br><span class="line">                            print(submit_false_info)</span><br><span class="line">                            self.driver.find_by_id(&apos;qr_closeTranforDialog_id&apos;).click()</span><br><span class="line">                            sleep(0.2)</span><br><span class="line">                            self.driver.find_by_id(&apos;preStep_id&apos;).click()</span><br><span class="line">                            sleep(0.3)</span><br><span class="line">                            continue</span><br><span class="line">                        print(&apos;正在确认订单……&apos;)</span><br><span class="line">                        self.driver.find_by_id(&apos;qr_submit_id&apos;).click()</span><br><span class="line">                        print(&apos;预订成功，请及时前往支付……&apos;)</span><br><span class="line">                        # 发送通知信息</span><br><span class="line">                        self.send_mail(self.receiver_email, &apos;恭喜您，抢到票了，请及时前往12306支付订单！&apos;)</span><br><span class="line">                        self.send_sms(self.receiver_mobile, &apos;您的验证码是：8888。请不要把验证码泄露给其他人。&apos;)</span><br><span class="line">                except Exception as error_info:</span><br><span class="line">                    print(error_info)</span><br><span class="line">        except Exception as error_info:</span><br><span class="line">            print(error_info)</span><br><span class="line"></span><br><span class="line">    def send_sms(self, mobile, sms_info):</span><br><span class="line">        &quot;&quot;&quot;发送手机通知短信，用的是-互亿无线-的测试短信&quot;&quot;&quot;</span><br><span class="line">        host = &quot;106.ihuyi.com&quot;</span><br><span class="line">        sms_send_uri = &quot;/webservice/sms.php?method=Submit&quot;</span><br><span class="line">        account = &quot;C59782899&quot;</span><br><span class="line">        pass_word = &quot;19d4d9c0796532c7328e8b82e2812655&quot;</span><br><span class="line">        params = parse.urlencode(</span><br><span class="line">            &#123;&apos;account&apos;: account, &apos;password&apos;: pass_word, &apos;content&apos;: sms_info, &apos;mobile&apos;: mobile, &apos;format&apos;: &apos;json&apos;&#125;</span><br><span class="line">        )</span><br><span class="line">        headers = &#123;&quot;Content-type&quot;: &quot;application/x-www-form-urlencoded&quot;, &quot;Accept&quot;: &quot;text/plain&quot;&#125;</span><br><span class="line">        conn = httplib2.HTTPConnectionWithTimeout(host, port=80, timeout=30)</span><br><span class="line">        conn.request(&quot;POST&quot;, sms_send_uri, params, headers)</span><br><span class="line">        response = conn.getresponse()</span><br><span class="line">        response_str = response.read()</span><br><span class="line">        conn.close()</span><br><span class="line">        return response_str</span><br><span class="line"></span><br><span class="line">    def send_mail(self, receiver_address, content):</span><br><span class="line">        &quot;&quot;&quot;发送邮件通知&quot;&quot;&quot;</span><br><span class="line">        # 连接邮箱服务器信息</span><br><span class="line">        host = &apos;smtp.163.com&apos;</span><br><span class="line">        port = 25</span><br><span class="line">        sender = &apos;gxcuizy@163.com&apos;  # 你的发件邮箱号码</span><br><span class="line">        pwd = &apos;CUIzy9118&apos;  # 不是登陆密码，是客户端授权密码</span><br><span class="line">        # 发件信息</span><br><span class="line">        receiver = receiver_address</span><br><span class="line">        body = &apos;&lt;h2&gt;温馨提醒：&lt;/h2&gt;&lt;p&gt;&apos; + content + &apos;&lt;/p&gt;&apos;</span><br><span class="line">        msg = MIMEText(body, &apos;html&apos;, _charset=&quot;utf-8&quot;)</span><br><span class="line">        msg[&apos;subject&apos;] = &apos;抢票成功通知！&apos;</span><br><span class="line">        msg[&apos;from&apos;] = sender</span><br><span class="line">        msg[&apos;to&apos;] = receiver</span><br><span class="line">        s = smtplib.SMTP(host, port)</span><br><span class="line">        # 开始登陆邮箱，并发送邮件</span><br><span class="line">        s.login(sender, pwd)</span><br><span class="line">        s.sendmail(sender, receiver, msg.as_string())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    # 12306用户名</span><br><span class="line">    user_name = input(&apos;请输入12306用户名：&apos;)</span><br><span class="line">    while user_name == &apos;&apos;:</span><br><span class="line">        user_name = input(&apos;12306用户名不能为空，请重新输入：&apos;)</span><br><span class="line">    # 12306登陆密码</span><br><span class="line">    password = input(&apos;请输入12306登陆密码：&apos;)</span><br><span class="line">    while password == &apos;&apos;:</span><br><span class="line">        password = input(&apos;12306登陆密码不能为空，请重新输入：&apos;)</span><br><span class="line">    # 乘客姓名</span><br><span class="line">    passengers_input = input(&apos;请输入乘车人姓名，多人用英文逗号“,”连接，（例如单人“张三”或者多人“张三,李四”）：&apos;)</span><br><span class="line">    passengers = passengers_input.split(&quot;,&quot;)</span><br><span class="line">    while passengers_input == &apos;&apos; or len(passengers) &gt; 4:</span><br><span class="line">        print(&apos;乘车人最少1位，最多4位！&apos;)</span><br><span class="line">        passengers_input = input(&apos;请重新输入乘车人姓名，多人用英文逗号“,”连接，（例如单人“张三”或者多人“张三,李四”）：&apos;)</span><br><span class="line">        passengers = passengers_input.split(&quot;,&quot;)</span><br><span class="line">    # 乘车日期</span><br><span class="line">    from_time = input(&apos;请输入乘车日期（例如“2018-08-08”）：&apos;)</span><br><span class="line">    date_pattern = re.compile(r&apos;^\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;$&apos;)</span><br><span class="line">    while from_time == &apos;&apos; or re.findall(date_pattern, from_time) == []:</span><br><span class="line">        from_time = input(&apos;乘车日期不能为空或者时间格式不正确，请重新输入：&apos;)</span><br><span class="line">    # 城市cookie字典</span><br><span class="line">    city_list = &#123;</span><br><span class="line">        &apos;bj&apos;: &apos;%u5317%u4EAC%2CBJP&apos;,  # 北京</span><br><span class="line">        &apos;hd&apos;: &apos;%u5929%u6D25%2CTJP&apos;,  # 邯郸</span><br><span class="line">        &apos;nn&apos;: &apos;%u5357%u5B81%2CNNZ&apos;,  # 南宁</span><br><span class="line">        &apos;wh&apos;: &apos;%u6B66%u6C49%2CWHN&apos;,  # 武汉</span><br><span class="line">        &apos;cs&apos;: &apos;%u957F%u6C99%2CCSQ&apos;,  # 长沙</span><br><span class="line">        &apos;ty&apos;: &apos;%u592A%u539F%2CTYV&apos;,  # 太原</span><br><span class="line">        &apos;yc&apos;: &apos;%u8FD0%u57CE%2CYNV&apos;,  # 运城</span><br><span class="line">        &apos;gzn&apos;: &apos;%u5E7F%u5DDE%u5357%2CIZQ&apos;,  # 广州南</span><br><span class="line">        &apos;wzn&apos;: &apos;%u68A7%u5DDE%u5357%2CWBZ&apos;,  # 梧州南</span><br><span class="line">    &#125;</span><br><span class="line">    # 出发站</span><br><span class="line">    from_input = input(&apos;请输入出发站，只需要输入首字母就行（例如北京“bj”）：&apos;)</span><br><span class="line">    while from_input not in city_list.keys():</span><br><span class="line">        from_input = input(&apos;出发站不能为空或不支持当前出发站（如有需要，请联系管理员！），请重新输入：&apos;)</span><br><span class="line">    from_station = city_list[from_input]</span><br><span class="line">    # 终点站</span><br><span class="line">    to_input = input(&apos;请输入终点站，只需要输入首字母就行（例如北京“bj”）：&apos;)</span><br><span class="line">    while to_input not in city_list.keys():</span><br><span class="line">        to_input = input(&apos;终点站不能为空或不支持当前终点站（如有需要，请联系管理员！），请重新输入：&apos;)</span><br><span class="line">    to_station = city_list[to_input]</span><br><span class="line">    # 车次编号</span><br><span class="line">    number = input(&apos;请输入车次号（例如“G110”）：&apos;)</span><br><span class="line">    while number == &apos;&apos;:</span><br><span class="line">        number = input(&apos;车次号不能为空，请重新输入：&apos;)</span><br><span class="line">    # 座位类型</span><br><span class="line">    seat_type = input(&apos;请输入座位类型（例如“软卧”）：&apos;)</span><br><span class="line">    while seat_type == &apos;&apos;:</span><br><span class="line">        seat_type = input(&apos;座位类型不能为空，请重新输入：&apos;)</span><br><span class="line">    # 抢票成功，通知该手机号码</span><br><span class="line">    receiver_mobile = input(&apos;请预留一个手机号码，方便抢到票后进行通知（例如：18888888888）：&apos;)</span><br><span class="line">    mobile_pattern = re.compile(r&apos;^1&#123;1&#125;\d&#123;10&#125;$&apos;)</span><br><span class="line">    while receiver_mobile == &apos;&apos; or re.findall(mobile_pattern, receiver_mobile) == []:</span><br><span class="line">        receiver_mobile = input(&apos;预留手机号码不能为空或者格式不正确，请重新输入：&apos;)</span><br><span class="line">    receiver_email = input(&apos;请预留一个邮箱，方便抢到票后进行通知（例如：test@163.com）：&apos;)</span><br><span class="line">    while receiver_email == &apos;&apos;:</span><br><span class="line">        receiver_email = input(&apos;预留邮箱不能为空，请重新输入：&apos;)</span><br><span class="line">    # 开始抢票</span><br><span class="line">    ticket = BrushTicket(user_name, password, passengers, from_time, from_station, to_station, number, seat_type, receiver_mobile, receiver_email)</span><br><span class="line">    ticket.start_brush()</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="blog.y0701.com/2018/08/27/通过Python爬取三级城市地址库（支持MySQL和JSON格式）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1473,144 +1619,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="blog.y0701.com/2018/07/26/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gxcuizy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/me.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gxcuizy's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/26/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-26T12:51:15+08:00">
-                2018-07-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/07/26/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/07/26/hello-world/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Welcome to my blog,that is my first article.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/07/26/hello-world/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1658,7 +1673,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
