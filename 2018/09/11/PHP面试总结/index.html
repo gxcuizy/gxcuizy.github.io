@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "f3f6c502"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="PHP,面试," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言面试是你进入公司的第一个关卡，如同高考一般，但是面试不是高考，高考只有一次，而面试则可以有N次，只要有合适的面试邀请，你就可以继续尝试，不要害怕失败；假如公司没有选择你，不是你不优秀，只是你不符合他们的要求罢了，结束后总结下面试中不足的地方，及时调整好心态，准备下个面试才是你最正确的做法。">
+<meta name="keywords" content="PHP,面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP面试总结">
+<meta property="og:url" content="blog.y0701.com/2018/09/11/PHP面试总结/index.html">
+<meta property="og:site_name" content="gxcuizy&#39;s blog">
+<meta property="og:description" content="前言面试是你进入公司的第一个关卡，如同高考一般，但是面试不是高考，高考只有一次，而面试则可以有N次，只要有合适的面试邀请，你就可以继续尝试，不要害怕失败；假如公司没有选择你，不是你不优秀，只是你不符合他们的要求罢了，结束后总结下面试中不足的地方，及时调整好心态，准备下个面试才是你最正确的做法。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images.pexels.com/photos/935977/pexels-photo-935977.jpeg">
+<meta property="og:updated_time" content="2018-09-11T06:55:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP面试总结">
+<meta name="twitter:description" content="前言面试是你进入公司的第一个关卡，如同高考一般，但是面试不是高考，高考只有一次，而面试则可以有N次，只要有合适的面试邀请，你就可以继续尝试，不要害怕失败；假如公司没有选择你，不是你不优秀，只是你不符合他们的要求罢了，结束后总结下面试中不足的地方，及时调整好心态，准备下个面试才是你最正确的做法。">
+<meta name="twitter:image" content="https://images.pexels.com/photos/935977/pexels-photo-935977.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="blog.y0701.com/2018/09/11/PHP面试总结/"/>
+
+
+
+
+
+  <title>PHP面试总结 | gxcuizy's blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?79a24eb542940d706401923128bd4415";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gxcuizy's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="blog.y0701.com/2018/09/11/PHP面试总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gxcuizy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gxcuizy's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">PHP面试总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-11T14:52:51+08:00">
+                2018-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/11/PHP面试总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/09/11/PHP面试总结/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 点击量：
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://images.pexels.com/photos/935977/pexels-photo-935977.jpeg" alt="page_img_url"></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>面试是你进入公司的第一个关卡，如同高考一般，但是面试不是高考，高考只有一次，而面试则可以有N次，只要有合适的面试邀请，你就可以继续尝试，不要害怕失败；假如公司没有选择你，不是你不优秀，只是你不符合他们的要求罢了，结束后总结下面试中不足的地方，及时调整好心态，准备下个面试才是你最正确的做法。</p>
+<a id="more"></a>
+<h3 id="面试准备"><a href="#面试准备" class="headerlink" title="面试准备"></a>面试准备</h3><p>俗话说：“将军不打没准备的仗”，参加高考也是需要寒窗苦读12年甚至更久，而求职面试呢，也是需要提前准备的，主要分如下几个方面来准备：</p>
+<ol>
+<li>自我介绍，这个不用我说了吧，几乎每场面试都会遇到</li>
+<li>PHP基础语法和函数</li>
+<li>提前准备好怎么在面试官面前表述自己的项目（体现用到的技术与亮点/难点）</li>
+<li>简历上自己的列出的专业技能，要看一下相关知识点，因为面试官会从你的这些技能中问你问题</li>
+<li>MySQL数据库方面，比如事务处理、索引、锁、查询优化、表结构设计等</li>
+<li>PHP进阶方面，例如MVC、OOP、算法、设计模式、redis等</li>
+<li>Javascript、Ajax、jQuery等前端知识，会Vue或者Node.js一般会有加分呢</li>
+<li>丰富GitHub项目、博客以及自己活跃的社区主页信息等</li>
+<li>准备好你的个人简历</li>
+<li>……</li>
+</ol>
+<h3 id="技术面试知识点"><a href="#技术面试知识点" class="headerlink" title="技术面试知识点"></a>技术面试知识点</h3><h4 id="MySQL索引"><a href="#MySQL索引" class="headerlink" title="MySQL索引"></a>MySQL索引</h4><blockquote>
+<p>索引（Index）是帮助MySQL高效获取数据的数据结构。提取句子主干，就可以得到索引的本质：索引是数据结构。</p>
+</blockquote>
+<p>MySQL索引的建立对于MySQL的高效运行是很重要的，索引可以大大提高MySQL的检索速度，从而提高性能，是MySQL查询优化之一。</p>
+<p>更多索引相关详见 <a href="https://segmentfault.com/a/1190000003072424" target="_blank" rel="noopener">https://segmentfault.com/a/1190000003072424</a></p>
+<h4 id="MySQL优化"><a href="#MySQL优化" class="headerlink" title="MySQL优化"></a>MySQL优化</h4><p>现如今，各种大数据、高并发的时代，数据库的操作越来越成为整个架构的性能瓶颈了，这点对于Web应用尤其明显。关于数据库的性能，这并不只是DBA才需要担心的事，而这更是我们程序员需要去关注的事情。当我们去设计数据库表结构，对操作数据库时，我们都需要注意数据操作的性能。而在面试过程中，也是经常会遇到的，所以，无论是面试准备还是日常开发，我们都应该关注这方面的东西。</p>
+<p>更多优化方法和技巧详见 <a href="https://coolshell.cn/articles/1846.html" target="_blank" rel="noopener">https://coolshell.cn/articles/1846.html</a></p>
+<h4 id="MySQL事务"><a href="#MySQL事务" class="headerlink" title="MySQL事务"></a>MySQL事务</h4><p>我们都知道，事务是一个序列操作，其中的操作要么都执行，要么都不执行，它是一个不可分割的工作单位；所以MySQL事务主要用于处理操作量大，复杂度高的数据。</p>
+<p>MySQL中只有使用了Innodb数据库引擎的数据库或表才支持事务；一般来说，事务都具备4个特性（ACID）：：原子性（Atomicity）、一致性（Consistency）、隔离性（Isolation）、持久性（Durability）。</p>
+<p>更多MySQL事务详见 <a href="https://www.jianshu.com/p/bcc614524024" target="_blank" rel="noopener">https://www.jianshu.com/p/bcc614524024</a></p>
+<h4 id="MyISAN与InnoDB的区别"><a href="#MyISAN与InnoDB的区别" class="headerlink" title="MyISAN与InnoDB的区别"></a>MyISAN与InnoDB的区别</h4><p>MyISAN与InnoDB都是MySQL的数据库引擎之一，在5.5版之前MyISAM是MySQL的默认数据库引擎；MyISAN虽然性能极佳，但却有一个缺点：不支持事务处理（transaction），而恰恰相反，InnoDB的最大特色就是支持了ACID兼容的事务（Transaction）功能，所以，如果在日常开发中，如果遇到不知道选择哪种表类型的，那么就选择InnoDB吧。</p>
+<p>更多MyISAN与InnoDB的的比较详见 <a href="https://www.jianshu.com/p/a957b18ba40d" target="_blank" rel="noopener">https://www.jianshu.com/p/a957b18ba40d</a></p>
+<h4 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h4><blockquote>
+<p>HTTP协议是Hyper Text Transfer Protocol（超文本传输协议）的缩写，是用于从万维网（WWW: World Wide Web）服务器传输超文本到本地浏览器的传送协议。</p>
+</blockquote>
+<p>HTTP是一个基于TCP/IP通信协议来传递数据，HTTP是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统，他的主要特点是：简单快速、灵活、无连接、无状态、支持B/S及C/S模式等。</p>
+<p>HTTP协议工作于客户端-服务端架构为上。浏览器作为HTTP客户端通过URL向HTTP服务端即WEB服务器发送所有请求。Web服务器根据接收到的请求后，向客户端发送响应信息。</p>
+<p>更多有关HTTP协议详见 <a href="https://www.jianshu.com/p/80e25cb1d81a" target="_blank" rel="noopener">https://www.jianshu.com/p/80e25cb1d81a</a></p>
+<h4 id="TCP-IP协议"><a href="#TCP-IP协议" class="headerlink" title="TCP/IP协议"></a>TCP/IP协议</h4><p>从字面意义上讲，有人可能会认为TCP/IP是指TCP和IP两种协议。实际生活当中有时也确实就是指这两种协议。然而在很多情况下，它只是利用IP进行通信时所必须用到的协议群的统称。具体来说，IP或ICMP、TCP或UDP、TELNET或FTP、以及HTTP等都属于TCP/IP协议。他们与TCP或IP的关系紧密，是互联网必不可少的组成部分。TCP/IP一词泛指这些协议，因此，有时也称TCP/IP为网际协议群。</p>
+<p>更多内容详见 <a href="https://juejin.im/post/5a069b6d51882509e5432656" target="_blank" rel="noopener">https://juejin.im/post/5a069b6d51882509e5432656</a></p>
+<h4 id="四大基础算法"><a href="#四大基础算法" class="headerlink" title="四大基础算法"></a>四大基础算法</h4><p>虽然工作中，你觉得自己并没有涉及到算法这方面的东西，但是算法是程序的核心，一个程序的好与差，关键是这个程序算法的优劣，所以对于冒泡排序、插入排序、选择排序、快速排序这四种基本算法，我想还是要掌握的。</p>
+<p>通常，一个需求可以有多种算法实现，所以除了理解算法的实现之外，我们还需要关注算法的执行时间以及性能评估，这样，才能找到最优算法，而时间复杂度和空间复杂度就是衡量一个算法的优劣。</p>
+<p>更多算法知识点详见 <a href="https://www.jianshu.com/p/a8cd6cbf733d" target="_blank" rel="noopener">https://www.jianshu.com/p/a8cd6cbf733d</a><br>更多时间和空间复杂度详见 <a href="https://blog.csdn.net/zolalad/article/details/11848739" target="_blank" rel="noopener">https://blog.csdn.net/zolalad/article/details/11848739</a></p>
+<h4 id="二分算法-二分查找"><a href="#二分算法-二分查找" class="headerlink" title="二分算法/二分查找"></a>二分算法/二分查找</h4><p>这个算法常用于在一个有序数组中查找某个值第一次出现的位置、最后出现的位置、或者是一段区间。用二分法后，由于每次可以去掉一半无用的区间，会将时间复杂度减少到O(logn)，而通常，二分算法可以用递归以及不递归实现，这两种建议都了解下。</p>
+<p>二分法的基本做法是：1、确定要查找的区间。2、确定要二分时的参照点。2、区间内选取二分点。3、根据二分点的值，综合左右区间情况以及求解的目的，舍去一半无用的区间。</p>
+<p>更多二分算法解析详见 <a href="https://juejin.im/entry/585917c661ff4b006cba47cf" target="_blank" rel="noopener">https://juejin.im/entry/585917c661ff4b006cba47cf</a></p>
+<h4 id="PHP7的新特性"><a href="#PHP7的新特性" class="headerlink" title="PHP7的新特性"></a>PHP7的新特性</h4><blockquote>
+<p>PHP7将在2015年10月正式发布，PHP7，将会是PHP脚本语言的重大版本更新，同时将带来大幅的性能改进和新的特性，以及改进一些过时功能。该发布版本将会专注在性能加强，源自PHP版本树中的phpng分支。在硅谷公司的ZendCon会议，PHP工具厂商Zend技术官方讨论phpng和PHP7的进度。“（本次升级）真正专注于帮助业界的应用程序显著加强执行速度，再加上，我们在PHP中的其他改进，”Zend的首席执行官安迪特曼斯 （曾参与了PHP语言的持续开发和发展）表示。</p>
+</blockquote>
+<p>PHP7的新特性主要有：标量类型声明、返回值类型声明、null合并运算符、太空船操作符、通过define()定义常量数组、匿名类等。</p>
+<p>PHP7新特性详见 <a href="http://php.net/manual/zh/migration70.new-features.php" target="_blank" rel="noopener">http://php.net/manual/zh/migration70.new-features.php</a></p>
+<h4 id="Nginx和Php-fpm的工作原理"><a href="#Nginx和Php-fpm的工作原理" class="headerlink" title="Nginx和Php-fpm的工作原理"></a>Nginx和Php-fpm的工作原理</h4><p>我们知道Nginx (engine x)是一个高性能的HTTP和反向代理服务，也是一个IMAP/POP3/SMTP服务器。而Php-fpm是FastCGI的实现，并提供了进程管理的功能。因为Nginx不只有处理http请求的功能，还能做反向代理；所以Nginx通过反向代理功能将动态请求转向后端Php-fpm。</p>
+<p>更多原理详见 <a href="https://segmentfault.com/a/1190000007322358" target="_blank" rel="noopener">https://segmentfault.com/a/1190000007322358</a></p>
+<h4 id="ThinkPHP5-Lavavel的执行流程分析"><a href="#ThinkPHP5-Lavavel的执行流程分析" class="headerlink" title="ThinkPHP5/Lavavel的执行流程分析"></a>ThinkPHP5/Lavavel的执行流程分析</h4><p>例如从入口到控制器都干了啥、一个URL请求到达路由这里是怎么再到相应的控制器等，这可能涉及框架的源码分析，这个在面试过程中，我相信有不少人遇到过，具体的我就不多说了，需要在自己多去研究和分析了。</p>
+<h4 id="ThinkPHP5-Lavavel的比较"><a href="#ThinkPHP5-Lavavel的比较" class="headerlink" title="ThinkPHP5/Lavavel的比较"></a>ThinkPHP5/Lavavel的比较</h4><p>大家都知道，ThinkPHP5是国人开发的，各种参考文档都比较全，适合快速入门，而Laravel则是比较优雅的框架，也号称是最艺术的。这两种框架，都有自己很大的用户群体，有网友说：“ThinkPHP5的优势在于好用，Laravel的优势在于装逼。”具体的比较，请大家可以<a href="https://www.google.com/search?q=ThinkPHP5+Lavavel+%E6%AF%94%E8%BE%83" target="_blank" rel="noopener">Google</a>或者<a href="https://www.baidu.com/s?wd=ThinkPHP5%20Lavavel%20比较" target="_blank" rel="noopener">Baidu</a>查询更多比较详情。</p>
+<h4 id="项目的攻坚点-架构"><a href="#项目的攻坚点-架构" class="headerlink" title="项目的攻坚点/架构"></a>项目的攻坚点/架构</h4><p>攻坚点这个就需要读者结合自己的项目经验进行总结归纳了，主要包括工作中遇到的问题和解决方案，也就是，这个项目中你的特长之处，做的比较好的方面以及攻克的技术难点。</p>
+<p>架构的话呢，这个也会有问到的，我就在面试过程中，被遇到过很多次，你可以说一下自己最近这个项目的一个架构就行，后者，说一下你最熟悉的一个项目的架构也行，具体的可以自己查找相关资料深入了解。</p>
+<h4 id="Linux知识"><a href="#Linux知识" class="headerlink" title="Linux知识"></a>Linux知识</h4><p>Linux是开源的、免费的操作系统，稳定性、安全性与并发性得到业界公认，是一个统称，常见的CentOS、Ubuntu、Rethat……</p>
+<p>Linux的特点主要有：开源、免费、多线程、多用户、安全性好、对内存和文件管理优越等；面试中，一般会问到一些你对于Linux的命令和用法的熟悉程度，如果你日常开发中，经常用到，那么我相信面试应该也不成问题，但是也还需要多了解一点。</p>
+<h4 id="OOP和MVC的理解"><a href="#OOP和MVC的理解" class="headerlink" title="OOP和MVC的理解"></a>OOP和MVC的理解</h4><blockquote>
+<p>面向对象程序设计（英语：Object-oriented programming，缩写：OOP）是种具有对象概念的程序编程典范，同时也是一种程序开发的抽象方针。它可能包含数据、属性、代码与方法。对象则指的是类的实例。它将对象作为程序的基本单元，将程序和数据封装其中，以提高软件的重用性、灵活性和扩展性，对象里的程序可以访问及经常修改对象相关连的数据。</p>
+</blockquote>
+<p>PHP面向对象的三大特性是：封装、继承、多态；同时OOP软件的三个目标是：重用性、拓展性、灵活性。所以，采用OOP这种编程思想和技术为编程人员敞开了一扇大门，使其编程的代码更简洁、更易于维护，并且具有更强的可重用性。</p>
+<blockquote>
+<p>MVC模式（Model–view–controller）是软件工程中的一种软件架构模式，把软件系统分为三个基本部分：模型（Model）、视图（View）和控制器（Controller）。</p>
+</blockquote>
+<p>MVC模式的目的是实现一种动态的程序设计，使后续对程序的修改和扩展简化，并且使程序某一部分的重复利用成为可能。除此之外，此模式通过对复杂度的简化，使程序结构更加直观。软件系统通过对自身基本部分分离的同时也赋予了各个基本部分应有的功能。</p>
+<p>关于OOP的更多详见 <a href="http://www.runoob.com/php/php-oop.html" target="_blank" rel="noopener">http://www.runoob.com/php/php-oop.html</a><br>关于MVC的更多详见 <a href="http://www.manongjc.com/article/1864.html" target="_blank" rel="noopener">http://www.manongjc.com/article/1864.html</a></p>
+<h4 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h4><blockquote>
+<p>在软件工程中，设计模式（Design Pattern）是对软件设计中普遍存在（反复出现）的各种问题，所提出的解决方案。这个术语是由埃里希·伽玛（Erich Gamma）等人在1990年代从建筑设计领域引入到计算机科学的。</p>
+</blockquote>
+<p>设计模式并不直接用来完成代码的编写，而是描述在各种不同情况下，要怎么解决问题的一种方案。面向对象设计模式通常以类或对象来描述其中的关系和相互作用，但不涉及用来完成应用程序的特定类或对象。设计模式能使不稳定依赖于相对稳定、具体依赖于相对抽象，避免会引起麻烦的紧耦合，以增强软件设计面对并适应变化的能力。其中，常见的设计模式有：工厂模式、单例模式等。</p>
+<p>有关设计模式的更多请详见 <a href="http://larabase.com/collection/5/post/143" target="_blank" rel="noopener">http://larabase.com/collection/5/post/143</a></p>
+<h4 id="Redis和Memcache"><a href="#Redis和Memcache" class="headerlink" title="Redis和Memcache"></a>Redis和Memcache</h4><p>Redis和Memcache都属于内存(memory)键-值(key-value)数据库，在设计和思想上有许多相同之处，功能和应用在很多场合(如分布式缓存服务)也相似。它们都从属于数据库解决方案中的nosql家族，由于两者都将数据存储在内存中，自然而然，它们都是非常理想的缓存实现方案。</p>
+<p>Memcache最初是由Brad Fitzpatrick于2003年开发而成。而Redis则由Salvatore Sanfilippo于2009年创建，它本身也从Memcache上吸取借鉴大量宝贵经验教训，被称为“强化版Memcache”。确实，Redis在功能多样性方面要胜过Memcache，虽然强大且更具灵活性，但复杂程度也比Memcache更甚。而Redis和Memcache的不同点主要体现在：数据类型支持不同、内存管理机制不同、数据持久化支持、集群管理的不同等。</p>
+<p>有关比较详情查看 <a href="https://www.biaodianfu.com/redis-vs-memcached.html" target="_blank" rel="noopener">https://www.biaodianfu.com/redis-vs-memcached.html</a></p>
+<h4 id="前端技术"><a href="#前端技术" class="headerlink" title="前端技术"></a>前端技术</h4><p>也许有的人会说，我作为一名后端开发人员，我需要学习前端技术吗？答案是肯定的，不管是对于工作还是自己的职业发展规划，前端技术都是需要学习和掌握的，例如Javascript、Jquery、Ajax都要了解的，如果会Vue或者Node.js等更好。在面试中，偶尔会涉及到一些。</p>
+<h4 id="Jsonp跨域的使用和原理"><a href="#Jsonp跨域的使用和原理" class="headerlink" title="Jsonp跨域的使用和原理"></a>Jsonp跨域的使用和原理</h4><p>PHP处理跨域一般有三种方法：服务器代理、Jsonp、服务器脚本增加支持；有些网站处于安全考虑, 不会设置允许跨域, 而我们又刚好会用到一次跨域请求, 那么, Jsonp就派上用场了。</p>
+<p>Jsonp如何实现跨域：由于同源策略的限制，XmlHttpRequest只允许请求当前源（域名、协议、端口）的资源，为了实现跨域请求，可以通过script标签实现跨域请求，然后在服务端输出JSON数据并执行回调函数，从而解决了跨域的数据请求。</p>
+<p>其他更多有关Jsonp的用法，可以自行百度。</p>
+<h4 id="API的数据安全传输"><a href="#API的数据安全传输" class="headerlink" title="API的数据安全传输"></a>API的数据安全传输</h4><p>前后端分离的开发方式，我们以接口为标准来进行推动，定义好接口，各自开发自己的功能，最后进行联调整合。无论是开发原生的APP还是webapp还是PC端的软件,只要是前后端分离的模式，就避免不了调用后端提供的接口来进行业务交互，这个时候，数据信息就非常重要了。</p>
+<p>我们常用到的尽量保证数据安全的方法主要方式有：使用https、请求签名（防止参数被篡改）、身份确认机制（每次请求都要验证是否合法）、APP中使用ssl pinning防止抓包操作、对所有请求和响应都进行加解密操作等；这里我想说一下，可以了解一下jwt。</p>
+<p>什么是JWT <a href="https://www.jianshu.com/p/576dbf44b2ae" target="_blank" rel="noopener">https://www.jianshu.com/p/576dbf44b2ae</a></p>
+<h4 id="分析URL的组成部分"><a href="#分析URL的组成部分" class="headerlink" title="分析URL的组成部分"></a>分析URL的组成部分</h4><p>这个，主要采用PHP函数parse_url()来解析，本函数解析一个URL并返回一个关联数组，包含在URL中出现的各种组成部分，并了解URL的各个组成部分的含义和所在位置；一个URL，一般都包括：协议、域名、端口（web的很多80默认）、文件名、参数等。</p>
+<p>有关parse_url的用法和返回值详见 <a href="http://www.php.net/manual/zh/function.parse-url.php" target="_blank" rel="noopener">http://www.php.net/manual/zh/function.parse-url.php</a></p>
+<h3 id="人事面试点"><a href="#人事面试点" class="headerlink" title="人事面试点"></a>人事面试点</h3><ul>
+<li>你之前所在公司的离职原因</li>
+<li>谈谈你对加班的看法</li>
+<li>你为什么会选择来我们公司</li>
+<li>你未来的职业规划以及发展方向</li>
+<li>对自己的一个评价</li>
+<li>你的业余爱好，最近在看什么书</li>
+<li>对你的经历提出一些问题</li>
+<li>你还有什么问题要问我</li>
+<li>你在之前，有去过那些公司面试？接下来还约了其他的面试吗</li>
+<li>你的期望薪资以及要求</li>
+<li>……</li>
+</ul>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>这是我结合自己面试过程中，总结的一些经验，希望能帮助到大家，如果有说的不对或者不到位的地方，欢迎指正和交流。在此，祝愿大家都能找到一份满意的工作。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+            <a href="/tags/面试/" rel="tag"># 面试</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/29/开发必备之Git常用基础命令/" rel="next" title="开发必备之Git常用基础命令">
+                <i class="fa fa-chevron-left"></i> 开发必备之Git常用基础命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2018/09/11/PHP面试总结/"
+           data-title="PHP面试总结" data-url="blog.y0701.com/2018/09/11/PHP面试总结/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/me.jpg"
+                alt="gxcuizy" />
+            
+              <p class="site-author-name" itemprop="name">gxcuizy</p>
+              <p class="site-description motion-element" itemprop="description">我是如此的平凡，却又如此的幸运！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/gxcuizy" target="_blank" title="GitHub">
+                      GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:gxcuizy@163.com" target="_blank" title="E-Mail">
+                      E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/59b0de6e5188250f4850ea06" target="_blank" title="Juejin">
+                      Juejin</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/cuizhongyi" target="_blank" title="Segmentfault">
+                      Segmentfault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面试准备"><span class="nav-number">2.</span> <span class="nav-text">面试准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#技术面试知识点"><span class="nav-number">3.</span> <span class="nav-text">技术面试知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL索引"><span class="nav-number">3.1.</span> <span class="nav-text">MySQL索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL优化"><span class="nav-number">3.2.</span> <span class="nav-text">MySQL优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL事务"><span class="nav-number">3.3.</span> <span class="nav-text">MySQL事务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MyISAN与InnoDB的区别"><span class="nav-number">3.4.</span> <span class="nav-text">MyISAN与InnoDB的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP协议"><span class="nav-number">3.5.</span> <span class="nav-text">HTTP协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP-IP协议"><span class="nav-number">3.6.</span> <span class="nav-text">TCP/IP协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四大基础算法"><span class="nav-number">3.7.</span> <span class="nav-text">四大基础算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二分算法-二分查找"><span class="nav-number">3.8.</span> <span class="nav-text">二分算法/二分查找</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PHP7的新特性"><span class="nav-number">3.9.</span> <span class="nav-text">PHP7的新特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nginx和Php-fpm的工作原理"><span class="nav-number">3.10.</span> <span class="nav-text">Nginx和Php-fpm的工作原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ThinkPHP5-Lavavel的执行流程分析"><span class="nav-number">3.11.</span> <span class="nav-text">ThinkPHP5/Lavavel的执行流程分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ThinkPHP5-Lavavel的比较"><span class="nav-number">3.12.</span> <span class="nav-text">ThinkPHP5/Lavavel的比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#项目的攻坚点-架构"><span class="nav-number">3.13.</span> <span class="nav-text">项目的攻坚点/架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux知识"><span class="nav-number">3.14.</span> <span class="nav-text">Linux知识</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OOP和MVC的理解"><span class="nav-number">3.15.</span> <span class="nav-text">OOP和MVC的理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设计模式"><span class="nav-number">3.16.</span> <span class="nav-text">设计模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis和Memcache"><span class="nav-number">3.17.</span> <span class="nav-text">Redis和Memcache</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前端技术"><span class="nav-number">3.18.</span> <span class="nav-text">前端技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Jsonp跨域的使用和原理"><span class="nav-number">3.19.</span> <span class="nav-text">Jsonp跨域的使用和原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#API的数据安全传输"><span class="nav-number">3.20.</span> <span class="nav-text">API的数据安全传输</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分析URL的组成部分"><span class="nav-number">3.21.</span> <span class="nav-text">分析URL的组成部分</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#人事面试点"><span class="nav-number">4.</span> <span class="nav-text">人事面试点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后"><span class="nav-number">5.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gxcuizy</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问用户：
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问次数：
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'wROinty9rwhkmksGHfecnhTP-gzGzoHsz',
+        appKey: 'PbESEvuTejxDH31XqBEDnxvX',
+        placeholder: '请输入您的留言',
+        avatar:'robohash',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
