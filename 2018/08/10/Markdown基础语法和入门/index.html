@@ -390,11 +390,11 @@
 </li>
 </ol>
 <h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>Markdown使用邮件风格的&gt;作为块引用。如果你熟悉邮件中的块引用，你也就知道如何在Markdown里创建一个块引用。在每一行前放一个 &gt; 最好</p>
-<p>但是，Markdown允许你懒一些,尽在每个段落的开头放一个 &gt;，如下这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 这是引用测试  </span><br><span class="line">这就是应用测试  </span><br><span class="line">这真的是引用测试</span><br></pre></td></tr></table></figure></p>
-<p>还可以嵌套引用，即在前一个引用的基础上再加一个 &gt; 即可，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 这是引用测试 </span><br><span class="line">&gt;&gt; 这是嵌套引用测试</span><br><span class="line">&gt;&gt;&gt; 这是嵌套引用测试的嵌套</span><br></pre></td></tr></table></figure></p>
-<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><h4 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h4><p>无序列表是使用.（点）、+（加号）、或-（减号）的符号来标记，需要注意的是标记后面最少有一个空格或制表符。若不在引用区块中，必须和前方段落之间存在空行，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 这是无序列表</span><br><span class="line">- 这是无序列表</span><br><span class="line">- 这是无序列表</span><br></pre></td></tr></table></figure></p>
-<h4 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h4><p>有序列表的标记方式是将上述的无序列表的符号换成数字，并辅以.（点）来标记，同时，提醒一下：数字的序列并不会影响生成的列表序列，无论你的序列是什么排的，结果仍然推荐按照自然顺序（1,2,3…）来编写，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 这是有序列表</span><br><span class="line">2. 这是有序列表</span><br><span class="line">4. 这是有序列表</span><br></pre></td></tr></table></figure></p>
-<h4 id="嵌套列表"><a href="#嵌套列表" class="headerlink" title="嵌套列表"></a>嵌套列表</h4><p>可以多层嵌套，标识符号不变，同上，需要说明的是无序列表和有序列表可以随意相互嵌套，同时，子列表前必须有相对于父列表两个以上空格的缩进，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 有序列表</span><br><span class="line">    - 无序列表</span><br><span class="line">2. 有序列表</span><br><span class="line">    * 无序列表</span><br></pre></td></tr></table></figure></p>
+<p>但是，Markdown允许你懒一些,尽在每个段落的开头放一个 &gt;，如下这样的：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> 这是引用测试  </span></span><br><span class="line">这就是应用测试  </span><br><span class="line">这真的是引用测试</span><br></pre></td></tr></table></figure></p>
+<p>还可以嵌套引用，即在前一个引用的基础上再加一个 &gt; 即可，如下：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> 这是引用测试 </span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt; 这是嵌套引用测试</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 这是嵌套引用测试的嵌套</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><h4 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h4><p>无序列表是使用.（点）、+（加号）、或-（减号）的符号来标记，需要注意的是标记后面最少有一个空格或制表符。若不在引用区块中，必须和前方段落之间存在空行，例如：<br><figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> 这是无序列表</span></span><br><span class="line"><span class="ruby">- 这是无序列表</span></span><br><span class="line"><span class="ruby">- 这是无序列表</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h4><p>有序列表的标记方式是将上述的无序列表的符号换成数字，并辅以.（点）来标记，同时，提醒一下：数字的序列并不会影响生成的列表序列，无论你的序列是什么排的，结果仍然推荐按照自然顺序（1,2,3…）来编写，例如：<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1. </span>这是有序列表</span><br><span class="line"><span class="bullet">2. </span>这是有序列表</span><br><span class="line"><span class="bullet">4. </span>这是有序列表</span><br></pre></td></tr></table></figure></p>
+<h4 id="嵌套列表"><a href="#嵌套列表" class="headerlink" title="嵌套列表"></a>嵌套列表</h4><p>可以多层嵌套，标识符号不变，同上，需要说明的是无序列表和有序列表可以随意相互嵌套，同时，子列表前必须有相对于父列表两个以上空格的缩进，例如：<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1. </span>有序列表</span><br><span class="line"><span class="code">    - 无序列表</span></span><br><span class="line"><span class="bullet">2. </span>有序列表</span><br><span class="line"><span class="code">    * 无序列表</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><h4 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h4><p>代码块可以使用三个 `（ ` 是Tab 键上边、数字1键左侧的那个按键）符号作为标识，即```，开头和结束都要，并且独占一行，例如：  </p>
 <blockquote>
 <p>```<br>$str = ‘Hello World’;<br>echo $str;<br>```</p>
@@ -403,44 +403,44 @@
 <blockquote>
 <p>`echo ‘Hello World’`</p>
 </blockquote>
-<h3 id="分隔线"><a href="#分隔线" class="headerlink" title="分隔线"></a>分隔线</h3><p>可以在一行中使用三个或更多的 *（星）、-（减号） 或 _（下划线） 来添加一条分隔线，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*************************************************</span><br><span class="line"># 上面是一条分割线</span><br></pre></td></tr></table></figure></p>
+<h3 id="分隔线"><a href="#分隔线" class="headerlink" title="分隔线"></a>分隔线</h3><p>可以在一行中使用三个或更多的 *（星）、-（减号） 或 _（下划线） 来添加一条分隔线，例如：<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="strong">*****</span><span class="strong">*****</span><span class="strong">*****</span><span class="strong">*****</span><span class="strong">*****</span><span class="strong">*****</span><span class="strong">*****</span><span class="strong">*****</span><span class="strong">*****</span><span class="emphasis">***</span>*</span><br><span class="line"><span class="section"># 上面是一条分割线</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h3><p>超链接可以由两种形式生成：行内式和参考式</p>
-<h4 id="行内式"><a href="#行内式" class="headerlink" title="行内式"></a>行内式</h4><p>行内式的写法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[链接文字描述](实际超链接URL)</span><br></pre></td></tr></table></figure></p>
+<h4 id="行内式"><a href="#行内式" class="headerlink" title="行内式"></a>行内式</h4><p>行内式的写法如下：<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">链接文字描述</span>](<span class="link">实际超链接URL</span>)</span><br></pre></td></tr></table></figure></p>
 <p>来个行内式的例子吧，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[博客地址](http://blog.y0701.com)</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">博客地址</span>](<span class="link">http://blog.y0701.com</span>)</span><br></pre></td></tr></table></figure>
 <p>真实效果为：</p>
 <p><a href="http://blog.y0701.com">博客地址</a></p>
 <h4 id="参考式"><a href="#参考式" class="headerlink" title="参考式"></a>参考式</h4><p>参考式的写法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[链接文字描述][实际超链接锚点名]</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">链接文字描述</span>][<span class="symbol">实际超链接锚点名</span>]</span><br></pre></td></tr></table></figure>
 <p>继续来个参考式的例子吧，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[博客地址][blog_url]  </span><br><span class="line">[blog_url]:http://blog.y0701.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">博客地址</span>][<span class="symbol">blog_url</span>]  </span><br><span class="line">[<span class="symbol">blog_url</span>]:<span class="link">http://blog.y0701.com</span></span><br></pre></td></tr></table></figure>
 <p>真实效果为：</p>
 <p><a href="http://blog.y0701.com">博客地址</a></p>
 <h4 id="自动连接"><a href="#自动连接" class="headerlink" title="自动连接"></a>自动连接</h4><p>使用一对尖括号 &lt;&gt; 包括的 URL 或邮箱地址，即可被自动转换为超链接，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;http://blog.y0701.com&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="string">http:</span><span class="comment">//blog.y0701.com&gt;</span></span><br></pre></td></tr></table></figure>
 <p>上面的效果为：</p>
 <p><a href="http://blog.y0701.com">http://blog.y0701.com</a></p>
 <h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>插入图片的语法和插入超链接的语法基本一致，只是在最前面多一个!（英文感叹号）。插入图片的方式也分为行内式和参考式两种</p>
 <h4 id="行内式-1"><a href="#行内式-1" class="headerlink" title="行内式"></a>行内式</h4><p>行内式的用法和效果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![img](https://avatars3.githubusercontent.com/u/25812349?s=400&amp;v=4)</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">img</span>](<span class="link">https://avatars3.githubusercontent.com/u/25812349?s=400&amp;v=4</span>)</span><br></pre></td></tr></table></figure>
 <p><img src="https://avatars3.githubusercontent.com/u/25812349?s=400&amp;v=4" alt="me"></p>
 <h4 id="参考式-1"><a href="#参考式-1" class="headerlink" title="参考式"></a>参考式</h4><p>行内式的用法和效果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![img][img_url]  </span><br><span class="line">[img_url]:https://avatars3.githubusercontent.com/u/25812349?s=400&amp;v=4</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">img</span>][<span class="symbol">img_url</span>]  </span><br><span class="line">[<span class="symbol">img_url</span>]:<span class="link">https://avatars3.githubusercontent.com/u/25812349?s=400&amp;v=4</span></span><br></pre></td></tr></table></figure>
 <p><img src="https://avatars3.githubusercontent.com/u/25812349?s=400&amp;v=4" alt="me"></p>
 <h3 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h3><ol>
 <li>使用一对（一颗星） <em> </em> 或一对（一个下划线） _ _ 包括的文本来标识斜体，例如：</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这句话的 *斜体* 字都是 _斜体_ 的</span><br></pre></td></tr></table></figure>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这句话的 *斜体* 字都是 <span class="keyword">_</span>斜体<span class="keyword">_</span> 的</span><br></pre></td></tr></table></figure>
 <p>效果为： 这句话的 <em>斜体</em> 字都是 _斜体_ 的</p>
 <ol start="2">
 <li>使用一对（两颗星） <strong> </strong> 或一对（两个下划线） <strong> </strong> 包括的文本来标识粗体，例如：</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这句话的 **粗体** 字都是 __粗体__ 的</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这句话的 <span class="strong">**粗体**</span> 字都是 <span class="strong">__粗体__</span> 的</span><br></pre></td></tr></table></figure>
 <p>效果为： 这句话的 <strong>粗体</strong> 字都是 <strong>粗体</strong> 的</p>
 <ol start="3">
 <li>使用一对（三颗星） <strong><em> </em></strong> 或一对（三个下划线） <strong>_ _</strong> 包括的文本来标识斜体且加粗，例如：</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这句话的 ***粗斜体*** 字都是 ___粗斜体___ 的</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这句话的 <span class="strong">***粗斜体**</span>* 字都是 <span class="strong">___粗斜体__</span>_ 的</span><br></pre></td></tr></table></figure>
 <p>效果为： 这句话的 <strong><em>粗体</em></strong> 字都是 <strong>_粗体_</strong> 的</p>
 <ol start="4">
 <li>使用一对（两个波浪线） ~~ ~~ 包括的文本来标识删除，例如：</li>
@@ -454,10 +454,10 @@
 </li>
 </ol>
 <h3 id="字符转义"><a href="#字符转义" class="headerlink" title="字符转义"></a>字符转义</h3><p>反斜线（\）用于插入在Markdown语法中具有转义作用的字符，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这句话的 \*斜体\* 字不会是 \_斜体\_</span><br></pre></td></tr></table></figure>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这句话的 <span class="symbol">\*</span>斜体<span class="symbol">\*</span> 字不会是 <span class="symbol">\_</span>斜体<span class="symbol">\_</span></span><br></pre></td></tr></table></figure>
 <p>其效果为：这句话的 *斜体* 字不会是 _斜体_</p>
 <h3 id="Markdown完美支持Html的写法"><a href="#Markdown完美支持Html的写法" class="headerlink" title="Markdown完美支持Html的写法"></a>Markdown完美支持Html的写法</h3><p>我们知道Markdown不支持指定图片的显示大小，只会按照百分百显示，那么这个时候，实在有必要的话，可以通过直接插入\&lt;img/>标签来指定相关属性，用法和效果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;https://avatars3.githubusercontent.com/u/25812349?s=400&amp;v=4&quot; alt=&quot;这是头像&quot; title=&quot;这是头像&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img <span class="attribute">src</span>=<span class="string">"https://avatars3.githubusercontent.com/u/25812349?s=400&amp;v=4"</span> <span class="attribute">alt</span>=<span class="string">"这是头像"</span> <span class="attribute">title</span>=<span class="string">"这是头像"</span> <span class="attribute">width</span>=<span class="string">"50%"</span> <span class="attribute">height</span>=<span class="string">"50%"</span> /&gt;</span><br></pre></td></tr></table></figure>
 <p><img src="https://avatars3.githubusercontent.com/u/25812349?s=400&v=4" alt="这是头像" title="这是头像" width="180" height="180"></p>
 <p>其他HTML标签在Markdown里的用法和\&lt;img/>类似，就像在HTML在那样一模一样的用法即可</p>
 <h2 id="Markdown的扩展用法"><a href="#Markdown的扩展用法" class="headerlink" title="Markdown的扩展用法"></a>Markdown的扩展用法</h2><p>Markdown还有支持很多扩展的语法，这里就不说了，关于其它扩展语法可参见具体工具以及文档的相关使用说明即可</p>
