@@ -78,7 +78,7 @@
 
 
 
-  <meta name="keywords" content="Python," />
+  <meta name="keywords" content="PHP,算法," />
 
 
 
@@ -89,20 +89,20 @@
 
 
 
-<meta name="description" content="数据来源通过Python脚本，自动抓取国家统计局最新的中国省市区三级城市信息，目前抓取的最新数据为2017年统计用区划代码和城乡划分代码(截止2017年10月31日)，我会关注，时刻保持更新。">
-<meta name="keywords" content="Python">
+<meta name="description" content="二分查找的定义 二分查找也称折半查找（Binary Search），它是一种效率较高的查找方法。但是，折半查找要求线性表必须采用顺序存储结构，而且表中元素按关键字有序排列。  算法的要求从上面的定义我们可以知道，满足该算法的要求必须如下两点：  必须采用顺序存储结构。 必须按关键字大小有序排列。">
+<meta name="keywords" content="PHP,算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="通过Python爬取国家统计局省市区三级地址库（支持MySQL和JSON格式）">
-<meta property="og:url" content="blog.y0701.com/2018/08/27/通过Python爬取三级城市地址库（支持MySQL和JSON格式）/index.html">
+<meta property="og:title" content="PHP算法之二分查找">
+<meta property="og:url" content="blog.y0701.com/2018/09/20/PHP算法之二分查找/index.html">
 <meta property="og:site_name" content="gxcuizy&#39;s blog">
-<meta property="og:description" content="数据来源通过Python脚本，自动抓取国家统计局最新的中国省市区三级城市信息，目前抓取的最新数据为2017年统计用区划代码和城乡划分代码(截止2017年10月31日)，我会关注，时刻保持更新。">
+<meta property="og:description" content="二分查找的定义 二分查找也称折半查找（Binary Search），它是一种效率较高的查找方法。但是，折半查找要求线性表必须采用顺序存储结构，而且表中元素按关键字有序排列。  算法的要求从上面的定义我们可以知道，满足该算法的要求必须如下两点：  必须采用顺序存储结构。 必须按关键字大小有序排列。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?ixlib=rb-0.3.5&s=1cca0d0544f25ab7c6e171d80692ed62&auto=format&fit=crop&w=1189&q=80">
-<meta property="og:updated_time" content="2018-08-27T03:25:44.960Z">
+<meta property="og:image" content="http://www.ituring.com.cn/figures/2017/CalPic/06.d01z.008.png">
+<meta property="og:updated_time" content="2018-09-20T03:35:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="通过Python爬取国家统计局省市区三级地址库（支持MySQL和JSON格式）">
-<meta name="twitter:description" content="数据来源通过Python脚本，自动抓取国家统计局最新的中国省市区三级城市信息，目前抓取的最新数据为2017年统计用区划代码和城乡划分代码(截止2017年10月31日)，我会关注，时刻保持更新。">
-<meta name="twitter:image" content="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?ixlib=rb-0.3.5&s=1cca0d0544f25ab7c6e171d80692ed62&auto=format&fit=crop&w=1189&q=80">
+<meta name="twitter:title" content="PHP算法之二分查找">
+<meta name="twitter:description" content="二分查找的定义 二分查找也称折半查找（Binary Search），它是一种效率较高的查找方法。但是，折半查找要求线性表必须采用顺序存储结构，而且表中元素按关键字有序排列。  算法的要求从上面的定义我们可以知道，满足该算法的要求必须如下两点：  必须采用顺序存储结构。 必须按关键字大小有序排列。">
+<meta name="twitter:image" content="http://www.ituring.com.cn/figures/2017/CalPic/06.d01z.008.png">
 
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="blog.y0701.com/2018/08/27/通过Python爬取三级城市地址库（支持MySQL和JSON格式）/"/>
+  <link rel="canonical" href="blog.y0701.com/2018/09/20/PHP算法之二分查找/"/>
 
 
 
 
 
-  <title>通过Python爬取国家统计局省市区三级地址库（支持MySQL和JSON格式） | gxcuizy's blog</title>
+  <title>PHP算法之二分查找 | gxcuizy's blog</title>
   
 
 
@@ -275,7 +275,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="blog.y0701.com/2018/08/27/通过Python爬取三级城市地址库（支持MySQL和JSON格式）/">
+    <link itemprop="mainEntityOfPage" href="blog.y0701.com/2018/09/20/PHP算法之二分查找/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gxcuizy">
@@ -292,7 +292,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">通过Python爬取国家统计局省市区三级地址库（支持MySQL和JSON格式）</h1>
+          <h1 class="post-title" itemprop="name headline">PHP算法之二分查找</h1>
         
 
         <div class="post-meta">
@@ -304,8 +304,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-27T10:09:29+08:00">
-                2018-08-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-20T11:34:42+08:00">
+                2018-09-20
               </time>
             
 
@@ -323,8 +323,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/27/通过Python爬取三级城市地址库（支持MySQL和JSON格式）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/08/27/通过Python爬取三级城市地址库（支持MySQL和JSON格式）/" itemprop="commentCount"></span>
+                <a href="/2018/09/20/PHP算法之二分查找/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/09/20/PHP算法之二分查找/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -357,15 +357,33 @@
       
 
       
-        <p><img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?ixlib=rb-0.3.5&amp;s=1cca0d0544f25ab7c6e171d80692ed62&amp;auto=format&amp;fit=crop&amp;w=1189&amp;q=80" alt="Python"></p>
-<h3 id="数据来源"><a href="#数据来源" class="headerlink" title="数据来源"></a>数据来源</h3><p>通过Python脚本，自动抓取<a href="http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/" target="_blank" rel="noopener">国家统计局</a>最新的中国省市区三级城市信息，目前抓取的最新数据为<a href="http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2017/index.html" target="_blank" rel="noopener">2017年统计用区划代码和城乡划分代码(截止2017年10月31日)</a>，我会关注，时刻保持更新。</p>
+        <p><img src="http://www.ituring.com.cn/figures/2017/CalPic/06.d01z.008.png" alt="page_img_url"></p>
+<h3 id="二分查找的定义"><a href="#二分查找的定义" class="headerlink" title="二分查找的定义"></a>二分查找的定义</h3><blockquote>
+<p>二分查找也称折半查找（Binary Search），它是一种效率较高的查找方法。但是，折半查找要求线性表必须采用顺序存储结构，而且表中元素按关键字有序排列。</p>
+</blockquote>
+<h3 id="算法的要求"><a href="#算法的要求" class="headerlink" title="算法的要求"></a>算法的要求</h3><p>从上面的定义我们可以知道，满足该算法的要求必须如下两点：</p>
+<ol>
+<li>必须采用顺序存储结构。</li>
+<li>必须按关键字大小有序排列。</li>
+</ol>
 <a id="more"></a>
-<h3 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h3><p>目前支持MySQL格式和JSON格式，其中MySQL的有两个版本，分别为三张表和一张表的，即三张表的为省市区三张表，而一张表的则把省市区三级城市通过关联关系都存在一张表中，可以根据自己的需求进行选择，如果有其他格式需求，可以联系我或者自己修改脚本。</p>
-<h3 id="脚本目录结构"><a href="#脚本目录结构" class="headerlink" title="脚本目录结构"></a>脚本目录结构</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">├── <span class="keyword">json </span>                    <span class="comment"># 存储JSON数据格式</span></span><br><span class="line">├── mysql                    <span class="comment"># 存储三张表的数据格式</span></span><br><span class="line">├── mysql_v2                 <span class="comment"># 存储一张表的数据格式</span></span><br><span class="line">├── city_to_json.py          <span class="comment"># 抓取JSON数据格式的脚本</span></span><br><span class="line">├── city_mysql.py            <span class="comment"># 抓取三张表的数据格式的脚本</span></span><br><span class="line">├── city_to_mysql_v2.py      <span class="comment"># 抓取一张表的数据格式的考平贝母</span></span><br><span class="line">├── mysql_init.sql           <span class="comment"># 存储三张表的数据的表结构</span></span><br><span class="line">├── mysql_v2_init            <span class="comment"># 存储一张表的数据的表结构</span></span><br></pre></td></tr></table></figure>
-<p>如有需要，直接下载后缀为json或者sql的文件即可直接使用，也可以根据对应的python脚本重新生成相应的省市区三级地址库数据。</p>
-<h3 id="抓取数据方法"><a href="#抓取数据方法" class="headerlink" title="抓取数据方法"></a>抓取数据方法</h3><p>这里主要使用<a href="http://docs.python-requests.org/zh_CN/latest/user/quickstart.html" target="_blank" rel="noopener">requests</a>、<a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html" target="_blank" rel="noopener">beautifulsoup4</a>以及<a href="https://docs.python.org/3.6/library/json.html" target="_blank" rel="noopener">json</a>这三个模块，通过requests发送url页面请求，然后BeautifulSoup分析请求到的页面信息，抓取有效数据，通过json模块，读取以及存储json格式的数据，而mysql的数据则直接通过文件的读写操作即可。</p>
-<h3 id="源码分享"><a href="#源码分享" class="headerlink" title="源码分享"></a>源码分享</h3><p>这个爬虫脚本比较易读，而且碍于文章篇幅问题，所以，我这里就不贴源码了，直接放到交友网站GitHub上了，有兴趣的可以前往查看。</p>
-<p>源码以及数据地址：<a href="https://github.com/gxcuizy/Python/tree/master/area" target="_blank" rel="noopener">https://github.com/gxcuizy/Python/tree/master/area</a></p>
+<h3 id="算法的步骤"><a href="#算法的步骤" class="headerlink" title="算法的步骤"></a>算法的步骤</h3><p>其实，二分查找也还是比较容易理解的，大概就是一分为二，然后两边比较，保留有效区间，继续一分为二查找，直到找到或者超出区间则结束，所以二分查找的基本步骤是：</p>
+<ol>
+<li>确定要查找的区间</li>
+<li>确定要二分时的参照点</li>
+<li>区间内选取二分点</li>
+<li>根据二分点的值，综合左右区间情况以及求解的目的，舍去一半无用的区间</li>
+<li>继续在有效区间重复上面的步骤</li>
+</ol>
+<h3 id="算法源码"><a href="#算法源码" class="headerlink" title="算法源码"></a>算法源码</h3><p>这里，我主要采用递归和非递归两种方法实现，具体如下：</p>
+<p>首先第一种是非递归的算法实现，算法如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 二分查找算法</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> array $arr 待查找区间</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> int $number 查找数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> int        返回找到的键</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binary_search</span><span class="params">($arr, $number)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 非数组或者数组为空，直接返回-1</span></span><br><span class="line">    <span class="keyword">if</span> (!is_array($arr) || <span class="keyword">empty</span>($arr)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 初始变量值</span></span><br><span class="line">    $len = count($arr);</span><br><span class="line">    $lower = <span class="number">0</span>;</span><br><span class="line">    $high = $len - <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 最低点比最高点大就退出</span></span><br><span class="line">    <span class="keyword">while</span> ($lower &lt;= $high) &#123;</span><br><span class="line">        <span class="comment">// 以中间点作为参照点比较</span></span><br><span class="line">        $middle = intval(($lower + $high) / <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">if</span> ($arr[$middle] &gt; $number) &#123;</span><br><span class="line">            <span class="comment">// 查找数比参照点小，舍去右边</span></span><br><span class="line">            $high = $middle - <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> ($arr[$middle] &lt; $number) &#123;</span><br><span class="line">            <span class="comment">// 查找数比参照点大，舍去左边</span></span><br><span class="line">            $lower = $middle + <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 查找数与参照点相等，则找到返回</span></span><br><span class="line">            <span class="keyword">return</span> $middle;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 未找到，返回-1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后第二种是递归的算法实现，算法如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> array $arr 待查找区间</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> int $number 查找数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> int $lower 区间最低点</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> int $high 区间最高点</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> int</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binary_search_recursion</span><span class="params">(&amp;$arr, $number, $lower, $high)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 以区间的中间点作为参照点比较</span></span><br><span class="line">    $middle = intval(($lower + $high) / <span class="number">2</span>);</span><br><span class="line">    <span class="comment">// 最低点比最高点大就退出</span></span><br><span class="line">    <span class="keyword">if</span> ($lower &gt; $high) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ($number &gt; $arr[$middle]) &#123;</span><br><span class="line">        <span class="comment">// 查找数比参照点大，舍去左边继续查找</span></span><br><span class="line">        <span class="keyword">return</span> binary_search_recursion($arr, $number, $middle + <span class="number">1</span>, $high);</span><br><span class="line">    &#125; <span class="keyword">elseif</span> ($number &lt; $arr[$middle]) &#123;</span><br><span class="line">        <span class="comment">// 查找数比参照点小，舍去右边继续查找</span></span><br><span class="line">        <span class="keyword">return</span> binary_search_recursion($arr, $number, $lower, $middle - <span class="number">1</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> $middle;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="算法的使用"><a href="#算法的使用" class="headerlink" title="算法的使用"></a>算法的使用</h3><p>需求是在一个排列好的区间（$arr）中，查找一个数（$number）的所在位置，所以，调用算法查找如下：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 待查找区间</span></span><br><span class="line">$arr = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">57</span>, <span class="number">63</span>, <span class="number">99</span>];</span><br><span class="line"><span class="comment">// 非递归查找66所在的位置</span></span><br><span class="line">$find_key = binary_search($arr, <span class="number">57</span>);</span><br><span class="line"><span class="comment">// 递归查找66所在的位置</span></span><br><span class="line">$find_key_r = binary_search_recursion($arr, <span class="number">57</span>, <span class="number">0</span>, count($arr));</span><br><span class="line"><span class="comment">// 输出打印</span></span><br><span class="line">print_r($find_key);</span><br><span class="line">print_r($find_key_r);</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度分析"><a href="#时间复杂度分析" class="headerlink" title="时间复杂度分析"></a>时间复杂度分析</h3><p>在有序数组中如果用暴力的算法去查找，也就是逐个遍历比较，那么时间复杂度是O(n)；但是，用二分查找后，因为每次可以舍去一半查找区间，所以会将时间复杂度减少到O(logn)，算法更优。</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>又到了无聊的客套话时间，老规律，有问题直接留言，有想法直接说，有错误直接提出来，我都会及时回复的，谢谢。</p>
 
       
     </div>
@@ -383,7 +401,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag"># Python</a>
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
           
         </div>
       
@@ -396,8 +416,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/21/Python如何生成windows可执行的exe文件/" rel="next" title="Python如何生成windows可执行的exe文件">
-                <i class="fa fa-chevron-left"></i> Python如何生成windows可执行的exe文件
+              <a href="/2018/09/19/PHP算法之四大基础算法/" rel="next" title="PHP算法之四大基础算法">
+                <i class="fa fa-chevron-left"></i> PHP算法之四大基础算法
               </a>
             
           </div>
@@ -405,10 +425,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/28/Python实现12306火车票自动抢票，并短信和邮件通知/" rel="prev" title="Python实现12306火车票自动抢票，并短信和邮件通知">
-                Python实现12306火车票自动抢票，并短信和邮件通知 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -477,8 +493,8 @@
 
   
     <div class="comments" id="comments">
-      <div class="ds-thread" data-thread-key="2018/08/27/通过Python爬取三级城市地址库（支持MySQL和JSON格式）/"
-           data-title="通过Python爬取国家统计局省市区三级地址库（支持MySQL和JSON格式）" data-url="blog.y0701.com/2018/08/27/通过Python爬取三级城市地址库（支持MySQL和JSON格式）/">
+      <div class="ds-thread" data-thread-key="2018/09/20/PHP算法之二分查找/"
+           data-title="PHP算法之二分查找" data-url="blog.y0701.com/2018/09/20/PHP算法之二分查找/">
       </div>
     </div>
 
@@ -604,7 +620,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据来源"><span class="nav-number">1.</span> <span class="nav-text">数据来源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据格式"><span class="nav-number">2.</span> <span class="nav-text">数据格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#脚本目录结构"><span class="nav-number">3.</span> <span class="nav-text">脚本目录结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抓取数据方法"><span class="nav-number">4.</span> <span class="nav-text">抓取数据方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码分享"><span class="nav-number">5.</span> <span class="nav-text">源码分享</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#二分查找的定义"><span class="nav-number">1.</span> <span class="nav-text">二分查找的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法的要求"><span class="nav-number">2.</span> <span class="nav-text">算法的要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法的步骤"><span class="nav-number">3.</span> <span class="nav-text">算法的步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法源码"><span class="nav-number">4.</span> <span class="nav-text">算法源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法的使用"><span class="nav-number">5.</span> <span class="nav-text">算法的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间复杂度分析"><span class="nav-number">6.</span> <span class="nav-text">时间复杂度分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后"><span class="nav-number">7.</span> <span class="nav-text">最后</span></a></li></ol></div>
             
 
           </div>
