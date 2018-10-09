@@ -78,7 +78,7 @@
 
 
 
-  <meta name="keywords" content="gxcuizy,cuizy,blog,Hexo,Next" />
+  <meta name="keywords" content="gxcuizy,cuizy,blog,Hexo,Next,博客,个人博客,php,python,cuizhongyi,cui" />
 
 
 
@@ -109,7 +109,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -180,7 +180,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <h1 class="site-subtitle" itemprop="description"></h1>
       
   </div>
 
@@ -275,8 +275,8 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>优化<small>标签</small>
-        </h1>
+        <h2>优化<small>标签</small>
+        </h2>
       </div>
 
       
@@ -285,7 +285,7 @@
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h2 class="post-title">
+      <h3 class="post-title">
         
             <a class="post-title-link" href="/2018/09/21/关于MySQL优化的几点总结/" itemprop="url">
               
@@ -293,7 +293,7 @@
               
             </a>
         
-      </h2>
+      </h3>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -353,7 +353,7 @@
                 alt="gxcuizy" />
             
               <p class="site-author-name" itemprop="name">gxcuizy</p>
-              <p class="site-description motion-element" itemprop="description">我是如此的平凡，却又如此的幸运！</p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -493,6 +493,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     
