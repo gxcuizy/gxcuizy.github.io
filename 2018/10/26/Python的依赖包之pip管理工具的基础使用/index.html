@@ -80,7 +80,7 @@
 
 
 
-  <meta name="keywords" content="Python,MySQL," />
+  <meta name="keywords" content="Python,pip," />
 
 
 
@@ -91,21 +91,20 @@
 
 
 
-<meta name="description" content="工具直接跳板机连接远程MySQL数据库一般公司的数据库在一个远程服务器里，而这个服务器需要链接跳板机才可以访问，而通过远程桌面或云桌面才可以链接跳板机，说明访问数据库是需要一定的权限的（很多公司也不会让你通过本机就可以获取内部数据）这就有个问题了，也就是你不可能在本机直接去访问数据库，这个时候，就需要一些数据库管理工具，例如常用的Navicat、SQLyog等，都是可以的，下面是我Navicat的">
-<meta name="keywords" content="Python,MySQL">
+<meta name="description" content="pip是什么我们都知道Python很强大，实用性也非常高，其很重要的一个原因就是因为有非常丰富的第三方库类，而pip是Python的的依赖包管理工具，该工具提供了对Python包的查找、下载、安装、卸载等的功能。基本使用到的包都可以在https://pypi.org/上面搜索找到。当然了，官网的包可能涉及翻墙访问的问题，也可以使用国内的镜像，例如豆瓣的镜像http://pypi.douban.c">
+<meta name="keywords" content="Python,pip">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python通过跳板机连接远程MySQL">
-<meta property="og:url" content="blog.y0701.com/2018/08/10/Python通过跳板机连接远程MySQL/index.html">
+<meta property="og:title" content="Python的依赖包之pip管理工具的基础使用">
+<meta property="og:url" content="blog.y0701.com/2018/10/26/Python的依赖包之pip管理工具的基础使用/index.html">
 <meta property="og:site_name" content="gxcuizy&#39;s blog">
-<meta property="og:description" content="工具直接跳板机连接远程MySQL数据库一般公司的数据库在一个远程服务器里，而这个服务器需要链接跳板机才可以访问，而通过远程桌面或云桌面才可以链接跳板机，说明访问数据库是需要一定的权限的（很多公司也不会让你通过本机就可以获取内部数据）这就有个问题了，也就是你不可能在本机直接去访问数据库，这个时候，就需要一些数据库管理工具，例如常用的Navicat、SQLyog等，都是可以的，下面是我Navicat的">
+<meta property="og:description" content="pip是什么我们都知道Python很强大，实用性也非常高，其很重要的一个原因就是因为有非常丰富的第三方库类，而pip是Python的的依赖包管理工具，该工具提供了对Python包的查找、下载、安装、卸载等的功能。基本使用到的包都可以在https://pypi.org/上面搜索找到。当然了，官网的包可能涉及翻墙访问的问题，也可以使用国内的镜像，例如豆瓣的镜像http://pypi.douban.c">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="/images/mysql_attr.png">
-<meta property="og:image" content="/images/mysql_common.png">
-<meta property="og:updated_time" content="2018-09-29T06:10:48.143Z">
+<meta property="og:image" content="https://www.sabia.cc/wp-content/uploads/2017/11/python-pip.jpg">
+<meta property="og:updated_time" content="2018-10-26T02:39:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python通过跳板机连接远程MySQL">
-<meta name="twitter:description" content="工具直接跳板机连接远程MySQL数据库一般公司的数据库在一个远程服务器里，而这个服务器需要链接跳板机才可以访问，而通过远程桌面或云桌面才可以链接跳板机，说明访问数据库是需要一定的权限的（很多公司也不会让你通过本机就可以获取内部数据）这就有个问题了，也就是你不可能在本机直接去访问数据库，这个时候，就需要一些数据库管理工具，例如常用的Navicat、SQLyog等，都是可以的，下面是我Navicat的">
-<meta name="twitter:image" content="/images/mysql_attr.png">
+<meta name="twitter:title" content="Python的依赖包之pip管理工具的基础使用">
+<meta name="twitter:description" content="pip是什么我们都知道Python很强大，实用性也非常高，其很重要的一个原因就是因为有非常丰富的第三方库类，而pip是Python的的依赖包管理工具，该工具提供了对Python包的查找、下载、安装、卸载等的功能。基本使用到的包都可以在https://pypi.org/上面搜索找到。当然了，官网的包可能涉及翻墙访问的问题，也可以使用国内的镜像，例如豆瓣的镜像http://pypi.douban.c">
+<meta name="twitter:image" content="https://www.sabia.cc/wp-content/uploads/2017/11/python-pip.jpg">
 
 
 
@@ -135,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="blog.y0701.com/2018/08/10/Python通过跳板机连接远程MySQL/"/>
+  <link rel="canonical" href="blog.y0701.com/2018/10/26/Python的依赖包之pip管理工具的基础使用/"/>
 
 
 
 
 
-  <title>Python通过跳板机连接远程MySQL | gxcuizy's blog</title>
+  <title>Python的依赖包之pip管理工具的基础使用 | gxcuizy's blog</title>
   
 
 
@@ -288,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="blog.y0701.com/2018/08/10/Python通过跳板机连接远程MySQL/">
+    <link itemprop="mainEntityOfPage" href="blog.y0701.com/2018/10/26/Python的依赖包之pip管理工具的基础使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gxcuizy">
@@ -305,7 +304,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Python通过跳板机连接远程MySQL</h2>
+          <h2 class="post-title" itemprop="name headline">Python的依赖包之pip管理工具的基础使用</h2>
         
 
         <div class="post-meta">
@@ -317,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-10T10:35:09+08:00">
-                2018-08-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-26T10:37:33+08:00">
+                2018-10-26
               </time>
             
 
@@ -336,8 +335,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/10/Python通过跳板机连接远程MySQL/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/08/10/Python通过跳板机连接远程MySQL/" itemprop="commentCount"></span>
+                <a href="/2018/10/26/Python的依赖包之pip管理工具的基础使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/10/26/Python的依赖包之pip管理工具的基础使用/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -370,18 +369,33 @@
       
 
       
-        <h3 id="工具直接跳板机连接远程MySQL数据库"><a href="#工具直接跳板机连接远程MySQL数据库" class="headerlink" title="工具直接跳板机连接远程MySQL数据库"></a>工具直接跳板机连接远程MySQL数据库</h3><p>一般公司的数据库在一个远程服务器里，而这个服务器需要链接跳板机才可以访问，而通过远程桌面或云桌面才可以链接跳板机，说明访问数据库是需要一定的权限的（很多公司也不会让你通过本机就可以获取内部数据）这就有个问题了，也就是你不可能在本机直接去访问数据库，这个时候，就需要一些数据库管理工具，例如常用的Navicat、SQLyog等，都是可以的，下面是我Navicat的一些配置（打码部分为配置信息）：</p>
+        <p><img src="https://www.sabia.cc/wp-content/uploads/2017/11/python-pip.jpg" alt="page_img_url"></p>
+<h3 id="pip是什么"><a href="#pip是什么" class="headerlink" title="pip是什么"></a>pip是什么</h3><p>我们都知道Python很强大，实用性也非常高，其很重要的一个原因就是因为有非常丰富的第三方库类，而pip是Python的的依赖包管理工具，该工具提供了对Python包的查找、下载、安装、卸载等的功能。基本使用到的包都可以在<a href="https://pypi.org/" target="_blank" rel="noopener">https://pypi.org/</a>上面搜索找到。当然了，官网的包可能涉及翻墙访问的问题，也可以使用国内的镜像，例如豆瓣的镜像<a href="http://pypi.douban.com/simple/" target="_blank" rel="noopener">http://pypi.douban.com/simple/</a>、清华的镜像<a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple</a>等……</p>
+<h3 id="安装pip"><a href="#安装pip" class="headerlink" title="安装pip"></a>安装pip</h3><p>具体的安装方法可以查看官网的安装说明</p>
+<p>官方安装说明地址：<a href="https://pip.pypa.io/en/latest/installing/#id7" target="_blank" rel="noopener">https://pip.pypa.io/en/latest/installing/#id7</a></p>
+<p>Windows的用户，需要先到官网下载get-pip.py安装包，然后执行<code>python get-pip.py</code>进行安装</p>
+<p>而如果需要在Linux上安装的话，则比较方便和快捷的，直接可以通过yum或者apt-get安装即可</p>
 <a id="more"></a>
-<p>SSH连接配置信息</p>
-<p><img src="/images/mysql_attr.png" alt="ssh连接信息"></p>
-<p>MySQL连接属性常规信息</p>
-<p><img src="/images/mysql_common.png" alt="连接常规信息"></p>
-<h3 id="Python连接"><a href="#Python连接" class="headerlink" title="Python连接"></a>Python连接</h3><h4 id="安装sshtunnel"><a href="#安装sshtunnel" class="headerlink" title="安装sshtunnel"></a>安装sshtunnel</h4><p>Python连接的话，得借助sshtunnel模块，这个模块是第三方的模块，所以得先安装，安装方式如下，直接命令行安装就行。</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">pip insall sshtunnel</span></span><br></pre></td></tr></table></figure>
-<h4 id="基本配置说明"><a href="#基本配置说明" class="headerlink" title="基本配置说明"></a>基本配置说明</h4><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 跳板机SSH连接</span></span><br><span class="line"><span class="keyword">with</span> SSHTunnelForwarder(</span><br><span class="line">        ('<span class="number">192.168</span>.<span class="number">0.1</span>', <span class="number">22</span>),</span><br><span class="line">        <span class="attr">ssh_username="test",</span></span><br><span class="line">        <span class="attr">ssh_pkey="test.pem",</span></span><br><span class="line">        <span class="attr">remote_bind_address=('*************mysql.rds.aliyuncs.com',</span> <span class="number">3306</span>)</span><br><span class="line">) as tunnel:</span><br><span class="line">    <span class="comment"># 数据库连接配置，host默认127.0.0.1不用修改</span></span><br><span class="line">    <span class="attr">conn</span> = pymysql.connect(</span><br><span class="line">        <span class="attr">host='127.0.0.1',</span></span><br><span class="line">        <span class="attr">port=tunnel.local_bind_port,</span></span><br><span class="line">        <span class="attr">user='root',</span></span><br><span class="line">        <span class="attr">password='root',</span></span><br><span class="line">        <span class="attr">db='test',</span></span><br><span class="line">        <span class="attr">charset='utf8',</span></span><br><span class="line">        <span class="attr">cursorclass=pymysql.cursors.DictCursor</span></span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
-<p>从上面代码可以看到，跳板机的SSH配置信息，192.168.0.1为服务器IP地址，ssh_username为用户名，ssh_pkey为本机私钥存放位置，remote_bind_address为跳板机地址，user为mysql连接用户名，passport为密码，db就是连接的数据库名了，其他的不用配置了，发现连接不对的，就再核对一些配置信息，连接完毕，一定记得关闭连接。</p>
-<h3 id="完整源码分享"><a href="#完整源码分享" class="headerlink" title="完整源码分享"></a>完整源码分享</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">通过跳板机，连接远程mysql数据库</span></span><br><span class="line"><span class="string">author: gxcuizy</span></span><br><span class="line"><span class="string">time: 2018-08-10</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"><span class="keyword">from</span> sshtunnel <span class="keyword">import</span> SSHTunnelForwarder</span><br><span class="line"></span><br><span class="line"><span class="comment"># 程序主入口</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment"># 跳板机SSH连接</span></span><br><span class="line">    <span class="keyword">with</span> SSHTunnelForwarder(</span><br><span class="line">            (<span class="string">'192.168.0.1'</span>, <span class="number">22</span>),</span><br><span class="line">            ssh_username=<span class="string">"test"</span>,</span><br><span class="line">            ssh_pkey=<span class="string">"test.pem"</span>,</span><br><span class="line">            remote_bind_address=(<span class="string">'*************mysql.rds.aliyuncs.com'</span>, <span class="number">3306</span>)</span><br><span class="line">    ) <span class="keyword">as</span> tunnel:</span><br><span class="line">        <span class="comment"># 数据库连接配置，host默认127.0.0.1不用修改</span></span><br><span class="line">        conn = pymysql.connect(</span><br><span class="line">            host=<span class="string">'127.0.0.1'</span>,</span><br><span class="line">            port=tunnel.local_bind_port,</span><br><span class="line">            user=<span class="string">'root'</span>,</span><br><span class="line">            password=<span class="string">'root'</span>,</span><br><span class="line">            db=<span class="string">'test'</span>,</span><br><span class="line">            charset=<span class="string">'utf8'</span>,</span><br><span class="line">            cursorclass=pymysql.cursors.DictCursor</span><br><span class="line">        )</span><br><span class="line">        <span class="comment"># 获取游标</span></span><br><span class="line">        cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)</span><br><span class="line">        <span class="comment"># 查询数据库，查询一条数据，其他CURD操作类似</span></span><br><span class="line">        sql = <span class="string">"SELECT name FROM table_name WHERE id = '%s'"</span></span><br><span class="line">        prams = (<span class="string">'1'</span>,)</span><br><span class="line">        cursor.execute(sql % prams)</span><br><span class="line">        info = cursor.fetchone()</span><br><span class="line">        print(info)</span><br><span class="line">        <span class="comment"># 关闭连接</span></span><br><span class="line">        cursor.close()</span><br><span class="line">        conn.close()</span><br></pre></td></tr></table></figure>
-<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>Python可以做很多事情，大家有兴趣的话，可以一起研究和讨论，如有疑问，可以留言或者直接联系我，谢谢。</p>
+<p>yum安装<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum <span class="keyword">install</span> python-pip</span><br></pre></td></tr></table></figure></p>
+<p>apt-get安装<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install python-pip</span><br></pre></td></tr></table></figure></p>
+<p>更多安装方法请安装文档：<a href="https://packaging.python.org/guides/installing-using-linux-tools/#installing-pip-setuptools-wheel-with-linux-package-managers" target="_blank" rel="noopener">https://packaging.python.org/guides/installing-using-linux-tools/#installing-pip-setuptools-wheel-with-linux-package-managers</a></p>
+<h3 id="查看pip版本"><a href="#查看pip版本" class="headerlink" title="查看pip版本"></a>查看pip版本</h3><p>简写方式<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">pip -V</span></span><br></pre></td></tr></table></figure></p>
+<p>完整命令方式<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="comment">--version</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="利用pip安装模块"><a href="#利用pip安装模块" class="headerlink" title="利用pip安装模块"></a>利用pip安装模块</h3><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install <span class="string">[module_name]</span></span><br></pre></td></tr></table></figure>
+<h3 id="查看所有已安装的模块"><a href="#查看所有已安装的模块" class="headerlink" title="查看所有已安装的模块"></a>查看所有已安装的模块</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="built_in">list</span></span><br></pre></td></tr></table></figure>
+<p>如果需要搜索指定的模块的话，可以使用下面的命令</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip search <span class="string">[module_name]</span></span><br></pre></td></tr></table></figure>
+<p>还可以使用下面的方法（PS：好像不是全起作用）</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">list</span> | <span class="keyword">grep</span> [module_name]</span><br></pre></td></tr></table></figure>
+<h3 id="查看已安装的某个模块的详细信息"><a href="#查看已安装的某个模块的详细信息" class="headerlink" title="查看已安装的某个模块的详细信息"></a>查看已安装的某个模块的详细信息</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">show</span> <span class="comment">--files [module_name]</span></span><br></pre></td></tr></table></figure>
+<h3 id="检查哪些模块需要更新"><a href="#检查哪些模块需要更新" class="headerlink" title="检查哪些模块需要更新"></a>检查哪些模块需要更新</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="built_in">list</span> <span class="comment">--outdated</span></span><br></pre></td></tr></table></figure>
+<h3 id="升级指定的模块"><a href="#升级指定的模块" class="headerlink" title="升级指定的模块"></a>升级指定的模块</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install</span> <span class="comment">--U [module_name]</span></span><br></pre></td></tr></table></figure>
+<h3 id="卸载已经安装的模块"><a href="#卸载已经安装的模块" class="headerlink" title="卸载已经安装的模块"></a>卸载已经安装的模块</h3><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall <span class="string">[module_name]</span></span><br></pre></td></tr></table></figure>
+<h3 id="需要查看更多pip的用法"><a href="#需要查看更多pip的用法" class="headerlink" title="需要查看更多pip的用法"></a>需要查看更多pip的用法</h3><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="comment">--help</span></span><br></pre></td></tr></table></figure>
+<h3 id="更新pip本身"><a href="#更新pip本身" class="headerlink" title="更新pip本身"></a>更新pip本身</h3><p>Windows的用户执行下面的命令</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip <span class="keyword">install</span> -U pip</span><br></pre></td></tr></table></figure>
+<p>Linux或者Mac OS的用户执行下面的命令</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install</span> -U pip</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -430,7 +444,7 @@
           
             <a href="/tags/Python/" rel="tag"># Python</a>
           
-            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+            <a href="/tags/pip/" rel="tag"># pip</a>
           
         </div>
       
@@ -443,8 +457,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/08/Python下载网易云歌曲（版权限制的怎么播放和下载呢？）/" rel="next" title="Python下载网易云歌曲（版权限制的怎么播放和下载呢？）">
-                <i class="fa fa-chevron-left"></i> Python下载网易云歌曲（版权限制的怎么播放和下载呢？）
+              <a href="/2018/09/29/算法题之计算哪一桶是红酒/" rel="next" title="算法题之计算哪一桶是红酒">
+                <i class="fa fa-chevron-left"></i> 算法题之计算哪一桶是红酒
               </a>
             
           </div>
@@ -452,10 +466,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/10/Markdown基础语法和入门/" rel="prev" title="Markdown基础语法和入门">
-                Markdown基础语法和入门 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -524,8 +534,8 @@
 
   
     <div class="comments" id="comments">
-      <div class="ds-thread" data-thread-key="2018/08/10/Python通过跳板机连接远程MySQL/"
-           data-title="Python通过跳板机连接远程MySQL" data-url="blog.y0701.com/2018/08/10/Python通过跳板机连接远程MySQL/">
+      <div class="ds-thread" data-thread-key="2018/10/26/Python的依赖包之pip管理工具的基础使用/"
+           data-title="Python的依赖包之pip管理工具的基础使用" data-url="blog.y0701.com/2018/10/26/Python的依赖包之pip管理工具的基础使用/">
       </div>
     </div>
 
@@ -655,7 +665,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#工具直接跳板机连接远程MySQL数据库"><span class="nav-text">工具直接跳板机连接远程MySQL数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python连接"><span class="nav-text">Python连接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装sshtunnel"><span class="nav-text">安装sshtunnel</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本配置说明"><span class="nav-text">基本配置说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完整源码分享"><span class="nav-text">完整源码分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结束语"><span class="nav-text">结束语</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#pip是什么"><span class="nav-text">pip是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装pip"><span class="nav-text">安装pip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看pip版本"><span class="nav-text">查看pip版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用pip安装模块"><span class="nav-text">利用pip安装模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看所有已安装的模块"><span class="nav-text">查看所有已安装的模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看已安装的某个模块的详细信息"><span class="nav-text">查看已安装的某个模块的详细信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查哪些模块需要更新"><span class="nav-text">检查哪些模块需要更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#升级指定的模块"><span class="nav-text">升级指定的模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载已经安装的模块"><span class="nav-text">卸载已经安装的模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需要查看更多pip的用法"><span class="nav-text">需要查看更多pip的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新pip本身"><span class="nav-text">更新pip本身</span></a></li></ol></div>
             
 
           </div>
