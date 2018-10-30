@@ -100,7 +100,7 @@
 <meta property="og:description" content="数据来源通过Python脚本，自动抓取国家统计局最新的中国省市区三级城市信息，目前抓取的最新数据为2017年统计用区划代码和城乡划分代码(截止2017年10月31日)，我会关注，时刻保持更新。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?ixlib=rb-0.3.5&s=1cca0d0544f25ab7c6e171d80692ed62&auto=format&fit=crop&w=1189&q=80">
-<meta property="og:updated_time" content="2018-09-29T06:08:52.804Z">
+<meta property="og:updated_time" content="2018-10-30T13:24:31.597Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过Python爬取国家统计局省市区三级地址库（支持MySQL和JSON格式）">
 <meta name="twitter:description" content="数据来源通过Python脚本，自动抓取国家统计局最新的中国省市区三级城市信息，目前抓取的最新数据为2017年统计用区划代码和城乡划分代码(截止2017年10月31日)，我会关注，时刻保持更新。">
@@ -377,7 +377,7 @@
 <p>如有需要，直接下载后缀为json或者sql的文件即可直接使用，也可以根据对应的python脚本重新生成相应的省市区三级地址库数据。</p>
 <h3 id="抓取数据方法"><a href="#抓取数据方法" class="headerlink" title="抓取数据方法"></a>抓取数据方法</h3><p>这里主要使用<a href="http://docs.python-requests.org/zh_CN/latest/user/quickstart.html" target="_blank" rel="noopener">requests</a>、<a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html" target="_blank" rel="noopener">beautifulsoup4</a>以及<a href="https://docs.python.org/3.6/library/json.html" target="_blank" rel="noopener">json</a>这三个模块，通过requests发送url页面请求，然后BeautifulSoup分析请求到的页面信息，抓取有效数据，通过json模块，读取以及存储json格式的数据，而mysql的数据则直接通过文件的读写操作即可。</p>
 <h3 id="源码分享"><a href="#源码分享" class="headerlink" title="源码分享"></a>源码分享</h3><p>这个爬虫脚本比较易读，而且碍于文章篇幅问题，所以，我这里就不贴源码了，直接放到交友网站GitHub上了，有兴趣的可以前往查看。</p>
-<p>源码以及数据地址：<a href="https://github.com/gxcuizy/Python/tree/master/area" target="_blank" rel="noopener">https://github.com/gxcuizy/Python/tree/master/area</a></p>
+<p>源码以及数据地址：<a href="https://github.com/gxcuizy/Python/tree/master/%E7%9C%81%E5%B8%82%E5%8C%BA%E4%B8%89%E7%BA%A7%E5%9C%B0%E5%9D%80%E5%BA%93" target="_blank" rel="noopener">https://github.com/gxcuizy/Python/tree/master/%E7%9C%81%E5%B8%82%E5%8C%BA%E4%B8%89%E7%BA%A7%E5%9C%B0%E5%9D%80%E5%BA%93</a></p>
 
       
     </div>
