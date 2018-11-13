@@ -80,7 +80,7 @@
 
 
 
-  <meta name="keywords" content="Python,requests,网易云音乐," />
+  <meta name="keywords" content="Python,requests,json,英雄联盟,LOL," />
 
 
 
@@ -91,23 +91,24 @@
 
 
 
-<meta name="description" content="为什么要这样下载网易云音乐，我相信大多数人都用过，我个人觉得非常好用，也一直在用，有的时候，我们搜索一些网易歌曲，发现播放不了，甚至下载不了，因为提示“版权方要求，当前歌曲仅限开通音乐包使用”（见下图），也就是，需要购买才能够下载以及播放，有没有办法不花钱就能播放和下载这首歌曲呢？我研究了一下，还没发现呢，哈哈哈哈，往下看，你会发现惊喜的……">
-<meta name="keywords" content="Python,requests,网易云音乐">
+<meta name="description" content="前言上篇文章，说到了，爬取LOL英雄皮肤的高清图片，最近有事，也没怎么去研究，所以，现在才去看了下，并且写了Python脚本来抓取皮肤图片。需要说明一下，这个脚本有部分英雄没有抓取到，但是具体原因，我目前还没搞懂，我是相当纳闷的。大家有兴趣的，可以看看后面遗留问题，一起研究下。 爬虫思路初步尝试我先查看了network，并没有发现有可用的API；然后又用bs4去分析英雄列表页，但是请求到html里">
+<meta name="keywords" content="Python,requests,json,英雄联盟,LOL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python下载网易云歌曲（版权限制的怎么播放和下载呢？）">
-<meta property="og:url" content="blog.y0701.com/2018/08/08/Python下载网易云歌曲（版权限制的怎么播放和下载呢？）/index.html">
+<meta property="og:title" content="Python3爬取英雄联盟英雄皮肤大图">
+<meta property="og:url" content="blog.y0701.com/2018/11/14/Python3爬取英雄联盟英雄皮肤大图/index.html">
 <meta property="og:site_name" content="gxcuizy&#39;s blog">
-<meta property="og:description" content="为什么要这样下载网易云音乐，我相信大多数人都用过，我个人觉得非常好用，也一直在用，有的时候，我们搜索一些网易歌曲，发现播放不了，甚至下载不了，因为提示“版权方要求，当前歌曲仅限开通音乐包使用”（见下图），也就是，需要购买才能够下载以及播放，有没有办法不花钱就能播放和下载这首歌曲呢？我研究了一下，还没发现呢，哈哈哈哈，往下看，你会发现惊喜的……">
+<meta property="og:description" content="前言上篇文章，说到了，爬取LOL英雄皮肤的高清图片，最近有事，也没怎么去研究，所以，现在才去看了下，并且写了Python脚本来抓取皮肤图片。需要说明一下，这个脚本有部分英雄没有抓取到，但是具体原因，我目前还没搞懂，我是相当纳闷的。大家有兴趣的，可以看看后面遗留问题，一起研究下。 爬虫思路初步尝试我先查看了network，并没有发现有可用的API；然后又用bs4去分析英雄列表页，但是请求到html里">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="/images/wangyiyun.png">
-<meta property="og:image" content="/images/wangyiyun_request.png">
-<meta property="og:image" content="/images/wangyiyun_play.png">
-<meta property="og:image" content="/images/wangyiun_download.png">
-<meta property="og:updated_time" content="2018-08-09T02:22:03.697Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/gxcuizy/markdown/master/images/lol-step-1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gxcuizy/markdown/master/images/lol-step=2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gxcuizy/markdown/master/images/lol-step=3.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/gxcuizy/markdown/master/images/lol-step-4.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/gxcuizy/markdown/master/images/lol-step-5.jpg">
+<meta property="og:updated_time" content="2018-11-13T16:46:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python下载网易云歌曲（版权限制的怎么播放和下载呢？）">
-<meta name="twitter:description" content="为什么要这样下载网易云音乐，我相信大多数人都用过，我个人觉得非常好用，也一直在用，有的时候，我们搜索一些网易歌曲，发现播放不了，甚至下载不了，因为提示“版权方要求，当前歌曲仅限开通音乐包使用”（见下图），也就是，需要购买才能够下载以及播放，有没有办法不花钱就能播放和下载这首歌曲呢？我研究了一下，还没发现呢，哈哈哈哈，往下看，你会发现惊喜的……">
-<meta name="twitter:image" content="/images/wangyiyun.png">
+<meta name="twitter:title" content="Python3爬取英雄联盟英雄皮肤大图">
+<meta name="twitter:description" content="前言上篇文章，说到了，爬取LOL英雄皮肤的高清图片，最近有事，也没怎么去研究，所以，现在才去看了下，并且写了Python脚本来抓取皮肤图片。需要说明一下，这个脚本有部分英雄没有抓取到，但是具体原因，我目前还没搞懂，我是相当纳闷的。大家有兴趣的，可以看看后面遗留问题，一起研究下。 爬虫思路初步尝试我先查看了network，并没有发现有可用的API；然后又用bs4去分析英雄列表页，但是请求到html里">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/gxcuizy/markdown/master/images/lol-step-1.png">
 
 
 
@@ -137,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="blog.y0701.com/2018/08/08/Python下载网易云歌曲（版权限制的怎么播放和下载呢？）/"/>
+  <link rel="canonical" href="blog.y0701.com/2018/11/14/Python3爬取英雄联盟英雄皮肤大图/"/>
 
 
 
 
 
-  <title>Python下载网易云歌曲（版权限制的怎么播放和下载呢？） | gxcuizy's blog</title>
+  <title>Python3爬取英雄联盟英雄皮肤大图 | gxcuizy's blog</title>
   
 
 
@@ -324,7 +325,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="blog.y0701.com/2018/08/08/Python下载网易云歌曲（版权限制的怎么播放和下载呢？）/">
+    <link itemprop="mainEntityOfPage" href="blog.y0701.com/2018/11/14/Python3爬取英雄联盟英雄皮肤大图/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gxcuizy">
@@ -341,7 +342,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Python下载网易云歌曲（版权限制的怎么播放和下载呢？）</h2>
+          <h2 class="post-title" itemprop="name headline">Python3爬取英雄联盟英雄皮肤大图</h2>
         
 
         <div class="post-meta">
@@ -353,8 +354,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-08T17:19:13+08:00">
-                2018-08-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-14T00:43:01+08:00">
+                2018-11-14
               </time>
             
 
@@ -372,8 +373,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/08/Python下载网易云歌曲（版权限制的怎么播放和下载呢？）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/08/08/Python下载网易云歌曲（版权限制的怎么播放和下载呢？）/" itemprop="commentCount"></span>
+                <a href="/2018/11/14/Python3爬取英雄联盟英雄皮肤大图/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/11/14/Python3爬取英雄联盟英雄皮肤大图/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -406,20 +407,21 @@
       
 
       
-        <h3 id="为什么要这样下载"><a href="#为什么要这样下载" class="headerlink" title="为什么要这样下载"></a>为什么要这样下载</h3><p><a href="https://music.163.com/" target="_blank" rel="noopener">网易云音乐</a>，我相信大多数人都用过，我个人觉得非常好用，也一直在用，有的时候，我们搜索一些网易歌曲，发现播放不了，甚至下载不了，因为提示“版权方要求，当前歌曲仅限开通音乐包使用”（见下图），也就是，需要购买才能够下载以及播放，有没有办法不花钱就能播放和下载这首歌曲呢？我研究了一下，还没发现呢，哈哈哈哈，往下看，你会发现惊喜的……</p>
-<p><img src="/images/wangyiyun.png" alt="网易云歌曲"></p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>上篇文章，说到了，爬取LOL英雄皮肤的高清图片，最近有事，也没怎么去研究，所以，现在才去看了下，并且写了Python脚本来抓取皮肤图片。需要说明一下，这个脚本有部分英雄没有抓取到，但是具体原因，我目前还没搞懂，我是相当纳闷的。大家有兴趣的，可以看看后面遗留问题，一起研究下。</p>
+<h3 id="爬虫思路"><a href="#爬虫思路" class="headerlink" title="爬虫思路"></a>爬虫思路</h3><h4 id="初步尝试"><a href="#初步尝试" class="headerlink" title="初步尝试"></a>初步尝试</h4><p>我先查看了network，并没有发现有可用的API；然后又用bs4去分析<a href="https://lol.qq.com/data/info-heros.shtml" target="_blank" rel="noopener">英雄列表</a>页，但是请求到html里面，并没有英雄列表，在英雄列表的节点上，只有“正在加载中”这样的字样；同样的方法，分析<a href="https://lol.qq.com/data/info-defail.shtml?id=Aatrox" target="_blank" rel="noopener">英雄详情</a>也是这种情况，所以我猜测，这些数据应该是Javascript负责加载的。</p>
 <a id="more"></a>
-<h3 id="怎么查找版权限制不让下载和播放的音乐"><a href="#怎么查找版权限制不让下载和播放的音乐" class="headerlink" title="怎么查找版权限制不让下载和播放的音乐"></a>怎么查找版权限制不让下载和播放的音乐</h3><h4 id="初探network请求信息"><a href="#初探network请求信息" class="headerlink" title="初探network请求信息"></a>初探network请求信息</h4><p>首先，我想到的是打开F12，查看所有的network请求，一个一个的查看请求返回信息，突然发现了惊喜，如下图所示：</p>
-<p><img src="/images/wangyiyun_request.png" alt="网易云音乐F12请求"></p>
-<p>那个请求返回的url，我想应该就是音乐的URL源地址，但是，我通过Python脚本下载这个音乐下来后发现，和我想象的有点不一样，因为这个url确实是音乐的源地址，但是并不是我需要的，因为这个url是当前播放音乐的源地址，然后，我继续点击其他按钮，当我点击播放音乐按钮的时候，有一个detail的请求，里面返回了很多信息，如下图所示：</p>
-<p><img src="/images/wangyiyun_play.png" alt="网易云音乐播放请求"></p>
-<h4 id="深入查看network请求信息"><a href="#深入查看network请求信息" class="headerlink" title="深入查看network请求信息"></a>深入查看network请求信息</h4><p>我研究了一下这些返回信息，发现并没有找到需要的音乐url源地址，然后只能继续在network里面找，刚开始，我只是找的XHR的请求，然后我想着，查找All的请求试试，因为，All请求里，可以包含所有的资源请求，包括图片以及文件资源等，也许会有惊喜，果然，不出所料，让我找到了一个好东西，如下图这样的：</p>
-<p><img src="/images/wangyiun_download.png" alt="网易云音乐资源请求"></p>
-<h4 id="发现惊喜"><a href="#发现惊喜" class="headerlink" title="发现惊喜"></a>发现惊喜</h4><p>因为通过前面拿到当前播放的音乐的url源地址，猜想着所有的音乐的url应该都包含着mp3的后缀，所以，我就Ctrl+F，进行mp3的搜索，果然，看到包含mp3的请求就那几个，然后逐一分析，发现，有一个请求信息，也就是上图中的第一个请求，是一个MP3文件资源，所以，我猜想，这个应该就是我需要的音乐URL了吧，然后我拿到这个URL继续去下载文件资源，果然，这就是我需要的音乐URL源地址，到这里，也就是找到了这个因为版权受限不让播放和下载的音乐了，惊不惊喜？意不意外？</p>
-<h3 id="Python下载MP3文件源码"><a href="#Python下载MP3文件源码" class="headerlink" title="Python下载MP3文件源码"></a>Python下载MP3文件源码</h3><p>最后，分享一波Python下载MP3资源的源码，使用的时候，得先进行几个配置，首先是url，url就是需要下载的音乐URL地址，folder就是音乐需要保存的位置，话不多说，直接上源码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">下载MP3文件</span></span><br><span class="line"><span class="string">author: gxcuizy</span></span><br><span class="line"><span class="string">time：2018-08-08</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">download_file</span><span class="params">(mp3_url, file_folder)</span>:</span></span><br><span class="line">    <span class="string">"""下载MP3文件"""</span></span><br><span class="line">    <span class="comment"># 文件夹不存在，则创建文件夹</span></span><br><span class="line">    folder = os.path.exists(file_folder)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> folder:</span><br><span class="line">        os.makedirs(file_folder)</span><br><span class="line">    <span class="comment"># 读取远程MP3资源</span></span><br><span class="line">    res = requests.get(mp3_url)</span><br><span class="line">    res.raise_for_status()</span><br><span class="line">    <span class="comment"># 获取文件名</span></span><br><span class="line">    file_name = os.path.basename(mp3_url)</span><br><span class="line">    file_path = os.path.join(file_folder, file_name)</span><br><span class="line">    print(<span class="string">'正在写入资源文件：'</span>, file_path)</span><br><span class="line">    <span class="comment"># 保存到本地</span></span><br><span class="line">    image_file = open(file_path, <span class="string">'wb'</span>)</span><br><span class="line">    <span class="keyword">for</span> chunk <span class="keyword">in</span> res.iter_content(<span class="number">100000</span>):</span><br><span class="line">        image_file.write(chunk)</span><br><span class="line">    image_file.close()</span><br><span class="line">    print(<span class="string">'写入文件结束！'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 程序主入口</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment"># MP3源地址url</span></span><br><span class="line">    url = <span class="string">'http://m10.music.126.net/20180808172234/4446d41c850238c25cdcff1fe43249a4/ymusic/3686/b5b4/961c/39c9a20e7db813ea3290e1b1580cfa70.mp3'</span></span><br><span class="line">    <span class="comment"># MP3保存文件夹</span></span><br><span class="line">    folder = <span class="string">'mp3/'</span></span><br><span class="line">    <span class="comment"># 调用下载方法</span></span><br><span class="line">    download_file(url, folder)</span><br></pre></td></tr></table></figure>
-<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>大家有什么不理解或者不明白的的，可以联系我，或者给我留言，我会及时回复的，欢迎沟通和交流，谢谢。</p>
-
+<p><img src="https://raw.githubusercontent.com/gxcuizy/markdown/master/images/lol-step-1.png" alt="step-1"></p>
+<h4 id="继续尝试"><a href="#继续尝试" class="headerlink" title="继续尝试"></a>继续尝试</h4><p>然后我就查看了<a href="view-source:https://lol.qq.com/data/info-heros.shtml" target="_blank" rel="noopener">英雄列表的源代码</a>，查看外部引入的js文件，以及行内的js脚本，大概在368行，发现了有处理英雄列表的js注释，然后继续往下读这些代码，发现了第一个彩蛋，也就是他引入了一个<a href="http://lol.qq.com/biz/hero/champion.js" target="_blank" rel="noopener">champion.js</a>的文件，我猜测，这个应该就是英雄列表大全了，然后我打开了这个链接的js，一眼看过去，黑麻麻一片，然后格式化了一下压缩的js，确定这就是英雄列表的js数据文件了。</p>
+<p><img src="https://raw.githubusercontent.com/gxcuizy/markdown/master/images/lol-step=2.png" alt="step-2"></p>
+<h4 id="接着尝试"><a href="#接着尝试" class="headerlink" title="接着尝试"></a>接着尝试</h4><p>前面通过查看列表的源代码，找到了英雄列表的js数据文件，那么，我继续随机点开了一个英雄的详情，然后查看<a href="view-source:https://lol.qq.com/data/info-defail.shtml?id=Aatrox" target="_blank" rel="noopener">英雄详情源代码</a>，然后大概在568行看到有一个showSkin的js方法，通过这里，发现了第二个彩蛋，也就是皮肤图片的URL地址拼接方法。</p>
+<p><img src="https://raw.githubusercontent.com/gxcuizy/markdown/master/images/lol-step=3.jpg" alt="step-3"></p>
+<h4 id="最后尝试"><a href="#最后尝试" class="headerlink" title="最后尝试"></a>最后尝试</h4><p>上面找到了皮肤图片URL的拼接方法，并且发现了一行很关键的代码<code>var skin =LOLherojs.champion[heroid].data.skins</code>，也就是，这个skin变量，就是英雄皮肤的所有图片数组，但是这个文件内，并没有LOLherojs这个变量，也就是外部引入的，所以，需要继续查看下面的源代码，找到引入这个变量的位置，果不其然，在757行，发现了最后一个彩蛋，也就是，英雄皮肤的js文件，通过这里可以知道，每个英雄都有一个单独的js文件，并且知道了这个js文件的URL拼接方法。</p>
+<p><img src="https://raw.githubusercontent.com/gxcuizy/markdown/master/images/lol-step-4.jpg" alt="step-4"></p>
+<h3 id="思路总结"><a href="#思路总结" class="headerlink" title="思路总结"></a>思路总结</h3><p>通过上面的分析，我们就得到了爬取LOL皮肤图片的所有数据准备了，也就是，直接，只需要提取js中的英雄列表以及英雄详情数据，就可实现我们的需求了。下面是运行后抓取到的图片……</p>
+<p><img src="https://raw.githubusercontent.com/gxcuizy/markdown/master/images/lol-step-5.jpg" alt="step-5"></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Python运行环境：python3.6<br>用到的模块：requests、json、urllib、os、lxml<br>未安装的模块，请使用pip instatll进行安装，例如：pip install requests</p>
+<h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><p>其他啥的废话就不多说了，直接上完整代码，有问题，直接留言给我就行，另外，代码已上传<a href="https://github.com/gxcuizy/Python/blob/master/英雄联盟皮肤爬图/get_lol_skin.py" target="_blank" rel="noopener">GitHub</a>。再说明一下，那些有问题的英雄详情的js文件，大家有时间也可以琢磨下，或者有其他的更加快捷的爬取这些图片的方法，也可以拿出来交流和讨论，谢谢。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">抓取英雄联盟英雄全皮肤</span></span><br><span class="line"><span class="string">author: gxcuizy</span></span><br><span class="line"><span class="string">date: 2018-11-13</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> parse</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GetLolSkin</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""抓取LOL英雄皮肤"""</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""初始化变量"""</span></span><br><span class="line">        self.hero_url = <span class="string">'https://lol.qq.com/biz/hero/champion.js'</span></span><br><span class="line">        self.hero_detail_url = <span class="string">'http://lol.qq.com/biz/hero/'</span></span><br><span class="line">        self.skin_folder = <span class="string">'skin'</span></span><br><span class="line">        self.skin_url = <span class="string">'https://ossweb-img.qq.com/images/lol/web201310/skin/big'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_html</span><span class="params">(url)</span>:</span></span><br><span class="line">        <span class="string">"""下载html"""</span></span><br><span class="line">        request = requests.get(url)</span><br><span class="line">        request.encoding = <span class="string">'gbk'</span></span><br><span class="line">        <span class="keyword">if</span> request.status_code == <span class="number">200</span>:</span><br><span class="line">            <span class="keyword">return</span> request.text</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"&#123;&#125;"</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_hero_list</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""获取英雄的完整信息列表"""</span></span><br><span class="line">        hero_js = self.get_html(self.hero_url)</span><br><span class="line">        <span class="comment"># 删除左右的多余信息，得到json数据</span></span><br><span class="line">        out_left = <span class="string">"if(!LOLherojs)var LOLherojs=&#123;&#125;;LOLherojs.champion="</span></span><br><span class="line">        out_right = <span class="string">';'</span></span><br><span class="line">        hero_list = hero_js.replace(out_left, <span class="string">''</span>).rstrip(out_right)</span><br><span class="line">        <span class="keyword">return</span> json.loads(hero_list)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_hero_info</span><span class="params">(self, hero_id)</span>:</span></span><br><span class="line">        <span class="string">"""获取英雄的详细信息"""</span></span><br><span class="line">        <span class="comment"># 获取js详情</span></span><br><span class="line">        detail_url = parse.urljoin(self.hero_detail_url, hero_id + <span class="string">'.js'</span>)</span><br><span class="line">        detail_js = self.get_html(detail_url)</span><br><span class="line">        <span class="comment"># 删除左右的多余信息，得到json数据</span></span><br><span class="line">        out_left = <span class="string">"if(!herojs)var herojs=&#123;champion:&#123;&#125;&#125;;herojs['champion'][%s]="</span> % hero_id</span><br><span class="line">        out_right = <span class="string">';'</span></span><br><span class="line">        hero_info = detail_js.replace(out_left, <span class="string">''</span>).rstrip(out_right)</span><br><span class="line">        <span class="keyword">return</span> json.loads(hero_info)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">download_skin_list</span><span class="params">(self, skin_list, hero_name)</span>:</span></span><br><span class="line">        <span class="string">"""下载皮肤列表"""</span></span><br><span class="line">        <span class="comment"># 循环下载皮肤</span></span><br><span class="line">        <span class="keyword">for</span> skin_info <span class="keyword">in</span> skin_list:</span><br><span class="line">            <span class="comment"># 拼接图片名字</span></span><br><span class="line">            <span class="keyword">if</span> skin_info[<span class="string">'name'</span>] == <span class="string">'default'</span>:</span><br><span class="line">                skin_name = <span class="string">'默认皮肤'</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> <span class="string">' '</span> <span class="keyword">in</span> skin_info[<span class="string">'name'</span>]:</span><br><span class="line">                    name_info = skin_info[<span class="string">'name'</span>].split(<span class="string">' '</span>)</span><br><span class="line">                    skin_name = name_info[<span class="number">0</span>]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    skin_name = skin_info[<span class="string">'name'</span>]</span><br><span class="line">            hero_skin_name = hero_name + <span class="string">'-'</span> + skin_name + <span class="string">'.jpg'</span></span><br><span class="line">            self.download_skin(skin_info[<span class="string">'id'</span>], hero_skin_name)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">download_skin</span><span class="params">(self, skin_id, skin_name)</span>:</span></span><br><span class="line">        <span class="string">"""下载皮肤图片"""</span></span><br><span class="line">        <span class="comment"># 下载图片</span></span><br><span class="line">        img_url = self.skin_url + skin_id + <span class="string">'.jpg'</span></span><br><span class="line">        request = requests.get(img_url)</span><br><span class="line">        <span class="keyword">if</span> request.status_code == <span class="number">200</span>:</span><br><span class="line">            print(<span class="string">'downloading……%s'</span> % skin_name)</span><br><span class="line">            img_path = os.path.join(self.skin_folder, skin_name)</span><br><span class="line">            <span class="keyword">with</span> open(img_path, <span class="string">'wb'</span>) <span class="keyword">as</span> img:</span><br><span class="line">                img.write(request.content)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'img error!'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">make_folder</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""初始化，创建图片文件夹"""</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(self.skin_folder):</span><br><span class="line">            os.mkdir(self.skin_folder)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 获取英雄列表信息</span></span><br><span class="line">        hero_json = self.get_hero_list()</span><br><span class="line">        hero_keys = hero_json[<span class="string">'keys'</span>]</span><br><span class="line">        <span class="comment"># 循环遍历英雄</span></span><br><span class="line">        <span class="keyword">for</span> hero_id, hero_code <span class="keyword">in</span> hero_keys.items():</span><br><span class="line">            hero_name = hero_json[<span class="string">'data'</span>][hero_code][<span class="string">'name'</span>]</span><br><span class="line">            hero_info = self.get_hero_info(hero_id)</span><br><span class="line">            <span class="keyword">if</span> hero_info:</span><br><span class="line">                skin_list = hero_info[<span class="string">'result'</span>][hero_id][<span class="string">'skins'</span>]</span><br><span class="line">                <span class="comment"># 下载皮肤</span></span><br><span class="line">                self.download_skin_list(skin_list, hero_name)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                print(<span class="string">'英雄【%s】的皮肤获取有问题……'</span> % hero_name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 程序执行入口</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    lol = GetLolSkin()</span><br><span class="line">    <span class="comment"># 创建图片存储文件</span></span><br><span class="line">    lol.make_folder()</span><br><span class="line">    <span class="comment"># 执行脚本</span></span><br><span class="line">    lol.run()</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -469,7 +471,11 @@
           
             <a href="/tags/requests/" rel="tag"># requests</a>
           
-            <a href="/tags/网易云音乐/" rel="tag"># 网易云音乐</a>
+            <a href="/tags/json/" rel="tag"># json</a>
+          
+            <a href="/tags/英雄联盟/" rel="tag"># 英雄联盟</a>
+          
+            <a href="/tags/LOL/" rel="tag"># LOL</a>
           
         </div>
       
@@ -482,8 +488,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/02/Python通过paramiko从远处服务器下载文件资源到本地/" rel="next" title="Python通过paramiko从远处服务器下载文件资源到本地">
-                <i class="fa fa-chevron-left"></i> Python通过paramiko从远处服务器下载文件资源到本地
+              <a href="/2018/11/07/Python爬取王者荣耀英雄皮肤高清图片/" rel="next" title="Python爬取王者荣耀英雄皮肤高清图片">
+                <i class="fa fa-chevron-left"></i> Python爬取王者荣耀英雄皮肤高清图片
               </a>
             
           </div>
@@ -491,10 +497,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/10/Python通过跳板机连接远程MySQL/" rel="prev" title="Python通过跳板机连接远程MySQL">
-                Python通过跳板机连接远程MySQL <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -563,8 +565,8 @@
 
   
     <div class="comments" id="comments">
-      <div class="ds-thread" data-thread-key="2018/08/08/Python下载网易云歌曲（版权限制的怎么播放和下载呢？）/"
-           data-title="Python下载网易云歌曲（版权限制的怎么播放和下载呢？）" data-url="blog.y0701.com/2018/08/08/Python下载网易云歌曲（版权限制的怎么播放和下载呢？）/">
+      <div class="ds-thread" data-thread-key="2018/11/14/Python3爬取英雄联盟英雄皮肤大图/"
+           data-title="Python3爬取英雄联盟英雄皮肤大图" data-url="blog.y0701.com/2018/11/14/Python3爬取英雄联盟英雄皮肤大图/">
       </div>
     </div>
 
@@ -694,7 +696,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要这样下载"><span class="nav-text">为什么要这样下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么查找版权限制不让下载和播放的音乐"><span class="nav-text">怎么查找版权限制不让下载和播放的音乐</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初探network请求信息"><span class="nav-text">初探network请求信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深入查看network请求信息"><span class="nav-text">深入查看network请求信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发现惊喜"><span class="nav-text">发现惊喜</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python下载MP3文件源码"><span class="nav-text">Python下载MP3文件源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结束语"><span class="nav-text">结束语</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#爬虫思路"><span class="nav-text">爬虫思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初步尝试"><span class="nav-text">初步尝试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继续尝试"><span class="nav-text">继续尝试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接着尝试"><span class="nav-text">接着尝试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最后尝试"><span class="nav-text">最后尝试</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路总结"><span class="nav-text">思路总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行环境"><span class="nav-text">运行环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完整代码"><span class="nav-text">完整代码</span></a></li></ol></div>
             
 
           </div>
