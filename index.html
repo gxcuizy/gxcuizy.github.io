@@ -319,6 +319,152 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="blog.y0701.com/2019/05/16/代码片段之jQuery控制input只能输入数字和两位小数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gxcuizy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gxcuizy's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/16/代码片段之jQuery控制input只能输入数字和两位小数/" itemprop="url">代码片段之jQuery控制input只能输入数字和两位小数</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-16T11:27:18+08:00">
+                2019-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/16/代码片段之jQuery控制input只能输入数字和两位小数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/05/16/代码片段之jQuery控制input只能输入数字和两位小数/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://images.unsplash.com/photo-1552661014-41c6afdfb259?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80" alt="page_img"></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>做为一个PHPER，难免会遇到那种表单中jQuery限制输入的问题，比如，限制空格的输入，只允许输入数字，以及小数点的控制等等，这里，我们就说一下数字的限制。</p>
+<h3 id="jquery代码"><a href="#jquery代码" class="headerlink" title="jquery代码"></a>jquery代码</h3><p>话不多说，直接先上jQuery函数，具体的可以看注释说明，在使用这个之前，请务必保证已经提前引入了jQuery库，大家可以自己下载一个jQuery文件，然后引入，也可以查找CDN地址引入，比如在<a href="https://www.bootcdn.cn/jquery/" target="_blank" rel="noopener">https://www.bootcdn.cn/jquery/</a>可以查找到很多版本的引入地址，直接找到你想要的引入就行。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 格式化限制数字文本框输入，只能数字或者两位小数</span></span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">format_input_num</span><span class="params">(obj)</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 清除"数字"和"."以外的字符</span></span></span><br><span class="line"><span class="javascript">        obj.value = obj.value.replace(<span class="regexp">/[^\d.]/g</span>,<span class="string">""</span>);</span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 验证第一个字符是数字</span></span></span><br><span class="line"><span class="javascript">        obj.value = obj.value.replace(<span class="regexp">/^\./g</span>,<span class="string">""</span>);</span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 只保留第一个, 清除多余的</span></span></span><br><span class="line"><span class="javascript">        obj.value = obj.value.replace(<span class="regexp">/\.&#123;2,&#125;/g</span>,<span class="string">"."</span>);</span></span><br><span class="line"><span class="javascript">        obj.value = obj.value.replace(<span class="string">"."</span>,<span class="string">"$#$"</span>).replace(<span class="regexp">/\./g</span>,<span class="string">""</span>).replace(<span class="string">"$#$"</span>,<span class="string">"."</span>);</span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 只能输入两个小数</span></span></span><br><span class="line"><span class="javascript">        obj.value = obj.value.replace(<span class="regexp">/^(\-)*(\d+)\.(\d\d).*$/</span>,<span class="string">'$1$2.$3'</span>);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="函数的直接用法之onkeyup"><a href="#函数的直接用法之onkeyup" class="headerlink" title="函数的直接用法之onkeyup"></a>函数的直接用法之onkeyup</h3><p>在input表单输入中，限制最多只能保留两位小数点，其他自动抹掉；这里会用到onkeyup事件，也就是onkeyup事件会在键盘按键被松开时发生，也就是，这个时候调用我们的函数，来处理已输入的内容。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="attribute">type</span>=<span class="string">"text"</span> <span class="attribute">onkeyup</span>=<span class="string">"format_input_num(this)"</span> <span class="attribute">value</span>=<span class="string">""</span> <span class="attribute">size</span>=<span class="string">"10"</span> /&gt;元</span><br></pre></td></tr></table></figure>
+<h3 id="函数的直接用法之blur"><a href="#函数的直接用法之blur" class="headerlink" title="函数的直接用法之blur"></a>函数的直接用法之blur</h3><p>除了上面的监控键盘事件外，还可以通过监控表单的焦点事件来实现，也就是，表单都有获得焦点事件focus和失去焦点事件blur，我们只需要在失去焦点的时候，调用我们的format_input_num函数就可以了，具体如下：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="attribute">type</span>=<span class="string">"text"</span> <span class="attribute">onblur</span>=<span class="string">"format_input_num(this)"</span> <span class="attribute">value</span>=<span class="string">""</span> <span class="attribute">size</span>=<span class="string">"10"</span> /&gt;元</span><br></pre></td></tr></table></figure>
+<p>或者不在表单中直接绑定方法，而是去jQuery中通过查找元素节点，然后单独绑定相应的事件，并执行相关函数</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">""</span> <span class="attr">size</span>=<span class="string">"10"</span> <span class="attr">id</span>=<span class="string">"money"</span> /&gt;</span>元</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    $(<span class="string">"#money"</span>).off(<span class="string">'blur'</span>).on(<span class="string">'blur'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="actionscript">        format_input_num(<span class="keyword">this</span>);</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="其他输入限制"><a href="#其他输入限制" class="headerlink" title="其他输入限制"></a>其他输入限制</h3><p>限制只能输入数字的写法，也就是，只能输入0-9的数字</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="keyword">type</span>=<span class="string">"text"</span> onkeyup=<span class="symbol">'this</span>.<span class="keyword">value</span>=this.<span class="keyword">value</span>.replace(/\<span class="type">D</span>/gi,<span class="string">""</span>)<span class="string">' /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>限制只能输入数字、字母和横线”-“，其中字母包括大小写</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="keyword">type</span>=<span class="string">"text"</span> onkeyup=<span class="symbol">'value</span>=<span class="keyword">value</span>.replace(/[^<span class="type">A</span>-<span class="type">Za</span>-z0-<span class="number">9</span>\-]+/g,<span class="string">""</span>)<span class="string">' /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>当然了，还有其他很多校验规则，可以自己根据实际需求进行修改和尝试一下</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>这就是我分享CODING过程中的一些代码片段，有不对或者需要优化的地方，大家可以给我留言。</p>
+<p>感谢<a href="http://www.cnblogs.com/angto64/p/5459496.html" target="_blank" rel="noopener">http://www.cnblogs.com/angto64/p/5459496.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="blog.y0701.com/2019/01/09/北漂之毕业裁员后的又一波奇遇/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1545,144 +1691,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="blog.y0701.com/2018/09/19/PHP算法之四大基础算法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gxcuizy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/me.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gxcuizy's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/19/PHP算法之四大基础算法/" itemprop="url">PHP算法之四大基础算法</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-19T11:03:00+08:00">
-                2018-09-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/19/PHP算法之四大基础算法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/09/19/PHP算法之四大基础算法/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="https://farm1.staticflickr.com/788/40452506164_19761c8a00_c.jpg" alt="page_img_url"></p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>虽然工作中，你觉得自己并没有涉及到算法这方面的东西，但是算法是程序的核心，一个程序的好与差，关键是这个程序算法的优劣，所以对于冒泡排序、插入排序、选择排序、快速排序这四种基本算法，我想还是要掌握的。</p>
-<h3 id="冒泡排序法"><a href="#冒泡排序法" class="headerlink" title="冒泡排序法"></a>冒泡排序法</h3><blockquote>
-<p>冒泡排序大概的意思是依次比较相邻的两个数，然后根据大小做出排序，直至最后两位数。由于在排序过程中总是小数往前放，大数往后放，相当于气泡往上升，所以称作冒泡排序。</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/19/PHP算法之四大基础算法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1737,7 +1745,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1750,7 +1758,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
