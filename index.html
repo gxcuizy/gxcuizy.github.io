@@ -399,26 +399,17 @@
 
       
         
-          
-            <p><img src="https://images.unsplash.com/photo-1552661014-41c6afdfb259?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80" alt="page_img"></p>
+          <p><img src="https://images.unsplash.com/photo-1552661014-41c6afdfb259?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80" alt="page_img"></p>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>做为一个PHPER，难免会遇到那种表单中jQuery限制输入的问题，比如，限制空格的输入，只允许输入数字，以及小数点的控制等等，这里，我们就说一下数字的限制。</p>
 <h3 id="jquery代码"><a href="#jquery代码" class="headerlink" title="jquery代码"></a>jquery代码</h3><p>话不多说，直接先上jQuery函数，具体的可以看注释说明，在使用这个之前，请务必保证已经提前引入了jQuery库，大家可以自己下载一个jQuery文件，然后引入，也可以查找CDN地址引入，比如在<a href="https://www.bootcdn.cn/jquery/" target="_blank" rel="noopener">https://www.bootcdn.cn/jquery/</a>可以查找到很多版本的引入地址，直接找到你想要的引入就行。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 格式化限制数字文本框输入，只能数字或者两位小数</span></span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">format_input_num</span><span class="params">(obj)</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 清除"数字"和"."以外的字符</span></span></span><br><span class="line"><span class="javascript">        obj.value = obj.value.replace(<span class="regexp">/[^\d.]/g</span>,<span class="string">""</span>);</span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 验证第一个字符是数字</span></span></span><br><span class="line"><span class="javascript">        obj.value = obj.value.replace(<span class="regexp">/^\./g</span>,<span class="string">""</span>);</span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 只保留第一个, 清除多余的</span></span></span><br><span class="line"><span class="javascript">        obj.value = obj.value.replace(<span class="regexp">/\.&#123;2,&#125;/g</span>,<span class="string">"."</span>);</span></span><br><span class="line"><span class="javascript">        obj.value = obj.value.replace(<span class="string">"."</span>,<span class="string">"$#$"</span>).replace(<span class="regexp">/\./g</span>,<span class="string">""</span>).replace(<span class="string">"$#$"</span>,<span class="string">"."</span>);</span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 只能输入两个小数</span></span></span><br><span class="line"><span class="javascript">        obj.value = obj.value.replace(<span class="regexp">/^(\-)*(\d+)\.(\d\d).*$/</span>,<span class="string">'$1$2.$3'</span>);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="函数的直接用法之onkeyup"><a href="#函数的直接用法之onkeyup" class="headerlink" title="函数的直接用法之onkeyup"></a>函数的直接用法之onkeyup</h3><p>在input表单输入中，限制最多只能保留两位小数点，其他自动抹掉；这里会用到onkeyup事件，也就是onkeyup事件会在键盘按键被松开时发生，也就是，这个时候调用我们的函数，来处理已输入的内容。</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="attribute">type</span>=<span class="string">"text"</span> <span class="attribute">onkeyup</span>=<span class="string">"format_input_num(this)"</span> <span class="attribute">value</span>=<span class="string">""</span> <span class="attribute">size</span>=<span class="string">"10"</span> /&gt;元</span><br></pre></td></tr></table></figure>
-<h3 id="函数的直接用法之blur"><a href="#函数的直接用法之blur" class="headerlink" title="函数的直接用法之blur"></a>函数的直接用法之blur</h3><p>除了上面的监控键盘事件外，还可以通过监控表单的焦点事件来实现，也就是，表单都有获得焦点事件focus和失去焦点事件blur，我们只需要在失去焦点的时候，调用我们的format_input_num函数就可以了，具体如下：</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="attribute">type</span>=<span class="string">"text"</span> <span class="attribute">onblur</span>=<span class="string">"format_input_num(this)"</span> <span class="attribute">value</span>=<span class="string">""</span> <span class="attribute">size</span>=<span class="string">"10"</span> /&gt;元</span><br></pre></td></tr></table></figure>
-<p>或者不在表单中直接绑定方法，而是去jQuery中通过查找元素节点，然后单独绑定相应的事件，并执行相关函数</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">""</span> <span class="attr">size</span>=<span class="string">"10"</span> <span class="attr">id</span>=<span class="string">"money"</span> /&gt;</span>元</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    $(<span class="string">"#money"</span>).off(<span class="string">'blur'</span>).on(<span class="string">'blur'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="actionscript">        format_input_num(<span class="keyword">this</span>);</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="其他输入限制"><a href="#其他输入限制" class="headerlink" title="其他输入限制"></a>其他输入限制</h3><p>限制只能输入数字的写法，也就是，只能输入0-9的数字</p>
-<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="keyword">type</span>=<span class="string">"text"</span> onkeyup=<span class="symbol">'this</span>.<span class="keyword">value</span>=this.<span class="keyword">value</span>.replace(/\<span class="type">D</span>/gi,<span class="string">""</span>)<span class="string">' /&gt;</span></span><br></pre></td></tr></table></figure>
-<p>限制只能输入数字、字母和横线”-“，其中字母包括大小写</p>
-<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="keyword">type</span>=<span class="string">"text"</span> onkeyup=<span class="symbol">'value</span>=<span class="keyword">value</span>.replace(/[^<span class="type">A</span>-<span class="type">Za</span>-z0-<span class="number">9</span>\-]+/g,<span class="string">""</span>)<span class="string">' /&gt;</span></span><br></pre></td></tr></table></figure>
-<p>当然了，还有其他很多校验规则，可以自己根据实际需求进行修改和尝试一下</p>
-<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>这就是我分享CODING过程中的一些代码片段，有不对或者需要优化的地方，大家可以给我留言。</p>
-<p>感谢<a href="http://www.cnblogs.com/angto64/p/5459496.html" target="_blank" rel="noopener">http://www.cnblogs.com/angto64/p/5459496.html</a></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/16/代码片段之jQuery控制input只能输入数字和两位小数/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -545,7 +536,7 @@
 
       
         
-          <p><img src="https://user-gold-cdn.xitu.io/2019/1/9/16831a0a0e509c8e" alt="page_img"></p>
+          <p><img src="https://image-static.segmentfault.com/380/486/3804861294-5c35ac4682d13_articlex" alt="page_img"></p>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>之前说到，一毕业，实习的公司，就面临着转型，然后裁员，接着说一下，毕业之后，入职的第一家公司的遭遇吧。</p>
 <h3 id="快速找到新单位"><a href="#快速找到新单位" class="headerlink" title="快速找到新单位"></a>快速找到新单位</h3><p>离职当天下午，CTO找了我，说有一个朋友的公司，是一个小公司，刚拿到融资的，是做类似社区服务的，主要是在亚运村盘古大观那里，做一个为那里的上班族代收快递、午餐供应，以及一些小零食水果的线上供应的相关功能，并且推荐我和另外一个同事一起去，当时，谈的待遇还可以，说那边功能需求挺急的，要求一个月内上线，所以，我们两当天办理好离职手续后，第二天，就直接去那边入职了。这时候，大概是7月中旬吧。</p>
           <!--noindex-->
@@ -681,7 +672,7 @@
 
       
         
-          <p><img src="https://user-gold-cdn.xitu.io/2019/1/8/1682b4bdc21b469d" alt="page_img"></p>
+          <p><img src="https://image-static.segmentfault.com/290/987/2909872376-5c341b8716442_articlex" alt="page_img"></p>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>很多专业，到了大四，实习期只有几个月，甚至更短，但是我们计算机专业，一般到了大四，要么就是留校复习考研的，或者留校备考公务员的，又或者留校准备毕业自己创业当老板的，而那些在编程道路上迷途不知返的人，一般都会选择出去找个编程相关的实习机会，有去广州、深圳的，也有去北京、上海的，总之，都是去大城市，毕竟小城市，互联网行业还是不太景气，收入也不是很客观，大城市才是最终归宿……而我也一样，选择走上了这条不归路，来到了帝都–北京。</p>
 <h3 id="开始面试，很顺利"><a href="#开始面试，很顺利" class="headerlink" title="开始面试，很顺利"></a>开始面试，很顺利</h3><p>大概是2015年11月中旬这样，开始出去面试，面试的第一天，刚好是周五，我记得，这一天，大概面试了三、四家吧，真的是非常的幸运，有两家公司愿意给我一个实习的机会，都是做电商的，只不过针对的消费群体不一样，一个是面向乡镇的消费群体，一个是跨境电商，最终，我决定选择去了这个跨境电商的公司，入职时间就在下周一，而且，非常幸运的是，一起入职的还有一个认识的朋友，然后，我们就组成了一起上下班的铁搭档。</p>
           <!--noindex-->
