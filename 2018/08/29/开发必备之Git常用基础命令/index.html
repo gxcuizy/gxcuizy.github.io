@@ -100,7 +100,7 @@
 <meta property="og:description" content="前言这个Git常用命令的文章，之前在掘金和SegmentFault都有发不过，现在想整理到个人博客中，分享给大家，所以，才在这里重新发布。如有问题，请给我留言沟通，谢谢！ Git是什么？Git是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个免费、开源的版本控制软件，用于敏捷高效地处理任何或小或大的项目，可以有效、高速的处理从不同的项目版本管理。夸一下说：Git是目">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images.pexels.com/photos/1181253/pexels-photo-1181253.jpeg">
-<meta property="og:updated_time" content="2018-09-03T01:59:50.000Z">
+<meta property="og:updated_time" content="2019-12-17T08:43:46.343Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开发必备之Git常用基础命令">
 <meta name="twitter:description" content="前言这个Git常用命令的文章，之前在掘金和SegmentFault都有发不过，现在想整理到个人博客中，分享给大家，所以，才在这里重新发布。如有问题，请给我留言沟通，谢谢！ Git是什么？Git是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个免费、开源的版本控制软件，用于敏捷高效地处理任何或小或大的项目，可以有效、高速的处理从不同的项目版本管理。夸一下说：Git是目">
@@ -419,8 +419,8 @@
 <p># 如果本地没有配置公钥，那么你是不是每次pull或者或者push等操作时，是不是都得需要输入Git账号密码？下面的这组命令，将能够快速的解决这个烦恼</p>
 <p>$ git config –global credential.helper store</p>
 <p># 拉取远程仓库的代码到本地工作区，一说到要拉取代码，很多人都会想到，git pull，但是我个人非常不喜欢这个命令，使用git fetch也可以，我如下两条命令拉取代码</p>
-<p>$ git rempote update</p>
-<p>$git rebase origin:[branch-name]</p>
+<p>$ git remote update</p>
+<p>$git rebase origin/[branch-name]</p>
 <p># 拉取代码，肯定会遇到有冲突的情况，这个时候，该怎么办呢？不要慌，有冲突就解决嘛，解决我就不说了，我就说，解决冲突代码后的操作，本地代码冲突解决完毕后，执行以下命令即可，即提交解决冲突文件到工作区，继续rebase</p>
 <p>$ git add [file-dir] </p>
 <p>$ git rebase –continue</p>
@@ -630,7 +630,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -643,7 +643,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -724,7 +724,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
