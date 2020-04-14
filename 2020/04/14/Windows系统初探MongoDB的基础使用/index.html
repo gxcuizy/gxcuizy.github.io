@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "f3f6c502"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+      
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="程序员,MongoDB,数据库," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="MongoDB是什么？ MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。MongoDB 将数据存储为一个文档，数据结构由键值(key=&amp;gt;value)对组成。MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。  下载安装MongoDB 提供了可用于 32 位和 64 位系统的预编译二进制包，你可以从MongoDB官网下载安装，">
+<meta name="keywords" content="程序员,MongoDB,数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows系统初探MongoDB的基础使用">
+<meta property="og:url" content="blog.y0701.com/2020/04/14/Windows系统初探MongoDB的基础使用/index.html">
+<meta property="og:site_name" content="gxcuizy&#39;s blog">
+<meta property="og:description" content="MongoDB是什么？ MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。MongoDB 将数据存储为一个文档，数据结构由键值(key=&amp;gt;value)对组成。MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。  下载安装MongoDB 提供了可用于 32 位和 64 位系统的预编译二进制包，你可以从MongoDB官网下载安装，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://image-static.segmentfault.com/409/895/4098956202-5e957aeebe442_articlex">
+<meta property="og:updated_time" content="2020-04-14T08:59:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Windows系统初探MongoDB的基础使用">
+<meta name="twitter:description" content="MongoDB是什么？ MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。MongoDB 将数据存储为一个文档，数据结构由键值(key=&amp;gt;value)对组成。MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。  下载安装MongoDB 提供了可用于 32 位和 64 位系统的预编译二进制包，你可以从MongoDB官网下载安装，">
+<meta name="twitter:image" content="https://image-static.segmentfault.com/409/895/4098956202-5e957aeebe442_articlex">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="blog.y0701.com/2020/04/14/Windows系统初探MongoDB的基础使用/"/>
+
+
+
+
+
+  <title>Windows系统初探MongoDB的基础使用 | gxcuizy's blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?79a24eb542940d706401923128bd4415";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gxcuizy's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/photos/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="blog.y0701.com/2020/04/14/Windows系统初探MongoDB的基础使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gxcuizy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gxcuizy's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Windows系统初探MongoDB的基础使用</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-14T16:55:06+08:00">
+                2020-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/04/14/Windows系统初探MongoDB的基础使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2020/04/14/Windows系统初探MongoDB的基础使用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 点击量：
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://image-static.segmentfault.com/409/895/4098956202-5e957aeebe442_articlex" alt=""></p>
+<h3 id="MongoDB是什么？"><a href="#MongoDB是什么？" class="headerlink" title="MongoDB是什么？"></a>MongoDB是什么？</h3><blockquote>
+<p>MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。MongoDB 将数据存储为一个文档，数据结构由键值(key=&gt;value)对组成。MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。</p>
+</blockquote>
+<h3 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h3><p>MongoDB 提供了可用于 32 位和 64 位系统的预编译二进制包，你可以从MongoDB官网下载安装，MongoDB 预编译二进制包下载地址：<br><a href="https://www.mongodb.com/download-center/community" target="_blank" rel="noopener">https://www.mongodb.com/download-center/community</a></p>
+<p>我的MongoDB是安装在D:\mongodb目录下，安装好后，进入到安装目录D:\mongodb\data下，新建一个数据库目录，例如db</p>
+<a id="more"></a>
+<h3 id="mongodb服务端启动"><a href="#mongodb服务端启动" class="headerlink" title="mongodb服务端启动"></a>mongodb服务端启动</h3><h4 id="绝对路劲的方式启动"><a href="#绝对路劲的方式启动" class="headerlink" title="绝对路劲的方式启动"></a>绝对路劲的方式启动</h4><p>打开命令行工具，这里我推荐一下<a href="https://cmder.net/" target="_blank" rel="noopener">Cmder</a>命令行工具，我一直在用，打开后，输入<code>D:\mongodb\bin\mongod --dbpath D:\mongodb\data\db</code>回车执行</p>
+<h4 id="mongod命令的方式启动"><a href="#mongod命令的方式启动" class="headerlink" title="mongod命令的方式启动"></a>mongod命令的方式启动</h4><p>配置了bin目录的Path路径，可以直接用mongod命令启动服务器，执行<code>mongod --dbpath D:\mongodb\data\db</code>或者在data目录下执行<code>mongod --dbpath .\db</code></p>
+<h4 id="配置bin的Path路径"><a href="#配置bin的Path路径" class="headerlink" title="配置bin的Path路径"></a>配置bin的Path路径</h4><p>为了启动mongodb方便，将mongod.exe路径加入环境变量，位置：<strong>计算机-&gt;属性-&gt;高级系统设置-&gt;环境变量</strong>,在系统变量的Path里，在末尾加上安装MongoDB的bin目录，记得加英文分号‘;’。全部确定保存后，重新打开命令行窗口，就可以在任何地方都能用到mongod命令以及bin目录下的其他命令了</p>
+<h3 id="客户端连接"><a href="#客户端连接" class="headerlink" title="客户端连接"></a>客户端连接</h3><p>在之前启动了服务器后，千万不要关闭服务端的命令行窗口，需要再重新打开一个命令行窗口，在任意目录下输入mongo即可启动客户端（如果遇到“’mongo’不是内部或外部命令，也不是可运行的程序或批处理文件。”，请配置上面的Path路径）；如果你就是不想配置Path路径，那你直接到你安装目录的bin目录下，双击mongo.exe打开也能直接连接客户端</p>
+<h3 id="MongoDB-概念解析"><a href="#MongoDB-概念解析" class="headerlink" title="MongoDB 概念解析"></a>MongoDB 概念解析</h3><p>在mongodb中基本的概念是文档、集合、数据库</p>
+<ul>
+<li>数据库：一个mongodb中可以建立多个数据库；MongoDB的默认数据库为”db”，该数据库存储在data目录中。使用show dbs，可以查看全部数据库</li>
+<li>集合：集合就是 MongoDB 文档组，类似于RDBMS中的表格。集合存在于数据库中，集合没有固定的结构，这意味着你在对集合可以插入不同格式和类型的数据。使用<code>show collections</code>，可以查看当前数据库实例下的全部集合</li>
+<li>文档：文档是一组键值(key-value)对(即 BSON)。MongoDB 的文档不需要设置相同的字段，并且相同的字段不需要相同的数据类型。使用<code>db.collection.find()</code>命令，可以查看collection集合下的全部文档</li>
+</ul>
+<h3 id="数据库（db）"><a href="#数据库（db）" class="headerlink" title="数据库（db）"></a>数据库（db）</h3><p>初次连接客户端，使用db查看，默认使用的是test数据库，再使用show dbs查看全部数据库，并使用use命令切换数据库，例如使用use admin切换到admin数据库<br><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; db</span><br><span class="line">test</span><br><span class="line">&gt; show dbs</span><br><span class="line">admin   0.000GB</span><br><span class="line">config  0.000GB</span><br><span class="line">local   0.000GB</span><br><span class="line">school  0.000GB</span><br><span class="line"><span class="keyword">test    </span>0.000GB</span><br><span class="line">&gt; use admin</span><br><span class="line">switched to db admin</span><br></pre></td></tr></table></figure></p>
+<h4 id="新建数据库"><a href="#新建数据库" class="headerlink" title="新建数据库"></a>新建数据库</h4><p>新建数据库的语法为：<code>use databaseName</code>，也就是和切换数据库是一样的，如果切换的数据库不存在，则创建新的数据库，例如需要使用<code>use order</code>新建一个数据库order，但是使用<code>show dbs</code>查看并没有发现新建的数据库，也就是空集合的数据库不会显示出来，则需要向order中随便插入一个文档就能看到了，例如我们执行<code>db.info.insert({&#39;name&#39;:&#39;张三&#39;,&#39;note&#39;:&#39;hello world&#39;})</code>向info集合中插入一条文档，再使用<code>show dbs</code>就能看到order数据库了<br><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&gt; use order</span><br><span class="line">switched to db order</span><br><span class="line">&gt; db</span><br><span class="line">order</span><br><span class="line">&gt; show dbs</span><br><span class="line">admin   0.000GB</span><br><span class="line">config  0.000GB</span><br><span class="line">local   0.000GB</span><br><span class="line">school  0.000GB</span><br><span class="line"><span class="keyword">test    </span>0.000GB</span><br><span class="line">&gt; db.info.insert(&#123;'name':'张三','note':'hello world'&#125;)</span><br><span class="line">WriteResult(&#123; "nInserted" : 1 &#125;)</span><br><span class="line">&gt; show dbs</span><br><span class="line">admin   0.000GB</span><br><span class="line">config  0.000GB</span><br><span class="line">local   0.000GB</span><br><span class="line">order   0.000GB</span><br><span class="line">school  0.000GB</span><br><span class="line"><span class="keyword">test    </span>0.000GB</span><br></pre></td></tr></table></figure></p>
+<h4 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h4><p>可以使用<code>db.dropDatabase()</code>删除当前数据库，再使用<code>show dbs</code>查看当前数据库是否删除，可以看到school已经不存在了（好奇的人，这时候也许会问：我在当前数据库下删除其他数据库可以吗？我试了下，好像不行，报错了……）<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; use school</span><br><span class="line">switched <span class="keyword">to</span> db school</span><br><span class="line">&gt; db</span><br><span class="line">school</span><br><span class="line">&gt; db.dropDatabase()</span><br><span class="line">&#123; <span class="string">"dropped"</span> : <span class="string">"school"</span>, <span class="string">"ok"</span> : 1 &#125;</span><br><span class="line">&gt; show dbs</span><br><span class="line">admin   0.000GB</span><br><span class="line">config  0.000GB</span><br><span class="line">local   0.000GB</span><br><span class="line">order   0.000GB</span><br><span class="line">test    0.000GB</span><br></pre></td></tr></table></figure></p>
+<h3 id="集合（collection）"><a href="#集合（collection）" class="headerlink" title="集合（collection）"></a>集合（collection）</h3><h4 id="创建集合"><a href="#创建集合" class="headerlink" title="创建集合"></a>创建集合</h4><p>创建集合的语法为<code>db.createCollection(name, options)</code>，第一个参数name是必传的集合名，第二个options是指定有关内存大小及索引的选项的可选参数，例如，我们使用命令<code>db.createCollection(&#39;goods&#39;)</code>在order数据库下新建一个goods集合，然后使用<code>show collections</code>或<code>show tables</code>命令查看该数据库下的文档<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> use order</span></span><br><span class="line">switched to db order</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.createCollection(<span class="string">'goods'</span>)</span></span><br><span class="line">&#123; "ok" : 1 &#125;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> show collections</span></span><br><span class="line">goods</span><br><span class="line">info</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> show tables</span></span><br><span class="line">goods</span><br><span class="line">info</span><br></pre></td></tr></table></figure></p>
+<h4 id="能不能不用预先创建集合？"><a href="#能不能不用预先创建集合？" class="headerlink" title="能不能不用预先创建集合？"></a>能不能不用预先创建集合？</h4><p>当然是可以的，其实在MongoDB中，我们不需要先创建集合，因为当你插入文档后，MongoDB会自动创建该集合，例如，我们使用<code>db.user.insert({&#39;name&#39;:&#39;lisan&#39;,&#39;age&#39;:23,&#39;sex&#39;:&#39;w&#39;})</code>在order数据库中创建user集合并插入一条文档<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; show tables</span><br><span class="line">goods</span><br><span class="line">info</span><br><span class="line">&gt; db<span class="selector-class">.user</span><span class="selector-class">.insert</span>(&#123;<span class="string">'name'</span>:<span class="string">'lisan'</span>,<span class="string">'age'</span>:<span class="number">23</span>,<span class="string">'sex'</span>:<span class="string">'w'</span>&#125;)</span><br><span class="line"><span class="function"><span class="title">WriteResult</span><span class="params">(&#123; <span class="string">"nInserted"</span> : <span class="number">1</span> &#125;)</span></span></span><br><span class="line">&gt; show collections</span><br><span class="line">goods</span><br><span class="line">info</span><br><span class="line">user</span><br></pre></td></tr></table></figure></p>
+<h4 id="删除集合"><a href="#删除集合" class="headerlink" title="删除集合"></a>删除集合</h4><p>创建了集合，那么肯定就需要删除多余的集合，删除集合的语法为<code>db.collectionName.drop()</code>，例如，我们使用<code>db.user.drop()</code>删除刚刚创建的user集合<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> db.user.drop()</span></span><br><span class="line">true</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> show collections</span></span><br><span class="line">goods</span><br><span class="line">info</span><br></pre></td></tr></table></figure></p>
+<p><strong>友情帮助</strong>：对了，可以使用<code>db.collectionName.help()</code>查看集合的帮助，例如：<code>db.goods.help()</code></p>
+<h3 id="文档（document）"><a href="#文档（document）" class="headerlink" title="文档（document）"></a>文档（document）</h3><h4 id="插入文档"><a href="#插入文档" class="headerlink" title="插入文档"></a>插入文档</h4><p>MongoDB使用insert()方法向集合中插入文档，语法为<code>db.collectionName.insert(document)</code>，例如使用<code>db.goods.insert({&#39;name&#39;:&#39;商品名称&#39;,&#39;price&#39;:123,&#39;sale&#39;:6})</code>向goods集合中插入一条数据（当我们插入一条文档的时MongoDB会自动为此文档生成一个_id属性，且_id的值一定是唯一的，默认为objectId()）<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; db<span class="selector-class">.goods</span><span class="selector-class">.insert</span>(&#123;<span class="string">'name'</span>:<span class="string">'商品名称'</span>,<span class="string">'price'</span>:<span class="number">123</span>,<span class="string">'sale'</span>:<span class="number">6</span>&#125;)</span><br><span class="line"><span class="function"><span class="title">WriteResult</span><span class="params">(&#123; <span class="string">"nInserted"</span> : <span class="number">1</span> &#125;)</span></span></span><br></pre></td></tr></table></figure></p>
+<h4 id="插入文档的其他方法"><a href="#插入文档的其他方法" class="headerlink" title="插入文档的其他方法"></a>插入文档的其他方法</h4><p>插入文档，还是可以使用<code>db.collectionName.insertOne(document)</code>插入一条或者使用<code>db.collectionName.insertMany(document)</code>插入多条，insertOne()的使用和insert()一样的，document都是一个json对象；insertMany()插入多条时，document是多个json对象的数组，示例如下：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt; db<span class="selector-class">.goods</span><span class="selector-class">.insertOne</span>(&#123;<span class="string">'name'</span>:<span class="string">'商品名称6'</span>,<span class="string">'price'</span>:<span class="number">19</span>,<span class="string">'sale'</span>:<span class="number">9</span>&#125;))))</span><br><span class="line"></span><br><span class="line">        <span class="string">"acknowledged"</span> : true,</span><br><span class="line">        <span class="string">"insertedId"</span> : ObjectId(<span class="string">"5e953450aabbbfa8f930a967"</span>)</span><br><span class="line">&#125;</span><br><span class="line">&gt; db<span class="selector-class">.goods</span><span class="selector-class">.insertMany</span>([&#123;<span class="string">'name'</span>:<span class="string">'商品名称88'</span>,<span class="string">'price'</span>:<span class="number">18</span>,<span class="string">'sale'</span>:<span class="number">1</span>&#125;,&#123;<span class="string">'name'</span>:<span class="string">'商品名称99'</span>,<span class="string">'price'</span>:<span class="number">99</span>,<span class="string">'sale'</span>:<span class="number">99</span>&#125;])))</span><br><span class="line"></span><br><span class="line">        <span class="string">"acknowledged"</span> : true,</span><br><span class="line">        <span class="string">"insertedIds"</span> : [</span><br><span class="line">                ObjectId(<span class="string">"5e953475aabbbfa8f930a968"</span>),</span><br><span class="line">                ObjectId(<span class="string">"5e953475aabbbfa8f930a969"</span>)</span><br><span class="line">        ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>另外，插入文档也可以使用<code>db.collectionName.save(document)</code>命令。如果不指定_id字段save()方法类似于insert()方法。如果指定_id字段，则会更新该_id的数据。</p>
+<h4 id="更新文档"><a href="#更新文档" class="headerlink" title="更新文档"></a>更新文档</h4><p>MongoDB使用update()方法来更新集合中的文档，语法如下：<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">db.collectionName.update(</span><br><span class="line">   <span class="params">&lt;query&gt;</span>,</span><br><span class="line">   <span class="params">&lt;update&gt;</span>,</span><br><span class="line">   &#123;</span><br><span class="line"><span class="symbol">     upsert:</span> <span class="params">&lt;boolean&gt;</span>,</span><br><span class="line"><span class="symbol">     multi:</span> <span class="params">&lt;boolean&gt;</span>,</span><br><span class="line"><span class="symbol">     writeConcern:</span> <span class="params">&lt;document&gt;</span></span><br><span class="line">   &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<p>前面，我们再goods集合中插入了一条<code>{&#39;name&#39;:&#39;商品名称6&#39;,&#39;price&#39;:19,&#39;sale&#39;:9}</code>的文档，现在我们更新这个文档，把名称 name=商品名称6 的价格 price 改为91，则更新命令为<code>db.goods.update({&#39;name&#39;:&#39;商品名称6&#39;}, {$set:{&#39;price&#39;:91}})</code>，更新前后对比发现确实变了<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.goods.find()</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e95322caabbbfa8f930a965"</span>), <span class="string">"name"</span> : <span class="string">"商品名称"</span>, <span class="string">"price"</span> : <span class="number">123</span>, <span class="string">"sale"</span> : <span class="number">6</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e95340faabbbfa8f930a966"</span>), <span class="string">"name"</span> : <span class="string">"商品名称1"</span>, <span class="string">"price"</span> : <span class="number">19.99</span>, <span class="string">"sale"</span> : <span class="number">8</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953450aabbbfa8f930a967"</span>), <span class="string">"name"</span> : <span class="string">"商品名称6"</span>, <span class="string">"price"</span> : <span class="number">19</span>, <span class="string">"sale"</span> : <span class="number">9</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953475aabbbfa8f930a968"</span>), <span class="string">"name"</span> : <span class="string">"商品名称88"</span>, <span class="string">"price"</span> : <span class="number">18</span>, <span class="string">"sale"</span> : <span class="number">1</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953475aabbbfa8f930a969"</span>), <span class="string">"name"</span> : <span class="string">"商品名称99"</span>, <span class="string">"price"</span> : <span class="number">99</span>, <span class="string">"sale"</span> : <span class="number">99</span> &#125;</span><br><span class="line">&gt; db.goods.<span class="keyword">update</span>(&#123;<span class="string">'name'</span>:<span class="string">'商品名称6'</span>&#125;, &#123;$set:&#123;<span class="string">'price'</span>:<span class="number">91</span>&#125;&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">"nMatched"</span> : <span class="number">1</span>, <span class="string">"nUpserted"</span> : <span class="number">0</span>, <span class="string">"nModified"</span> : <span class="number">1</span> &#125;)</span><br><span class="line">&gt; db.goods.find()                                       <span class="number">1</span>&#125;&#125;)</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e95322caabbbfa8f930a965"</span>), <span class="string">"name"</span> : <span class="string">"商品名称"</span>, <span class="string">"price"</span> : <span class="number">123</span>, <span class="string">"sale"</span> : <span class="number">6</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e95340faabbbfa8f930a966"</span>), <span class="string">"name"</span> : <span class="string">"商品名称1"</span>, <span class="string">"price"</span> : <span class="number">19.99</span>, <span class="string">"sale"</span> : <span class="number">8</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953450aabbbfa8f930a967"</span>), <span class="string">"name"</span> : <span class="string">"商品名称6"</span>, <span class="string">"price"</span> : <span class="number">91</span>, <span class="string">"sale"</span> : <span class="number">9</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953475aabbbfa8f930a968"</span>), <span class="string">"name"</span> : <span class="string">"商品名称88"</span>, <span class="string">"price"</span> : <span class="number">18</span>, <span class="string">"sale"</span> : <span class="number">1</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953475aabbbfa8f930a969"</span>), <span class="string">"name"</span> : <span class="string">"商品名称99"</span>, <span class="string">"price"</span> : <span class="number">99</span>, <span class="string">"sale"</span> : <span class="number">99</span> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>也可以通过save()方法通过传入的文档来替换已有文档，必须传入_id的值</p>
+<h4 id="部分更新操作符"><a href="#部分更新操作符" class="headerlink" title="部分更新操作符"></a>部分更新操作符</h4><p>上面的update命令中，可能你会问\$set那个是什么意思呢？这是操作符，用来指定设置文档某字段的值，还有其他很多更新操作符，下面大概列一下：</p>
+<ul>
+<li>$unset：删除指定字段</li>
+<li>$inc：给一个字段增加指定数值</li>
+<li>$pop：删除数组字段中的第一个或最后一个元素</li>
+<li>$push：向数组中追加一个值</li>
+<li>$pushAll：向数组中追加多个指定值</li>
+<li>$pull：符合条件的值将被删除</li>
+<li>其他……</li>
+</ul>
+<h4 id="其他更新文档说明"><a href="#其他更新文档说明" class="headerlink" title="其他更新文档说明"></a>其他更新文档说明</h4><p>另外，update()默认只会更新符合条件的第一条数据，如果需要全部更新，则需要指定multi的值为true，例如下面的数据，我提前把两条文档的price改为18，然后把这两条文档的name改为“商品名称相同”，可以看到执行一次，两条数据都变了<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.goods.find()                                                      e&#125;&#125;)</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e95322caabbbfa8f930a965"</span>), <span class="string">"name"</span> : <span class="string">"商品名称"</span>, <span class="string">"price"</span> : <span class="number">123</span>, <span class="string">"sale"</span> : <span class="number">6</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e95340faabbbfa8f930a966"</span>), <span class="string">"name"</span> : <span class="string">"商品名称1"</span>, <span class="string">"price"</span> : <span class="number">19.99</span>, <span class="string">"sale"</span> : <span class="number">8</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953450aabbbfa8f930a967"</span>), <span class="string">"name"</span> : <span class="string">"商品名称6"</span>, <span class="string">"price"</span> : <span class="number">18</span>, <span class="string">"sale"</span> : <span class="number">9</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953475aabbbfa8f930a968"</span>), <span class="string">"name"</span> : <span class="string">"商品名称88"</span>, <span class="string">"price"</span> : <span class="number">18</span>, <span class="string">"sale"</span> : <span class="number">1</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953475aabbbfa8f930a969"</span>), <span class="string">"name"</span> : <span class="string">"商品名称99"</span>, <span class="string">"price"</span> : <span class="number">99</span>, <span class="string">"sale"</span> : <span class="number">99</span> &#125;</span><br><span class="line">&gt; db.goods.<span class="keyword">update</span>(&#123;<span class="string">'price'</span>:<span class="number">18</span>&#125;, &#123;$set:&#123;<span class="string">'name'</span>:<span class="string">'商品名称相同'</span>&#125;&#125;, &#123;multi: true&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">"nMatched"</span> : <span class="number">2</span>, <span class="string">"nUpserted"</span> : <span class="number">0</span>, <span class="string">"nModified"</span> : <span class="number">2</span> &#125;)</span><br><span class="line">&gt; db.goods.find()                                                       <span class="literal">true</span>&#125;)</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e95322caabbbfa8f930a965"</span>), <span class="string">"name"</span> : <span class="string">"商品名称"</span>, <span class="string">"price"</span> : <span class="number">123</span>, <span class="string">"sale"</span> : <span class="number">6</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e95340faabbbfa8f930a966"</span>), <span class="string">"name"</span> : <span class="string">"商品名称1"</span>, <span class="string">"price"</span> : <span class="number">19.99</span>, <span class="string">"sale"</span> : <span class="number">8</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953450aabbbfa8f930a967"</span>), <span class="string">"name"</span> : <span class="string">"商品名称相同"</span>, <span class="string">"price"</span> : <span class="number">18</span>, <span class="string">"sale"</span> : <span class="number">9</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953475aabbbfa8f930a968"</span>), <span class="string">"name"</span> : <span class="string">"商品名称相同"</span>, <span class="string">"price"</span> : <span class="number">18</span>, <span class="string">"sale"</span> : <span class="number">1</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953475aabbbfa8f930a969"</span>), <span class="string">"name"</span> : <span class="string">"商品名称99"</span>, <span class="string">"price"</span> : <span class="number">99</span>, <span class="string">"sale"</span> : <span class="number">99</span> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>还有，在3.2版本开始，MongoDB还提供了<code>db.collectionName.updateOne()</code>更新一个文档，<code>db.collectionName.updateMany()</code>更新多个文档，更新单个和update相同，传入前两个参数即可，使用updateMany()更新多个更加方便，不必传入multi为true了</p>
+<h4 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h4><p>MongoDB使用remove()来移除文档，其语法如下<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">db</span><span class="selector-class">.collectionName</span><span class="selector-class">.remove</span>(</span><br><span class="line">   &lt;<span class="selector-tag">query</span>&gt;,</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="attribute">justOne</span>: &lt;boolean&gt;,</span><br><span class="line">     writeConcern: &lt;document&gt;</span><br><span class="line">   &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<p>我们使用remove()来移除goods集合中 name=商品名称 的文档，其命令为<code>db.goods.remove({&#39;goods&#39;: &#39;商品名称&#39;})</code><br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; db<span class="selector-class">.goods</span><span class="selector-class">.remove</span>(&#123;<span class="string">'name'</span>: <span class="string">'商品名称'</span>&#125;))</span><br><span class="line"><span class="function"><span class="title">WriteResult</span><span class="params">(&#123; <span class="string">"nRemoved"</span> : <span class="number">1</span> &#125;)</span></span></span><br><span class="line">&gt; db<span class="selector-class">.goods</span><span class="selector-class">.find</span>()</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e95340faabbbfa8f930a966"</span>), <span class="string">"name"</span> : <span class="string">"商品名称1"</span>, <span class="string">"price"</span> : <span class="number">19.99</span>, <span class="string">"sale"</span> : <span class="number">8</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953450aabbbfa8f930a967"</span>), <span class="string">"name"</span> : <span class="string">"商品名称相同"</span>, <span class="string">"price"</span> : <span class="number">18</span>, <span class="string">"sale"</span> : <span class="number">9</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953475aabbbfa8f930a968"</span>), <span class="string">"name"</span> : <span class="string">"商品名称相同"</span>, <span class="string">"price"</span> : <span class="number">18</span>, <span class="string">"sale"</span> : <span class="number">1</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953475aabbbfa8f930a969"</span>), <span class="string">"name"</span> : <span class="string">"商品名称99"</span>, <span class="string">"price"</span> : <span class="number">99</span>, <span class="string">"sale"</span> : <span class="number">99</span> &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="其他删除文档说明"><a href="#其他删除文档说明" class="headerlink" title="其他删除文档说明"></a>其他删除文档说明</h4><ol>
+<li><p>执行删除操作的时候，默认是删除所有符合条件的数据，如果你想删除指定的最多条数，则在第二个参数传入该限制数字：<code>db.goods.remove({&#39;goods&#39;: &#39;商品名称&#39;}, 2)</code>，如果你想删除集合的全部文档传入空对象即可，也就是<code>db.goods.remove({})</code></p>
+</li>
+<li><p>remove()方法已经过时了，现在官方推荐使用 deleteOne()删除单个文档 和 delete；Many()删除多个文档，例如删除多个的命令为<code>db.goods.deleteOne({&#39;goods&#39;: &#39;商品名称&#39;})</code>，删除多个的命令为<code>db.goods.deleteMany({&#39;goods&#39;: &#39;商品名称&#39;})</code></p>
+</li>
+</ol>
+<h4 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h4><p>MongoDB 查询文档使用 find() 方法，其语法为<code>db.collectionName.find(query, projection)</code>，两个参数都是可选的（其中query是查询条件，projection是返回字段），啥都不传默认查询全部文档的全部字段<br>查找goods集合的全部文档，命令为<code>db.goods.find()</code><br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.goods.find()</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e95340faabbbfa8f930a966"</span>), <span class="string">"name"</span> : <span class="string">"商品名称1"</span>, <span class="string">"price"</span> : <span class="number">19.99</span>, <span class="string">"sale"</span> : <span class="number">8</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953450aabbbfa8f930a967"</span>), <span class="string">"name"</span> : <span class="string">"商品名称相同"</span>, <span class="string">"price"</span> : <span class="number">18</span>, <span class="string">"sale"</span> : <span class="number">9</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953475aabbbfa8f930a968"</span>), <span class="string">"name"</span> : <span class="string">"商品名称相同"</span>, <span class="string">"price"</span> : <span class="number">18</span>, <span class="string">"sale"</span> : <span class="number">1</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953475aabbbfa8f930a969"</span>), <span class="string">"name"</span> : <span class="string">"商品名称99"</span>, <span class="string">"price"</span> : <span class="number">99</span>, <span class="string">"sale"</span> : <span class="number">99</span> &#125;</span><br><span class="line">查找goods集合sale大于<span class="number">6</span>的文档，命令为db.goods.find(&#123;<span class="string">'sale'</span>: &#123;$gt: <span class="number">6</span>&#125;&#125;)</span><br><span class="line">&gt; db.goods.find(&#123;<span class="string">'sale'</span>: &#123;$gt: <span class="number">6</span>&#125;&#125;)</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e95340faabbbfa8f930a966"</span>), <span class="string">"name"</span> : <span class="string">"商品名称1"</span>, <span class="string">"price"</span> : <span class="number">19.99</span>, <span class="string">"sale"</span> : <span class="number">8</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953450aabbbfa8f930a967"</span>), <span class="string">"name"</span> : <span class="string">"商品名称相同"</span>, <span class="string">"price"</span> : <span class="number">18</span>, <span class="string">"sale"</span> : <span class="number">9</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953475aabbbfa8f930a969"</span>), <span class="string">"name"</span> : <span class="string">"商品名称99"</span>, <span class="string">"price"</span> : <span class="number">99</span>, <span class="string">"sale"</span> : <span class="number">99</span> &#125;</span><br><span class="line">查找goods集合sale大于<span class="number">6</span>且price小于<span class="number">20</span>的文档，命令为db.goods.find(&#123;<span class="string">'sale'</span>: &#123;$gt: <span class="number">6</span>&#125;, <span class="string">'price'</span>: &#123;$lt: <span class="number">20</span>&#125;&#125;)</span><br><span class="line">&gt; db.goods.find(&#123;<span class="string">'sale'</span>: &#123;$gt: <span class="number">6</span>&#125;, <span class="string">'price'</span>: &#123;$lt: <span class="number">20</span>&#125;&#125;)</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e95340faabbbfa8f930a966"</span>), <span class="string">"name"</span> : <span class="string">"商品名称1"</span>, <span class="string">"price"</span> : <span class="number">19.99</span>, <span class="string">"sale"</span> : <span class="number">8</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953450aabbbfa8f930a967"</span>), <span class="string">"name"</span> : <span class="string">"商品名称相同"</span>, <span class="string">"price"</span> : <span class="number">18</span>, <span class="string">"sale"</span> : <span class="number">9</span> &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="条件操作符说明"><a href="#条件操作符说明" class="headerlink" title="条件操作符说明"></a>条件操作符说明</h4><p>从上面的查询命令中，可能有人会注意到，\$gt或者\$lt这是什么意思呢，这是条件操作符，具体部分操作符如下：</p>
+<ul>
+<li>$gt：查找字段值大于指定值的文档</li>
+<li>$lt：查找字段值小于指定值的文档</li>
+<li>$gte：查找字段值大于等于指定值的文档</li>
+<li>$lte：查找字段值小于等于指定值的文档</li>
+<li>$in：查找字段值等于指定数组中的任何值</li>
+<li>$nin：字段值不在指定数组或者不存在</li>
+<li>$or：文档至少满足其中的一个表达式</li>
+<li>$eq：查找字段值等于指定值的文档</li>
+<li>$ne：查找字段值不等于指定值的文档，包括没有这个字段的文档</li>
+<li>其他……</li>
+</ul>
+<h4 id="正则匹配的模糊查询"><a href="#正则匹配的模糊查询" class="headerlink" title="正则匹配的模糊查询"></a>正则匹配的模糊查询</h4><p>另外，关于一些模糊查询，MongoDB还支持正则匹配，语法为：<code>db.collectionName.find({key:/value/})</code>，例如下面的查询<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.goods.find(&#123;<span class="string">'name'</span>: /<span class="number">99</span>/&#125;))))</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953475aabbbfa8f930a969"</span>), <span class="string">"name"</span> : <span class="string">"商品名称99"</span>, <span class="string">"price"</span> : <span class="number">99</span>, <span class="string">"sale"</span> : <span class="number">99</span> &#125;</span><br><span class="line">&gt; db.goods.find(&#123;<span class="string">'name'</span>: /相同$/&#125;))</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953450aabbbfa8f930a967"</span>), <span class="string">"name"</span> : <span class="string">"商品名称相同"</span>, <span class="string">"price"</span> : <span class="number">18</span>, <span class="string">"sale"</span> : <span class="number">9</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953475aabbbfa8f930a968"</span>), <span class="string">"name"</span> : <span class="string">"商品名称相同"</span>, <span class="string">"price"</span> : <span class="number">18</span>, <span class="string">"sale"</span> : <span class="number">1</span> &#125;</span><br><span class="line">&gt; db.goods.find(&#123;<span class="string">'name'</span>: /^商品/&#125;)</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e95340faabbbfa8f930a966"</span>), <span class="string">"name"</span> : <span class="string">"商品名称1"</span>, <span class="string">"price"</span> : <span class="number">19.99</span>, <span class="string">"sale"</span> : <span class="number">8</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953450aabbbfa8f930a967"</span>), <span class="string">"name"</span> : <span class="string">"商品名称相同"</span>, <span class="string">"price"</span> : <span class="number">18</span>, <span class="string">"sale"</span> : <span class="number">9</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953475aabbbfa8f930a968"</span>), <span class="string">"name"</span> : <span class="string">"商品名称相同"</span>, <span class="string">"price"</span> : <span class="number">18</span>, <span class="string">"sale"</span> : <span class="number">1</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953475aabbbfa8f930a969"</span>), <span class="string">"name"</span> : <span class="string">"商品名称99"</span>, <span class="string">"price"</span> : <span class="number">99</span>, <span class="string">"sale"</span> : <span class="number">99</span> &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="分页限制查询"><a href="#分页限制查询" class="headerlink" title="分页限制查询"></a>分页限制查询</h4><p>我们知道find()查询默认返回符合条件的全部文档，如果想只查询指定条数呢，这时候就需要用到limit()方法了，其语法为<code>db.collectionName.find().limit(number)</code></p>
+<p>limit()是返回符合条件的前几条数据，如果我想返回中间的几条数据，该怎么取？这时候同样需要skip()方法来跳过指定数量的记录数，其语法为<code>db.collectionName.find().limit(number).skip(number)</code></p>
+<p>上面的goods集合中，我们想跳过前三条获取第四条name为“商品名称99”的数据，其命令为<code>db.goods.find().limit(1).skip(3)</code><br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; db<span class="selector-class">.goods</span><span class="selector-class">.find</span>().limit(<span class="number">1</span>).skip(<span class="number">3</span>)</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953475aabbbfa8f930a969"</span>), <span class="string">"name"</span> : <span class="string">"商品名称99"</span>, <span class="string">"price"</span> : <span class="number">99</span>, <span class="string">"sale"</span> : <span class="number">99</span> &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="排序查询"><a href="#排序查询" class="headerlink" title="排序查询"></a>排序查询</h4><p>在 MongoDB 中使用 sort() 方法对数据进行排序，sort() 方法可以通过参数指定排序的字段，并使用 1 和 -1 来指定排序的方式，其中 1 为升序排列，而 -1 是用于降序排列。排序查找的基本语法为<code>db.collectionName.find().sort({key:1})</code></p>
+<p>例如上面的goods集合，我们想查询结果按照sale升序排序，则命令为<code>db.goods.find().sort({&#39;sale&#39;: 1})</code><br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.goods.find().sort(&#123;<span class="string">'sale'</span>: <span class="number">1</span>&#125;)</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953475aabbbfa8f930a968"</span>), <span class="string">"name"</span> : <span class="string">"商品名称相同"</span>, <span class="string">"price"</span> : <span class="number">18</span>, <span class="string">"sale"</span> : <span class="number">1</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e95340faabbbfa8f930a966"</span>), <span class="string">"name"</span> : <span class="string">"商品名称1"</span>, <span class="string">"price"</span> : <span class="number">19.99</span>, <span class="string">"sale"</span> : <span class="number">8</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953450aabbbfa8f930a967"</span>), <span class="string">"name"</span> : <span class="string">"商品名称相同"</span>, <span class="string">"price"</span> : <span class="number">18</span>, <span class="string">"sale"</span> : <span class="number">9</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5e953475aabbbfa8f930a969"</span>), <span class="string">"name"</span> : <span class="string">"商品名称99"</span>, <span class="string">"price"</span> : <span class="number">99</span>, <span class="string">"sale"</span> : <span class="number">99</span> &#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>温馨提示</strong>：这里需要说明一下，当skip()、limilt()和sort()三个放在一起执行的时候，执行的顺序是先 sort(), 然后是 skip()，最后是显示的 limit()</p>
+<h3 id="最后说明"><a href="#最后说明" class="headerlink" title="最后说明"></a>最后说明</h3><p>到了这里，相信大家对于MongoDB的基础用法都会了，如果需要了解更多，可以查找相关的教程和官方说明，如有说的不对或者不全的，请大家指出，我会及时改正，谢谢。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_img.jpg" alt="gxcuizy 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay_img.jpg" alt="gxcuizy 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/程序员/" rel="tag"># 程序员</a>
+          
+            <a href="/tags/MongoDB/" rel="tag"># MongoDB</a>
+          
+            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/13/离京开始深漂的第一年/" rel="next" title="离京开始深漂的第一年">
+                <i class="fa fa-chevron-left"></i> 离京开始深漂的第一年
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2020/04/14/Windows系统初探MongoDB的基础使用/"
+           data-title="Windows系统初探MongoDB的基础使用" data-url="blog.y0701.com/2020/04/14/Windows系统初探MongoDB的基础使用/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/me.jpg"
+                alt="gxcuizy" />
+            
+              <p class="site-author-name" itemprop="name">gxcuizy</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/gxcuizy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:gxcuizy@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/59b0de6e5188250f4850ea06" target="_blank" title="JueJin">
+                      
+                        <i class="fa fa-fw fa-paperclip"></i>JueJin</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/cuizhongyi" target="_blank" title="SegmentFault">
+                      
+                        <i class="fa fa-fw fa-list-alt"></i>SegmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MongoDB是什么？"><span class="nav-text">MongoDB是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载安装"><span class="nav-text">下载安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mongodb服务端启动"><span class="nav-text">mongodb服务端启动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#绝对路劲的方式启动"><span class="nav-text">绝对路劲的方式启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mongod命令的方式启动"><span class="nav-text">mongod命令的方式启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置bin的Path路径"><span class="nav-text">配置bin的Path路径</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端连接"><span class="nav-text">客户端连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MongoDB-概念解析"><span class="nav-text">MongoDB 概念解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库（db）"><span class="nav-text">数据库（db）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新建数据库"><span class="nav-text">新建数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除数据库"><span class="nav-text">删除数据库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合（collection）"><span class="nav-text">集合（collection）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建集合"><span class="nav-text">创建集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#能不能不用预先创建集合？"><span class="nav-text">能不能不用预先创建集合？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除集合"><span class="nav-text">删除集合</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文档（document）"><span class="nav-text">文档（document）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#插入文档"><span class="nav-text">插入文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入文档的其他方法"><span class="nav-text">插入文档的其他方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更新文档"><span class="nav-text">更新文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#部分更新操作符"><span class="nav-text">部分更新操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他更新文档说明"><span class="nav-text">其他更新文档说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除文档"><span class="nav-text">删除文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他删除文档说明"><span class="nav-text">其他删除文档说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询文档"><span class="nav-text">查询文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件操作符说明"><span class="nav-text">条件操作符说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则匹配的模糊查询"><span class="nav-text">正则匹配的模糊查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分页限制查询"><span class="nav-text">分页限制查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#排序查询"><span class="nav-text">排序查询</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后说明"><span class="nav-text">最后说明</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gxcuizy</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问用户
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-beta.2/lazyload.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'wROinty9rwhkmksGHfecnhTP-gzGzoHsz',
+        appKey: 'PbESEvuTejxDH31XqBEDnxvX',
+        placeholder: '请输入您的留言',
+        avatar:'wavatar',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+
+    var infoEle = document.querySelector('#comments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+      infoEle.childNodes.forEach(function(item) {
+        item.parentNode.removeChild(item);
+      });
+    }
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+  <!-- 页面点击效果 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+</body>
+</html>
