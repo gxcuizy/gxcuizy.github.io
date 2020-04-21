@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "f3f6c502"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+      
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="PHP,程序员," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="安装ThinkPHP怎么安装，我就不细说了，官方文档-安装ThinkPHP说的很全了，可以通过Composer、Git或者直接去ThinkPHP官网下载zip包，我安装的版本是5.0.24 测试运行下载安装完毕后，如果项目是下载目录是你本地服务器的项目根目录下，可以直接在浏览器输入地址http://localhost/thinkphp5/public/，就可以进入到ThinkPHP5的默认欢迎页">
+<meta name="keywords" content="PHP,程序员">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分析ThinkPHP5框架从入口到输出界面的加载流程">
+<meta property="og:url" content="blog.y0701.com/2020/04/21/分析ThinkPHP5框架从入口到输出界面的加载流程/index.html">
+<meta property="og:site_name" content="gxcuizy&#39;s blog">
+<meta property="og:description" content="安装ThinkPHP怎么安装，我就不细说了，官方文档-安装ThinkPHP说的很全了，可以通过Composer、Git或者直接去ThinkPHP官网下载zip包，我安装的版本是5.0.24 测试运行下载安装完毕后，如果项目是下载目录是你本地服务器的项目根目录下，可以直接在浏览器输入地址http://localhost/thinkphp5/public/，就可以进入到ThinkPHP5的默认欢迎页">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2020/4/21/1719ad7967ba2008?w=768&h=225&f=png&s=149605">
+<meta property="og:image" content="https://image-static.segmentfault.com/150/172/1501722930-5e9d597b67275_articlex">
+<meta property="og:updated_time" content="2020-04-21T06:00:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="分析ThinkPHP5框架从入口到输出界面的加载流程">
+<meta name="twitter:description" content="安装ThinkPHP怎么安装，我就不细说了，官方文档-安装ThinkPHP说的很全了，可以通过Composer、Git或者直接去ThinkPHP官网下载zip包，我安装的版本是5.0.24 测试运行下载安装完毕后，如果项目是下载目录是你本地服务器的项目根目录下，可以直接在浏览器输入地址http://localhost/thinkphp5/public/，就可以进入到ThinkPHP5的默认欢迎页">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2020/4/21/1719ad7967ba2008?w=768&h=225&f=png&s=149605">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="blog.y0701.com/2020/04/21/分析ThinkPHP5框架从入口到输出界面的加载流程/"/>
+
+
+
+
+
+  <title>分析ThinkPHP5框架从入口到输出界面的加载流程 | gxcuizy's blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?79a24eb542940d706401923128bd4415";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gxcuizy's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/photos/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="blog.y0701.com/2020/04/21/分析ThinkPHP5框架从入口到输出界面的加载流程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gxcuizy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gxcuizy's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">分析ThinkPHP5框架从入口到输出界面的加载流程</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-21T13:58:19+08:00">
+                2020-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/04/21/分析ThinkPHP5框架从入口到输出界面的加载流程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2020/04/21/分析ThinkPHP5框架从入口到输出界面的加载流程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 点击量：
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://user-gold-cdn.xitu.io/2020/4/21/1719ad7967ba2008?w=768&amp;h=225&amp;f=png&amp;s=149605" alt=""></p>
+<h3 id="安装ThinkPHP"><a href="#安装ThinkPHP" class="headerlink" title="安装ThinkPHP"></a>安装ThinkPHP</h3><p>怎么安装，我就不细说了，<a href="https://www.kancloud.cn/manual/thinkphp5/118006" target="_blank" rel="noopener">官方文档-安装ThinkPHP</a>说的很全了，可以通过Composer、Git或者直接去<a href="http://www.thinkphp.cn/down.html" target="_blank" rel="noopener">ThinkPHP官网下载</a>zip包，我安装的版本是5.0.24</p>
+<h3 id="测试运行"><a href="#测试运行" class="headerlink" title="测试运行"></a>测试运行</h3><p>下载安装完毕后，如果项目是下载目录是你本地服务器的项目根目录下，可以直接在浏览器输入地址<code>http://localhost/thinkphp5/public/</code>，就可以进入到ThinkPHP5的默认欢迎页，如下图所示，这就说明ThinkPHP5已经安装成功</p>
+<a id="more"></a>
+<p><img src="https://image-static.segmentfault.com/150/172/1501722930-5e9d597b67275_articlex" alt=""></p>
+<p>除了上面的这个方式的地址运行，我们也可以通过Apache或者Nginx配置虚拟主机实现项目的访问，有兴趣的可以网上查看具体教程，然后配置虚拟主机进行访问。</p>
+<p>下面进入正题，我们来逐步分析ThinkPHP5的执行流程……</p>
+<h3 id="入口文件（public-index-php）"><a href="#入口文件（public-index-php）" class="headerlink" title="入口文件（public\index.php）"></a>入口文件（public\index.php）</h3><p>打开<code>public\index.php</code>文件后，我们可以看到，入口文件原始代码如下</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// [ 应用入口文件 ]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义应用目录</span></span><br><span class="line">define(<span class="string">'APP_PATH'</span>, <span class="keyword">__DIR__</span> . <span class="string">'/../application/'</span>);</span><br><span class="line"><span class="comment">// 加载框架引导文件</span></span><br><span class="line"><span class="keyword">require</span> <span class="keyword">__DIR__</span> . <span class="string">'/../thinkphp/start.php'</span>;</span><br></pre></td></tr></table></figure>
+<p>入口文件代码很简洁，就两行代码，作用分别为</p>
+<ol>
+<li><code>define(&#39;APP_PATH&#39;, __DIR__ . &#39;/../application/&#39;);</code>定义应用目录的常量APP_PATH</li>
+<li><code>require __DIR__ . &#39;/../thinkphp/start.php&#39;;</code>加载框架引导文件</li>
+</ol>
+<p>除了上面的这两个作用外，我们还可以额外在入口文件中，定义我们自己的常量，例如添加一行代码<code>define(&#39;PUBLIC_PATH&#39;, __DIR__ .&#39;/../public&#39;);</code>定义public目录的常量以及一些预处理等</p>
+<h3 id="加载框架引导文件（thinkphp-start-php）"><a href="#加载框架引导文件（thinkphp-start-php）" class="headerlink" title="加载框架引导文件（thinkphp\start.php）"></a>加载框架引导文件（thinkphp\start.php）</h3><p>同样的，进入<code>thinkphp\start.php</code>文件后，我们可以知道，代码并不多</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">think</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ThinkPHP 引导文件</span></span><br><span class="line"><span class="comment">// 1. 加载基础文件</span></span><br><span class="line"><span class="keyword">require</span> <span class="keyword">__DIR__</span> . <span class="string">'/base.php'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 执行应用</span></span><br><span class="line">App::run()-&gt;send();</span><br></pre></td></tr></table></figure>
+<p>从这简短的两行代码，我们可以看到，主要左右有两个</p>
+<ol>
+<li><code>require __DIR__ . &#39;/base.php&#39;;</code>加载基础文件</li>
+<li><code>App::run()-&gt;send();</code>执行应用</li>
+</ol>
+<p>下面两个大点，将具体介绍这两个左右都做了什么</p>
+<h3 id="加载基础文件（thinkphp-base-php）"><a href="#加载基础文件（thinkphp-base-php）" class="headerlink" title="加载基础文件（thinkphp\base.php）"></a>加载基础文件（thinkphp\base.php）</h3><p>我们继续打开<code>thinkphp\base.php</code>文件，发现这个文件终于不再像前两个文件那样，只有两行代码了……</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="string">'THINK_VERSION'</span>, <span class="string">'5.0.24'</span>);</span><br><span class="line">define(<span class="string">'THINK_START_TIME'</span>, microtime(<span class="keyword">true</span>));</span><br><span class="line">define(<span class="string">'THINK_START_MEM'</span>, memory_get_usage());</span><br><span class="line">define(<span class="string">'EXT'</span>, <span class="string">'.php'</span>);</span><br><span class="line">define(<span class="string">'DS'</span>, DIRECTORY_SEPARATOR);</span><br><span class="line">defined(<span class="string">'THINK_PATH'</span>) <span class="keyword">or</span> define(<span class="string">'THINK_PATH'</span>, <span class="keyword">__DIR__</span> . DS);</span><br><span class="line">define(<span class="string">'LIB_PATH'</span>, THINK_PATH . <span class="string">'library'</span> . DS);</span><br><span class="line">define(<span class="string">'CORE_PATH'</span>, LIB_PATH . <span class="string">'think'</span> . DS);</span><br><span class="line">define(<span class="string">'TRAIT_PATH'</span>, LIB_PATH . <span class="string">'traits'</span> . DS);</span><br><span class="line">defined(<span class="string">'APP_PATH'</span>) <span class="keyword">or</span> define(<span class="string">'APP_PATH'</span>, dirname($_SERVER[<span class="string">'SCRIPT_FILENAME'</span>]) . DS);</span><br><span class="line">defined(<span class="string">'ROOT_PATH'</span>) <span class="keyword">or</span> define(<span class="string">'ROOT_PATH'</span>, dirname(realpath(APP_PATH)) . DS);</span><br><span class="line">defined(<span class="string">'EXTEND_PATH'</span>) <span class="keyword">or</span> define(<span class="string">'EXTEND_PATH'</span>, ROOT_PATH . <span class="string">'extend'</span> . DS);</span><br><span class="line">defined(<span class="string">'VENDOR_PATH'</span>) <span class="keyword">or</span> define(<span class="string">'VENDOR_PATH'</span>, ROOT_PATH . <span class="string">'vendor'</span> . DS);</span><br><span class="line">defined(<span class="string">'RUNTIME_PATH'</span>) <span class="keyword">or</span> define(<span class="string">'RUNTIME_PATH'</span>, ROOT_PATH . <span class="string">'runtime'</span> . DS);</span><br><span class="line">defined(<span class="string">'LOG_PATH'</span>) <span class="keyword">or</span> define(<span class="string">'LOG_PATH'</span>, RUNTIME_PATH . <span class="string">'log'</span> . DS);</span><br><span class="line">defined(<span class="string">'CACHE_PATH'</span>) <span class="keyword">or</span> define(<span class="string">'CACHE_PATH'</span>, RUNTIME_PATH . <span class="string">'cache'</span> . DS);</span><br><span class="line">defined(<span class="string">'TEMP_PATH'</span>) <span class="keyword">or</span> define(<span class="string">'TEMP_PATH'</span>, RUNTIME_PATH . <span class="string">'temp'</span> . DS);</span><br><span class="line">defined(<span class="string">'CONF_PATH'</span>) <span class="keyword">or</span> define(<span class="string">'CONF_PATH'</span>, APP_PATH); <span class="comment">// 配置文件目录</span></span><br><span class="line">defined(<span class="string">'CONF_EXT'</span>) <span class="keyword">or</span> define(<span class="string">'CONF_EXT'</span>, EXT); <span class="comment">// 配置文件后缀</span></span><br><span class="line">defined(<span class="string">'ENV_PREFIX'</span>) <span class="keyword">or</span> define(<span class="string">'ENV_PREFIX'</span>, <span class="string">'PHP_'</span>); <span class="comment">// 环境变量的配置前缀</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 环境常量</span></span><br><span class="line">define(<span class="string">'IS_CLI'</span>, PHP_SAPI == <span class="string">'cli'</span> ? <span class="keyword">true</span> : <span class="keyword">false</span>);</span><br><span class="line">define(<span class="string">'IS_WIN'</span>, strpos(PHP_OS, <span class="string">'WIN'</span>) !== <span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 载入Loader类</span></span><br><span class="line"><span class="keyword">require</span> CORE_PATH . <span class="string">'Loader.php'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加载环境变量配置文件</span></span><br><span class="line"><span class="keyword">if</span> (is_file(ROOT_PATH . <span class="string">'.env'</span>)) &#123;</span><br><span class="line">    $env = parse_ini_file(ROOT_PATH . <span class="string">'.env'</span>, <span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> ($env <span class="keyword">as</span> $key =&gt; $val) &#123;</span><br><span class="line">        $name = ENV_PREFIX . strtoupper($key);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (is_array($val)) &#123;</span><br><span class="line">            <span class="keyword">foreach</span> ($val <span class="keyword">as</span> $k =&gt; $v) &#123;</span><br><span class="line">                $item = $name . <span class="string">'_'</span> . strtoupper($k);</span><br><span class="line">                putenv(<span class="string">"$item=$v"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            putenv(<span class="string">"$name=$val"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注册自动加载</span></span><br><span class="line">\think\Loader::register();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注册错误和异常处理机制</span></span><br><span class="line">\think\Error::register();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加载惯例配置文件</span></span><br><span class="line">\think\Config::set(<span class="keyword">include</span> THINK_PATH . <span class="string">'convention'</span> . EXT);</span><br></pre></td></tr></table></figure>
+<p>仔细一看，发现代码虽然有六十多行，但是，代码的作用却显而易见，作用主要有以下六点</p>
+<ol>
+<li>使用<code>define(&#39;&#39;, &#39;&#39;)</code>函数定义了很多个系统常量，外加两个环境常量</li>
+<li>引入loader类（thinkphp\library\think\loader.php），供后续使用</li>
+<li>加载环境变量配置文件（环境变量配置文件名为<code>.env</code>，这个文件不一定存在，都是在实际开发过程中根据需要加上去的）</li>
+<li>调用<code>\think\Loader::register()</code>注册自动加载机制<ul>
+<li>注册系统自动加载</li>
+<li><code>Composer</code>自动加载支持</li>
+<li>注册命名空间定义</li>
+<li>加载类库映射文件，存在于<code>runtime</code>缓存目录下<code>classmap.php</code></li>
+<li>自动加载<code>extend</code>目录</li>
+</ul>
+</li>
+<li>调用<code>\think\Error::register()</code>注册异常和错误处理机制</li>
+<li>加载惯例配置文件（thinkphp\convention.php）</li>
+</ol>
+<h3 id="执行应用（thinkphp-library-think-App-php）下的run方法"><a href="#执行应用（thinkphp-library-think-App-php）下的run方法" class="headerlink" title="执行应用（thinkphp\library\think\App.php）下的run方法"></a>执行应用（thinkphp\library\think\App.php）下的run方法</h3><p>为了方便，这个run方法的代码虽然有点长，但是我还是选择把整个方法贴出来，别打我哈</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 执行应用程序</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@access</span> public</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span>  Request $request 请求对象</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> Response</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">run</span><span class="params">(Request $request = null)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $request = is_null($request) ? Request::instance() : $request;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        $config = <span class="keyword">self</span>::initCommon();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 模块/控制器绑定</span></span><br><span class="line">        <span class="keyword">if</span> (defined(<span class="string">'BIND_MODULE'</span>)) &#123;</span><br><span class="line">            BIND_MODULE &amp;&amp; Route::bind(BIND_MODULE);</span><br><span class="line">        &#125; <span class="keyword">elseif</span> ($config[<span class="string">'auto_bind_module'</span>]) &#123;</span><br><span class="line">            <span class="comment">// 入口自动绑定</span></span><br><span class="line">            $name = pathinfo($request-&gt;baseFile(), PATHINFO_FILENAME);</span><br><span class="line">            <span class="keyword">if</span> ($name &amp;&amp; <span class="string">'index'</span> != $name &amp;&amp; is_dir(APP_PATH . $name)) &#123;</span><br><span class="line">                Route::bind($name);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        $request-&gt;filter($config[<span class="string">'default_filter'</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 默认语言</span></span><br><span class="line">        Lang::range($config[<span class="string">'default_lang'</span>]);</span><br><span class="line">        <span class="comment">// 开启多语言机制 检测当前语言</span></span><br><span class="line">        $config[<span class="string">'lang_switch_on'</span>] &amp;&amp; Lang::detect();</span><br><span class="line">        $request-&gt;langset(Lang::range());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 加载系统语言包</span></span><br><span class="line">        Lang::load([</span><br><span class="line">            THINK_PATH . <span class="string">'lang'</span> . DS . $request-&gt;langset() . EXT,</span><br><span class="line">            APP_PATH . <span class="string">'lang'</span> . DS . $request-&gt;langset() . EXT,</span><br><span class="line">        ]);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 监听 app_dispatch</span></span><br><span class="line">        Hook::listen(<span class="string">'app_dispatch'</span>, <span class="keyword">self</span>::$dispatch);</span><br><span class="line">        <span class="comment">// 获取应用调度信息</span></span><br><span class="line">        $dispatch = <span class="keyword">self</span>::$dispatch;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 未设置调度信息则进行 URL 路由检测</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">empty</span>($dispatch)) &#123;</span><br><span class="line">            $dispatch = <span class="keyword">self</span>::routeCheck($request, $config);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 记录当前调度信息</span></span><br><span class="line">        $request-&gt;dispatch($dispatch);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 记录路由和请求信息</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">self</span>::$debug) &#123;</span><br><span class="line">            Log::record(<span class="string">'[ ROUTE ] '</span> . var_export($dispatch, <span class="keyword">true</span>), <span class="string">'info'</span>);</span><br><span class="line">            Log::record(<span class="string">'[ HEADER ] '</span> . var_export($request-&gt;header(), <span class="keyword">true</span>), <span class="string">'info'</span>);</span><br><span class="line">            Log::record(<span class="string">'[ PARAM ] '</span> . var_export($request-&gt;param(), <span class="keyword">true</span>), <span class="string">'info'</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 监听 app_begin</span></span><br><span class="line">        Hook::listen(<span class="string">'app_begin'</span>, $dispatch);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 请求缓存检查</span></span><br><span class="line">        $request-&gt;cache(</span><br><span class="line">            $config[<span class="string">'request_cache'</span>],</span><br><span class="line">            $config[<span class="string">'request_cache_expire'</span>],</span><br><span class="line">            $config[<span class="string">'request_cache_except'</span>]</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        $data = <span class="keyword">self</span>::exec($dispatch, $config);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (HttpResponseException $exception) &#123;</span><br><span class="line">        $data = $exception-&gt;getResponse();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 清空类的实例化</span></span><br><span class="line">    Loader::clearInstance();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出数据到客户端</span></span><br><span class="line">    <span class="keyword">if</span> ($data <span class="keyword">instanceof</span> Response) &#123;</span><br><span class="line">        $response = $data;</span><br><span class="line">    &#125; <span class="keyword">elseif</span> (!is_null($data)) &#123;</span><br><span class="line">        <span class="comment">// 默认自动识别响应输出类型</span></span><br><span class="line">        $type = $request-&gt;isAjax() ?</span><br><span class="line">        Config::get(<span class="string">'default_ajax_return'</span>) :</span><br><span class="line">        Config::get(<span class="string">'default_return_type'</span>);</span><br><span class="line"></span><br><span class="line">        $response = Response::create($data, $type);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $response = Response::create();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 监听 app_end</span></span><br><span class="line">    Hook::listen(<span class="string">'app_end'</span>, $response);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> $response;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这大概90行的代码，具体做了什么呢，结合注释分析，主要有以下几步的功能</p>
+<ul>
+<li>第一步：处理变量<code>$request</code>，保证有效有用不为null</li>
+<li>第二步：<code>self::initCommon()</code>调用当前控制器中的initCommon()方法，负责初始化应用，并返回配置信息<ul>
+<li><code>Loader::addNamespace(self::$namespace, APP_PATH);</code>注册命名空间</li>
+<li><code>self::init()</code>调用本类的init()方法初始化应用<ul>
+<li>加载各种配置文件</li>
+<li>加载行为扩展文件</li>
+<li>加载公共文件</li>
+<li>加载语言包</li>
+</ul>
+</li>
+<li>应用调试模式相关处理</li>
+<li>加载额外文件，通过配置项<code>extra_file_list</code>的值去加载相关文件</li>
+<li><code>date_default_timezone_set($config[&#39;default_timezone&#39;]);</code>设置系统时区</li>
+<li>调用<code>Hook::listen(&#39;app_init&#39;);</code>监听app_init标签的行为</li>
+</ul>
+</li>
+<li>第三步：判断是否进行模块或者控制器的绑定</li>
+<li>第四步：系统语言设置和加载</li>
+<li>第五步：<code>self::routeCheck($request, $config)</code>加载当前控制器的routeCheck()方法进行路由检测<ul>
+<li>先进行路由地址配置检测，先读取缓存路由，不存在再导入路由文件配置</li>
+<li>无路由配置，直接解析模块/控制器/操作</li>
+<li>返回module模块信息（模块名、控制器名和操作方法名）</li>
+</ul>
+</li>
+<li>第六步：开启调试模式下，记录路由和请求信息的日志</li>
+<li>第七步：<code>self::exec($dispatch, $config)</code>调用控制器中的exec()方法执行调用分发<ul>
+<li>根据用户请求类型进行分发处理，这里是module模块类型</li>
+<li>调用<code>self::module()</code>执行模块，进行模块部署和初始化，获取和设置当前控制器名和操作名</li>
+</ul>
+</li>
+<li>第八步：清空类的实例化，并输出相应格式的数据到客户端，即用户看到的输出界面</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本文大概解析了ThinkPHP5的基础执行流程，有说的不到位的，也不用给我说了，因为我也不会补上去的，就是这么皮；但是如果是说错的呢，麻烦指出来，我肯定会加以改正的，就这么耿直。对了，如果觉得对你有帮助，点个赞再走呗，感谢！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_img.jpg" alt="gxcuizy 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay_img.jpg" alt="gxcuizy 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+            <a href="/tags/程序员/" rel="tag"># 程序员</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/14/Windows系统初探MongoDB的基础使用/" rel="next" title="Windows系统初探MongoDB的基础使用">
+                <i class="fa fa-chevron-left"></i> Windows系统初探MongoDB的基础使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2020/04/21/分析ThinkPHP5框架从入口到输出界面的加载流程/"
+           data-title="分析ThinkPHP5框架从入口到输出界面的加载流程" data-url="blog.y0701.com/2020/04/21/分析ThinkPHP5框架从入口到输出界面的加载流程/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/me.jpg"
+                alt="gxcuizy" />
+            
+              <p class="site-author-name" itemprop="name">gxcuizy</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/gxcuizy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:gxcuizy@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/59b0de6e5188250f4850ea06" target="_blank" title="JueJin">
+                      
+                        <i class="fa fa-fw fa-paperclip"></i>JueJin</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/cuizhongyi" target="_blank" title="SegmentFault">
+                      
+                        <i class="fa fa-fw fa-list-alt"></i>SegmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装ThinkPHP"><span class="nav-text">安装ThinkPHP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试运行"><span class="nav-text">测试运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#入口文件（public-index-php）"><span class="nav-text">入口文件（public\index.php）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载框架引导文件（thinkphp-start-php）"><span class="nav-text">加载框架引导文件（thinkphp\start.php）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载基础文件（thinkphp-base-php）"><span class="nav-text">加载基础文件（thinkphp\base.php）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行应用（thinkphp-library-think-App-php）下的run方法"><span class="nav-text">执行应用（thinkphp\library\think\App.php）下的run方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gxcuizy</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问用户
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-beta.2/lazyload.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'wROinty9rwhkmksGHfecnhTP-gzGzoHsz',
+        appKey: 'PbESEvuTejxDH31XqBEDnxvX',
+        placeholder: '请输入您的留言',
+        avatar:'wavatar',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+
+    var infoEle = document.querySelector('#comments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+      infoEle.childNodes.forEach(function(item) {
+        item.parentNode.removeChild(item);
+      });
+    }
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+  <!-- 页面点击效果 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+</body>
+</html>
