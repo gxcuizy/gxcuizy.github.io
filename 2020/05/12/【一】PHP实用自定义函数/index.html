@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "f3f6c502"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+      
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="PHP,函数," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言我清楚的记得，是谁在我耳边说：“PHP是世界上最好的语言”，反正我可没说哈（理不直气还壮），我就听过这种言论，毕竟我胆小，哪里敢在公众场合说这种话，关于“谁是最好语言的言论”，很早之前，就在IT界掀起过多场血雨腥风的争论都无果，咱们就不要再搞事了，老老实实搬砖…… 好了，虾扯蛋完毕，开始说点正事，我后续会陆续写一些PHP开发中实用的一些自定义函数，方便用到的朋友，能够快速开发和使用。">
+<meta name="keywords" content="PHP,函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【一】PHP实用自定义函数">
+<meta property="og:url" content="blog.y0701.com/2020/05/12/【一】PHP实用自定义函数/index.html">
+<meta property="og:site_name" content="gxcuizy&#39;s blog">
+<meta property="og:description" content="前言我清楚的记得，是谁在我耳边说：“PHP是世界上最好的语言”，反正我可没说哈（理不直气还壮），我就听过这种言论，毕竟我胆小，哪里敢在公众场合说这种话，关于“谁是最好语言的言论”，很早之前，就在IT界掀起过多场血雨腥风的争论都无果，咱们就不要再搞事了，老老实实搬砖…… 好了，虾扯蛋完毕，开始说点正事，我后续会陆续写一些PHP开发中实用的一些自定义函数，方便用到的朋友，能够快速开发和使用。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://image-static.segmentfault.com/107/996/1079965234-5eba3b4e75aa3_articlex">
+<meta property="og:updated_time" content="2020-05-12T07:28:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【一】PHP实用自定义函数">
+<meta name="twitter:description" content="前言我清楚的记得，是谁在我耳边说：“PHP是世界上最好的语言”，反正我可没说哈（理不直气还壮），我就听过这种言论，毕竟我胆小，哪里敢在公众场合说这种话，关于“谁是最好语言的言论”，很早之前，就在IT界掀起过多场血雨腥风的争论都无果，咱们就不要再搞事了，老老实实搬砖…… 好了，虾扯蛋完毕，开始说点正事，我后续会陆续写一些PHP开发中实用的一些自定义函数，方便用到的朋友，能够快速开发和使用。">
+<meta name="twitter:image" content="https://image-static.segmentfault.com/107/996/1079965234-5eba3b4e75aa3_articlex">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="blog.y0701.com/2020/05/12/【一】PHP实用自定义函数/"/>
+
+
+
+
+
+  <title>【一】PHP实用自定义函数 | gxcuizy's blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?79a24eb542940d706401923128bd4415";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gxcuizy's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/photos/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="blog.y0701.com/2020/05/12/【一】PHP实用自定义函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gxcuizy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gxcuizy's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">【一】PHP实用自定义函数</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-12T13:52:17+08:00">
+                2020-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/05/12/【一】PHP实用自定义函数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2020/05/12/【一】PHP实用自定义函数/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 点击量：
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://image-static.segmentfault.com/107/996/1079965234-5eba3b4e75aa3_articlex" alt=""></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>我清楚的记得，是谁在我耳边说：“PHP是世界上最好的语言”，反正我可没说哈（理不直气还壮），我就听过这种言论，毕竟我胆小，哪里敢在公众场合说这种话，关于“谁是最好语言的言论”，很早之前，就在IT界掀起过多场血雨腥风的争论都无果，咱们就不要再搞事了，老老实实搬砖……</p>
+<p>好了，虾扯蛋完毕，开始说点正事，我后续会陆续写一些PHP开发中实用的一些自定义函数，方便用到的朋友，能够快速开发和使用。</p>
+<a id="more"></a>
+<h3 id="返回格式化时间"><a href="#返回格式化时间" class="headerlink" title="返回格式化时间"></a>返回格式化时间</h3><p>我们在开发过程中，总会遇到一些显示时间的问题，有的时候需要显示<code>年-月-日</code>，有的时候需要显示<code>年-月-日 时.分.秒</code>，在每次遇到使用的时候，都会重复的写着一行类似<code>date($time, &#39;Y-m-d H:i:s&#39;)</code>的代码，想不想有一个更加优雅的写法呢，那就是自定义一个函数，就是下面定义的函数，使用的时候，如果时间格式是默认的，那么直接调用函数<code>time_format($time)</code>传入时间戳就可以了，是不是感觉这种看着就舒服一点呢？</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 返回格式化时间</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> int $time 时间戳</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $format 时间格式</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> bool|string</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">time_format</span><span class="params">($time = <span class="number">0</span>, $format = <span class="string">''</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 默认时间格式</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">empty</span>($format)) &#123;</span><br><span class="line">        $format = <span class="string">'Y-m-d H:i:s'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    $format_time = date($format, $time);</span><br><span class="line">    <span class="keyword">return</span> $format_time;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="格式化数字"><a href="#格式化数字" class="headerlink" title="格式化数字"></a>格式化数字</h3><p>关于数字的格式处理的时候，我想大家都没少遇到，甚至还因为某数据显示的数字没有格式化而被测试提过bug呢？反正我是被测试抓到过，还不得不改的那种，比如：没有保留两位小数了等，然后就老老实实修改代码，把原来没处理的数字格式化一下，写法为<code>number_format($number, 2, &#39;.&#39;, &#39;,&#39;)</code>，发现一口气传了4个参数，而且，假如，<code>$number</code>不是数字，那么这个函数就会报错了，所以，还不如自定义一个，方便快捷，直接使用<code>number_format_plus($number)</code>就搞定了！</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 返回格式化数字</span><br><span class="line"> * @<span class="keyword">param</span> int <span class="variable">$number</span> 待格式化数字</span><br><span class="line"> * @<span class="keyword">param</span> int <span class="variable">$decimals</span> 保留小数位数，默认<span class="number">2</span>位</span><br><span class="line"> * @<span class="keyword">param</span> string <span class="variable">$dec_point</span> 整数和小数分隔符号</span><br><span class="line"> * @<span class="keyword">param</span> string <span class="variable">$thousands_sep</span> 整数部分每三位数读分隔符号</span><br><span class="line"> * @<span class="keyword">return</span> string</span><br><span class="line"> */</span><br><span class="line"><span class="keyword">function</span> number_format_plus(<span class="variable">$number</span> = <span class="number">0</span>, <span class="variable">$decimals</span> = <span class="number">2</span>, <span class="variable">$dec_point</span> = <span class="string">'.'</span>, <span class="variable">$thousands_sep</span> = <span class="string">','</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="variable">$format_num</span> = <span class="string">'0.00'</span>;</span><br><span class="line">    <span class="keyword">if</span> (is_numeric(<span class="variable">$number</span>)) &#123;</span><br><span class="line">        <span class="variable">$format_num</span> = number_format(<span class="variable">$number</span>, <span class="variable">$decimals</span>, <span class="variable">$dec_point</span>, <span class="variable">$thousands_sep</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$format_num</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="人民币数字小写转大写"><a href="#人民币数字小写转大写" class="headerlink" title="人民币数字小写转大写"></a>人民币数字小写转大写</h3><p>人民币转大写，这种一般在合同类的文件中会遇到的比较多，因为我之前工作中都接触到一些合同类的文件处理，所以，这个函数我一直用着，好的东西当然得拿出来分享了，万一你也刚好有需要呢</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 人民币数字小写转大写</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $number 人民币数值</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $int_unit 币种单位，默认"元"，有的需求可能为"圆"</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> bool $is_round 是否对小数进行四舍五入</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> bool $is_extra_zero 是否对整数部分以0结尾，小数存在的数字附加0,比如1960.30</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> string</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">rmb_format</span><span class="params">($money = <span class="number">0</span>, $int_unit = <span class="string">'元'</span>, $is_round = true, $is_extra_zero = false)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 非数字，原样返回</span></span><br><span class="line">    <span class="keyword">if</span> (!is_numeric($money)) &#123;</span><br><span class="line">        <span class="keyword">return</span> $money;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 将数字切分成两段</span></span><br><span class="line">    $parts = explode(<span class="string">'.'</span>, $money, <span class="number">2</span>);</span><br><span class="line">    $int = <span class="keyword">isset</span>($parts[<span class="number">0</span>]) ? strval($parts[<span class="number">0</span>]) : <span class="string">'0'</span>;</span><br><span class="line">    $dec = <span class="keyword">isset</span>($parts[<span class="number">1</span>]) ? strval($parts[<span class="number">1</span>]) : <span class="string">''</span>;</span><br><span class="line">    <span class="comment">// 如果小数点后多于2位，不四舍五入就直接截，否则就处理</span></span><br><span class="line">    $dec_len = strlen($dec);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">isset</span>($parts[<span class="number">1</span>]) &amp;&amp; $dec_len &gt; <span class="number">2</span>) &#123;</span><br><span class="line">        $dec = $is_round ? substr(strrchr(strval(round(floatval(<span class="string">"0."</span> . $dec), <span class="number">2</span>)), <span class="string">'.'</span>), <span class="number">1</span>) : substr($parts [<span class="number">1</span>], <span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 当number为0.001时，小数点后的金额为0元</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">empty</span>($int) &amp;&amp; <span class="keyword">empty</span>($dec)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'零'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 定义</span></span><br><span class="line">    $chs = [<span class="string">'0'</span>, <span class="string">'壹'</span>, <span class="string">'贰'</span>, <span class="string">'叁'</span>, <span class="string">'肆'</span>, <span class="string">'伍'</span>, <span class="string">'陆'</span>, <span class="string">'柒'</span>, <span class="string">'捌'</span>, <span class="string">'玖'</span>];</span><br><span class="line">    $uni = [<span class="string">''</span>, <span class="string">'拾'</span>, <span class="string">'佰'</span>, <span class="string">'仟'</span>];</span><br><span class="line">    $dec_uni = [<span class="string">'角'</span>, <span class="string">'分'</span>];</span><br><span class="line">    $exp = [<span class="string">''</span>, <span class="string">'万'</span>];</span><br><span class="line">    $res = <span class="string">''</span>;</span><br><span class="line">    <span class="comment">// 整数部分从右向左找</span></span><br><span class="line">    <span class="keyword">for</span> ($i = strlen($int) - <span class="number">1</span>, $k = <span class="number">0</span>; $i &gt;= <span class="number">0</span>; $k++) &#123;</span><br><span class="line">        $str = <span class="string">''</span>;</span><br><span class="line">        <span class="comment">// 按照中文读写习惯，每4个字为一段进行转化，i一直在减</span></span><br><span class="line">        <span class="keyword">for</span> ($j = <span class="number">0</span>; $j &lt; <span class="number">4</span> &amp;&amp; $i &gt;= <span class="number">0</span>; $j++, $i--) &#123;</span><br><span class="line">            <span class="comment">// 非0的数字后面添加单位</span></span><br><span class="line">            $u = $int&#123;$i&#125; &gt; <span class="number">0</span> ? $uni [$j] : <span class="string">''</span>;</span><br><span class="line">            $str = $chs [$int&#123;$i&#125;] . $u . $str;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 去掉末尾的0</span></span><br><span class="line">        $str = rtrim($str, <span class="string">'0'</span>);</span><br><span class="line">        <span class="comment">// 替换多个连续的0</span></span><br><span class="line">        $str = preg_replace(<span class="string">"/0+/"</span>, <span class="string">"零"</span>, $str);</span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">isset</span>($exp [$k])) &#123;</span><br><span class="line">            <span class="comment">// 构建单位</span></span><br><span class="line">            $exp [$k] = $exp [$k - <span class="number">2</span>] . <span class="string">'亿'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        $u2 = $str != <span class="string">''</span> ? $exp [$k] : <span class="string">''</span>;</span><br><span class="line">        $res = $str . $u2 . $res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果小数部分处理完之后是00，需要处理下</span></span><br><span class="line">    $dec = rtrim($dec, <span class="string">'0'</span>);</span><br><span class="line">    <span class="comment">// 小数部分从左向右找</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">empty</span>($dec)) &#123;</span><br><span class="line">        $res .= $int_unit;</span><br><span class="line">        <span class="comment">// 是否要在整数部分以0结尾的数字后附加0，有的系统有这要求</span></span><br><span class="line">        <span class="keyword">if</span> ($is_extra_zero) &#123;</span><br><span class="line">            <span class="keyword">if</span> (substr($int, <span class="number">-1</span>) === <span class="string">'0'</span>) &#123;</span><br><span class="line">                $res .= <span class="string">'零'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> ($i = <span class="number">0</span>, $cnt = strlen($dec); $i &lt; $cnt; $i++) &#123;</span><br><span class="line">            <span class="comment">// 非0的数字后面添加单位</span></span><br><span class="line">            $u = $dec&#123;$i&#125; &gt; <span class="number">0</span> ? $dec_uni [$i] : <span class="string">''</span>;</span><br><span class="line">            $res .= $chs [$dec&#123;$i&#125;] . $u;</span><br><span class="line">            <span class="keyword">if</span> ($cnt == <span class="number">1</span>)</span><br><span class="line">                $res .= <span class="string">'整'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 去掉末尾的0</span></span><br><span class="line">        $res = rtrim($res, <span class="string">'0'</span>);</span><br><span class="line">        <span class="comment">// 替换多个连续的0</span></span><br><span class="line">        $res = preg_replace(<span class="string">"/0+/"</span>, <span class="string">"零"</span>, $res);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $res .= $int_unit . <span class="string">'整'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="生成短网址"><a href="#生成短网址" class="headerlink" title="生成短网址"></a>生成短网址</h3><p>国内也有好多短网址生成接口，但是发现国外的<code>tinyurl.com</code>的提供的短网址接口很方便使用，直接需要传入一个网址就能生成一个短链接了，至于安全性和速度性能啥的，就再说了，我之前，也有写过一篇文章，关于新浪短网址的生成，有兴趣的话可以查看一下，文章入口-<a href="https://juejin.im/post/5b72766b51882560f53c6e03" target="_blank" rel="noopener">新浪微博API生成短链接</a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取短网址链接</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $url 原始网址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> string</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get_short_url</span><span class="params">($url = <span class="string">''</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 直接请求第三方接口地址，获取短URL</span></span><br><span class="line">    $api_url = <span class="string">'http://tinyurl.com/api-create.php?url='</span>;</span><br><span class="line">    $short_url = file_get_contents($api_url . $url);</span><br><span class="line">    <span class="keyword">return</span> $short_url;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="获取用户真实的IP地址"><a href="#获取用户真实的IP地址" class="headerlink" title="获取用户真实的IP地址"></a>获取用户真实的IP地址</h3><p>在需要分析用户的行为和操作日志的时候，肯定会遇到需要获取用户的IP地址的需求，因为在互联网中，能定位用户的，最有效最直接的就是IP地址，当然，也有人使用代理或者其他方式修改IP地址，导致这样获取的IP地址可能不准确，但是正常情况，这个方法获取用户的IP地址完全够用了。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取用户真实的IP地址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> mixed</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get_real_ip</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">empty</span>($_SERVER[<span class="string">'HTTP_CLIENT_IP'</span>])) &#123;</span><br><span class="line">        $ip = $_SERVER[<span class="string">'HTTP_CLIENT_IP'</span>];</span><br><span class="line">    &#125; <span class="keyword">elseif</span> (!<span class="keyword">empty</span>($_SERVER[<span class="string">'HTTP_X_FORWARDED_FOR'</span>])) &#123;</span><br><span class="line">        $ip = $_SERVER[<span class="string">'HTTP_X_FORWARDED_FOR'</span>];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $ip = $_SERVER[<span class="string">'REMOTE_ADDR'</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $ip;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="导出excel表格数据"><a href="#导出excel表格数据" class="headerlink" title="导出excel表格数据"></a>导出excel表格数据</h3><p>我们常用的导出Excel表格的库类有<code>PHPExcel</code>等，但是，想不想不借助任何库类，能直接导出Excel表格数据呢，当然是有办法的，那就是直接利用<code>html</code>的<code>table</code>表格来生成表格数据并导出。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 导出excel表格数据</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> array $data 表格数据，一个二维数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> array $title 第一行标题，一维数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $filename 下载的文件名</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">export_excel</span><span class="params">($data = [], $title = [], $filename = <span class="string">''</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 默认文件名为时间戳</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">empty</span>($filename)) &#123;</span><br><span class="line">        $filename = time();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 定义输出header信息</span></span><br><span class="line">    header(<span class="string">"Content-type:application/octet-stream;charset=GBK"</span>);</span><br><span class="line">    header(<span class="string">"Accept-Ranges:bytes"</span>);</span><br><span class="line">    header(<span class="string">"Content-type:application/vnd.ms-excel"</span>);</span><br><span class="line">    header(<span class="string">"Content-Disposition:attachment;filename="</span> . $filename . <span class="string">".xls"</span>);</span><br><span class="line">    header(<span class="string">"Pragma: no-cache"</span>);</span><br><span class="line">    header(<span class="string">"Expires: 0"</span>);</span><br><span class="line">    ob_start();</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;head&gt;&lt;meta http-equiv='Content-type' content='text/html;charset=GBK' /&gt;&lt;/head&gt; &lt;table border=1 style='text-align:center'&gt;\n"</span>;</span><br><span class="line">    <span class="comment">// 导出xls开始，先写表头</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">empty</span>($title)) &#123;</span><br><span class="line">        <span class="keyword">foreach</span> ($title <span class="keyword">as</span> $k =&gt; $v) &#123;</span><br><span class="line">            $title[$k] = iconv(<span class="string">"UTF-8"</span>, <span class="string">"GBK//IGNORE"</span>, $v);</span><br><span class="line">        &#125;</span><br><span class="line">        $title = <span class="string">"&lt;td&gt;"</span> . implode(<span class="string">"&lt;/td&gt;\t&lt;td&gt;"</span>, $title) . <span class="string">"&lt;/td&gt;"</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;tr&gt;$title&lt;/tr&gt;\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 再写表数据</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">empty</span>($data)) &#123;</span><br><span class="line">        <span class="keyword">foreach</span> ($data <span class="keyword">as</span> $key =&gt; $val) &#123;</span><br><span class="line">            <span class="keyword">foreach</span> ($val <span class="keyword">as</span> $ck =&gt; $cv) &#123;</span><br><span class="line">                <span class="keyword">if</span> (is_numeric($cv) &amp;&amp; strlen($cv) &lt; <span class="number">12</span>) &#123;</span><br><span class="line">                    $data[$key][$ck] = <span class="string">'&lt;td&gt;'</span> . mb_convert_encoding($cv, <span class="string">"GBK"</span>, <span class="string">"UTF-8"</span>) . <span class="string">"&lt;/td&gt;"</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    $data[$key][$ck] = <span class="string">'&lt;td style="vnd.ms-excel.numberformat:@;"&gt;'</span> . iconv(<span class="string">"UTF-8"</span>, <span class="string">"GBK//IGNORE"</span>, $cv) . <span class="string">"&lt;/td&gt;"</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            $data[$key] = <span class="string">"&lt;tr&gt;"</span> . implode(<span class="string">"\t"</span>, $data[$key]) . <span class="string">"&lt;/tr&gt;"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">echo</span> implode(<span class="string">"\n"</span>, $data);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;/table&gt;"</span>;</span><br><span class="line">    ob_flush();</span><br><span class="line">    <span class="keyword">exit</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="下载文件（支持断点续传）"><a href="#下载文件（支持断点续传）" class="headerlink" title="下载文件（支持断点续传）"></a>下载文件（支持断点续传）</h3><p>有的时候，我们从网上下载文件，但是有的时候下载一个大文件，突然下载到一半或者即将完成的时候，突然来了个网络失败，导致下载暂停中断了，如果等会网络恢复了，你又要重新开始下载，是不是得骂娘那种，但是呢，如果网络恢复了，你能够继续从网络中断之前的位置继续下载，是不是又开心了，当然，我们都希望是这样，但是有些黑心开发者，就可能不会让你开心，所以，你是想当不让人开心的黑心开发者还是做个好人呢，奉劝大家都做个善良的人吧，哈哈哈</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 支持断点续传，下载文件</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $file 下载文件完整路径</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">download_file_resume</span><span class="params">($file)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 检测文件是否存在</span></span><br><span class="line">    <span class="keyword">if</span> (!is_file($file)) &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">"非法文件下载！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 打开文件</span></span><br><span class="line">    $fp = fopen(<span class="string">"$file"</span>, <span class="string">"rb"</span>);</span><br><span class="line">    <span class="comment">// 获取文件大小</span></span><br><span class="line">    $size = filesize($file);</span><br><span class="line">    <span class="comment">// 获取文件名称</span></span><br><span class="line">    $filename = basename($file);</span><br><span class="line">    <span class="comment">// 获取文件扩展名</span></span><br><span class="line">    $file_extension = strtolower(substr(strrchr($filename, <span class="string">"."</span>), <span class="number">1</span>));</span><br><span class="line">    <span class="comment">// 根据扩展名 指出输出浏览器格式</span></span><br><span class="line">    <span class="keyword">switch</span> ($file_extension) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"exe"</span>:</span><br><span class="line">            $ctype = <span class="string">"application/octet-stream"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"zip"</span>:</span><br><span class="line">            $ctype = <span class="string">"application/zip"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"mp3"</span>:</span><br><span class="line">            $ctype = <span class="string">"audio/mpeg"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"mpg"</span>:</span><br><span class="line">            $ctype = <span class="string">"video/mpeg"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"avi"</span>:</span><br><span class="line">            $ctype = <span class="string">"video/x-msvideo"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            $ctype = <span class="string">"application/force-download"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 通用header头信息</span></span><br><span class="line">    header(<span class="string">"Cache-Control:"</span>);</span><br><span class="line">    header(<span class="string">"Cache-Control: public"</span>);</span><br><span class="line">    header(<span class="string">"Content-Type: $ctype"</span>);</span><br><span class="line">    header(<span class="string">"Content-Disposition: attachment; filename=$filename"</span>);</span><br><span class="line">    header(<span class="string">"Accept-Ranges: bytes"</span>);</span><br><span class="line">    <span class="comment">// 如果有$_SERVER['HTTP_RANGE']参数</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">isset</span>($_SERVER[<span class="string">'HTTP_RANGE'</span>])) &#123;</span><br><span class="line">        <span class="comment">// 断点后再次连接$_SERVER['HTTP_RANGE']的值</span></span><br><span class="line">        <span class="keyword">list</span>($a, $range) = explode(<span class="string">"="</span>, $_SERVER[<span class="string">'HTTP_RANGE'</span>]);</span><br><span class="line">        str_replace($range, <span class="string">"-"</span>, $range);</span><br><span class="line">        <span class="comment">// 文件总字节数</span></span><br><span class="line">        $size2 = $size - <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 获取下次下载的长度</span></span><br><span class="line">        $new_length = $size2 - $range;</span><br><span class="line">        header(<span class="string">"HTTP/1.1 206 Partial Content"</span>);</span><br><span class="line">        <span class="comment">// 输入总长</span></span><br><span class="line">        header(<span class="string">"Content-Length: $new_length"</span>);</span><br><span class="line">        header(<span class="string">"Content-Range: bytes $range$size2/$size"</span>);</span><br><span class="line">        <span class="comment">// 设置指针位置</span></span><br><span class="line">        fseek($fp, $range);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 第一次连接下载</span></span><br><span class="line">        $size2 = $size - <span class="number">1</span>;</span><br><span class="line">        header(<span class="string">"Content-Range: bytes 0-$size2/$size"</span>);</span><br><span class="line">        <span class="comment">// 输出总长</span></span><br><span class="line">        header(<span class="string">"Content-Length: "</span> . $size);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 虚幻输出</span></span><br><span class="line">    <span class="keyword">while</span> (!feof($fp)) &#123;</span><br><span class="line">        <span class="comment">// 设置文件最长执行时间</span></span><br><span class="line">        set_time_limit(<span class="number">0</span>);</span><br><span class="line">        <span class="comment">// 输出文件</span></span><br><span class="line">        <span class="keyword">print</span>(fread($fp, <span class="number">1024</span> * <span class="number">8</span>));</span><br><span class="line">        <span class="comment">// 输出缓冲</span></span><br><span class="line">        flush();</span><br><span class="line">        ob_flush();</span><br><span class="line">    &#125;</span><br><span class="line">    fclose($fp);</span><br><span class="line">    <span class="keyword">exit</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>好了，第一篇我就先大概分享这几个函数，后续会慢慢更新其他的实用函数，如果大家有其他好玩的、好用的欢迎分享出来，大家一起学习和交流。对了，如果有说的不对的或者错误的地方，请大家指出来，我会努力改进，谢谢。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_img.jpg" alt="gxcuizy 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay_img.jpg" alt="gxcuizy 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+            <a href="/tags/函数/" rel="tag"># 函数</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/06/Python3自动生成MySQL数据字典的markdown文本/" rel="next" title="Python3自动生成MySQL数据字典的markdown文本">
+                <i class="fa fa-chevron-left"></i> Python3自动生成MySQL数据字典的markdown文本
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2020/05/12/【一】PHP实用自定义函数/"
+           data-title="【一】PHP实用自定义函数" data-url="blog.y0701.com/2020/05/12/【一】PHP实用自定义函数/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/me.jpg"
+                alt="gxcuizy" />
+            
+              <p class="site-author-name" itemprop="name">gxcuizy</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/gxcuizy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:gxcuizy@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/59b0de6e5188250f4850ea06" target="_blank" title="JueJin">
+                      
+                        <i class="fa fa-fw fa-paperclip"></i>JueJin</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/cuizhongyi" target="_blank" title="SegmentFault">
+                      
+                        <i class="fa fa-fw fa-list-alt"></i>SegmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回格式化时间"><span class="nav-text">返回格式化时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#格式化数字"><span class="nav-text">格式化数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#人民币数字小写转大写"><span class="nav-text">人民币数字小写转大写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成短网址"><span class="nav-text">生成短网址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取用户真实的IP地址"><span class="nav-text">获取用户真实的IP地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导出excel表格数据"><span class="nav-text">导出excel表格数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载文件（支持断点续传）"><span class="nav-text">下载文件（支持断点续传）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后"><span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gxcuizy</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问用户
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-beta.2/lazyload.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'wROinty9rwhkmksGHfecnhTP-gzGzoHsz',
+        appKey: 'PbESEvuTejxDH31XqBEDnxvX',
+        placeholder: '请输入您的留言',
+        avatar:'wavatar',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+
+    var infoEle = document.querySelector('#comments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+      infoEle.childNodes.forEach(function(item) {
+        item.parentNode.removeChild(item);
+      });
+    }
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+  <!-- 页面点击效果 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+</body>
+</html>
