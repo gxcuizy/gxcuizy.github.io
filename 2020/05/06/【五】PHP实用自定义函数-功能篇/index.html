@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "f3f6c502"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+      
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="PHP,函数," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言这篇文章的自定义函数，主要说几个功能篇的函数，比较实用，再次申明一下，这些函数，每个我都是自己亲自执行并且测过过了的，所以，不会存在那种执行会报错的情况。 好了，就不虾扯蛋了，直接说正事，我后续会陆续写一些PHP开发中实用的一些自定义函数，方便用到的朋友，能够快速开发和使用。">
+<meta name="keywords" content="PHP,函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【五】PHP实用自定义函数-功能篇">
+<meta property="og:url" content="blog.y0701.com/2020/05/06/【五】PHP实用自定义函数-功能篇/index.html">
+<meta property="og:site_name" content="gxcuizy&#39;s blog">
+<meta property="og:description" content="前言这篇文章的自定义函数，主要说几个功能篇的函数，比较实用，再次申明一下，这些函数，每个我都是自己亲自执行并且测过过了的，所以，不会存在那种执行会报错的情况。 好了，就不虾扯蛋了，直接说正事，我后续会陆续写一些PHP开发中实用的一些自定义函数，方便用到的朋友，能够快速开发和使用。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://image-static.segmentfault.com/148/898/1488986830-5eccae75463ca_articlex">
+<meta property="og:image" content="https://tool.lu/netcard/">
+<meta property="og:updated_time" content="2020-05-26T07:49:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【五】PHP实用自定义函数-功能篇">
+<meta name="twitter:description" content="前言这篇文章的自定义函数，主要说几个功能篇的函数，比较实用，再次申明一下，这些函数，每个我都是自己亲自执行并且测过过了的，所以，不会存在那种执行会报错的情况。 好了，就不虾扯蛋了，直接说正事，我后续会陆续写一些PHP开发中实用的一些自定义函数，方便用到的朋友，能够快速开发和使用。">
+<meta name="twitter:image" content="https://image-static.segmentfault.com/148/898/1488986830-5eccae75463ca_articlex">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="blog.y0701.com/2020/05/06/【五】PHP实用自定义函数-功能篇/"/>
+
+
+
+
+
+  <title>【五】PHP实用自定义函数-功能篇 | gxcuizy's blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?79a24eb542940d706401923128bd4415";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gxcuizy's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/photos/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="blog.y0701.com/2020/05/06/【五】PHP实用自定义函数-功能篇/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gxcuizy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gxcuizy's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">【五】PHP实用自定义函数-功能篇</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-06T13:45:51+08:00">
+                2020-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/05/06/【五】PHP实用自定义函数-功能篇/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2020/05/06/【五】PHP实用自定义函数-功能篇/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 点击量：
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://image-static.segmentfault.com/148/898/1488986830-5eccae75463ca_articlex" alt=""></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这篇文章的自定义函数，主要说几个功能篇的函数，比较实用，再次申明一下，这些函数，每个我都是自己亲自执行并且测过过了的，所以，不会存在那种执行会报错的情况。</p>
+<p>好了，就不虾扯蛋了，直接说正事，我后续会陆续写一些PHP开发中实用的一些自定义函数，方便用到的朋友，能够快速开发和使用。</p>
+<a id="more"></a>
+<h3 id="获取指定长度的随机字符串"><a href="#获取指定长度的随机字符串" class="headerlink" title="获取指定长度的随机字符串"></a>获取指定长度的随机字符串</h3><p>我相信，我们都遇到过那种生成指定长度的随机字符串的需求，比如：登录密码校验的密码盐、给用户随机生成的密码以及用户昵称等等，虽然可能会有一些自己的规则在里面，但是大概思路基本都差不多，大同小异。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取指定长度的随机字符串</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> int $length 随机字符串的长度</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> string</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get_random_str</span><span class="params">($length = <span class="number">9</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 字符串集合，全部大小写字母和数字</span></span><br><span class="line">    $chars = <span class="string">'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'</span>;</span><br><span class="line">    $str = <span class="string">''</span>;</span><br><span class="line">    <span class="comment">// 循环多次，随机逐次获取</span></span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; $length; $i++) &#123;</span><br><span class="line">        $str .= $chars[mt_rand(<span class="number">0</span>, strlen($chars) - <span class="number">1</span>)];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="统计文章中文字和图片的数量"><a href="#统计文章中文字和图片的数量" class="headerlink" title="统计文章中文字和图片的数量"></a>统计文章中文字和图片的数量</h3><p>一篇文章，主要就是文字和图片组成的，当然了还有一些表单符号啥的，如果全都是文字，感觉有点太枯燥了，所以，好多文章都强调要图文并茂，那么，到了这，你是否有种要统计一篇文章有多少张图片和多少个文字的冲动呢，别撒谎老实说，你肯定有的，那么该怎么统计呢，自然有个热心的网友来帮你的了，看下面，当当当当……</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 统计文章中文字和图片的数量</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $html 文章html字符串</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> array</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">count_word_img</span><span class="params">($html = <span class="string">''</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 匹配img标签的数量</span></span><br><span class="line">    preg_match_all(<span class="string">'/&lt;img /i'</span>, $html, $match_arr);</span><br><span class="line">    $img_count = count($match_arr[<span class="number">0</span>]);</span><br><span class="line">    <span class="comment">// 统计非img标签的数量，可根据实际情况进行调整表达式</span></span><br><span class="line">    $pattern = <span class="string">'/\[#img_[0-9]+_[a-z]*_[0-9]+_[a-zA-Z]*/i'</span>;</span><br><span class="line">    preg_match_all($pattern, $html, $match_arr);</span><br><span class="line">    $img_count += count($match_arr[<span class="number">0</span>]);</span><br><span class="line">    <span class="comment">// 去掉图片img标签</span></span><br><span class="line">    $html = preg_replace(<span class="string">"/&lt;img([^&gt;].+)&gt;/iU"</span>, <span class="string">""</span>, $html);</span><br><span class="line">    <span class="comment">// 去掉非标签的图片</span></span><br><span class="line">    $html = preg_replace($pattern, <span class="string">""</span>, $html);</span><br><span class="line">    <span class="comment">// 去掉全部空格</span></span><br><span class="line">    $html = str_replace(<span class="string">' '</span>, <span class="string">''</span>, $html);</span><br><span class="line">    <span class="comment">// 先去除HTML和PHP标记，再统计字数</span></span><br><span class="line">    $word_count = mb_strlen(trim(strip_tags($html)), <span class="string">'UTF-8'</span>);</span><br><span class="line">    <span class="keyword">return</span> [<span class="string">'word_count'</span> =&gt; $word_count, <span class="string">'img_count'</span> =&gt; $img_count];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="格式化打印输出内容"><a href="#格式化打印输出内容" class="headerlink" title="格式化打印输出内容"></a>格式化打印输出内容</h3><p>在我们日常开发和调试的过程中，你是否希望能有一个函数，能让你快速的打印出数据，很多框架都封装有这些辅助函数，比如<code>ThinkPHP5</code>框架中有<code>dump()</code>和<code>halt()</code>，<code>Laravel</code>框架中也有<code>dump()</code>和<code>dd()</code>等，但是，如果遇到没有这类辅助函数的时候，你应该怎么办呢，可能有的开发者的打印调试是这样的：<code>print_r($a);die();</code>或者<code>echo &#39;&lt;pre&gt;&#39;;print_r($a);exit();</code>，有的时候，调试完毕了，还是直接就注释掉而并没有直接删除，这种习惯可不好；继续，遇到框架中没有或者自己不爽框架的函数的时候，你是不是想着，自己手撸一个呢，那必须的嘛，马上动手安排……</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 格式化打印输出内容</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> void $data 需要打印的内容</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> bool $exit</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dump_plus</span><span class="params">($data, $exit = true)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 自定义样式，方便美观查看</span></span><br><span class="line">    $output = <span class="string">'&lt;pre style="display: block;background-color: #f5f5f5;border: 1px solid #cccccc;padding: 10px;margin: 45px 0 0 0;font-size: 13px;line-height: 1.5;border-radius: 4px;"&gt;'</span>;</span><br><span class="line">    <span class="comment">// boolean或者null类型直接文字输出，其他print_r格式化输出</span></span><br><span class="line">    <span class="keyword">if</span> (is_bool($data)) &#123;</span><br><span class="line">        $show = $data ? <span class="string">'true'</span> : <span class="string">'false'</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (is_null($data)) &#123;</span><br><span class="line">        $show = <span class="string">'null'</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $show = var_export($data, <span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 拼接文本输出</span></span><br><span class="line">    $output .= $show;</span><br><span class="line">    $output .= <span class="string">'&lt;/pre&gt;'</span>;</span><br><span class="line">    <span class="keyword">echo</span> $output;</span><br><span class="line">    <span class="comment">// 是否中断执行</span></span><br><span class="line">    <span class="keyword">if</span> ($exit) &#123;</span><br><span class="line">        <span class="keyword">exit</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="通过IP地址获取位置信息"><a href="#通过IP地址获取位置信息" class="headerlink" title="通过IP地址获取位置信息"></a>通过IP地址获取位置信息</h3><p>说到这个，大家先来看看下面的这一张图：</p>
+<p><img src="https://tool.lu/netcard/" alt=""></p>
+<p>图片上竟然可以定位显示出你的位置，是不是会感觉到很神奇呢，别惊讶，在万能的程序员小哥眼里，啥都不是事，要有，那就是给他介绍个对象，实在不行，再请他撸个铁啥的（这个铁是烤肉串哈，别搞错把事办砸了）……</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 通过IP地址获取位置信息</span></span><br><span class="line"><span class="comment"> * markdown快速使用 </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $ip IP地址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> mixed</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get_ip_info</span><span class="params">($ip = <span class="string">''</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $api = <span class="string">'http://www.geoplugin.net/json.gp?ip='</span>;</span><br><span class="line">    $res_data = file_get_contents($api . $ip);</span><br><span class="line">    $res = json_decode($res_data, <span class="keyword">true</span>);</span><br><span class="line">    $data = [];</span><br><span class="line">    <span class="keyword">if</span> ($res[<span class="string">'geoplugin_status'</span>] == <span class="string">'200'</span>) &#123;</span><br><span class="line">        <span class="comment">// 国家</span></span><br><span class="line">        $data[<span class="string">'country'</span>] = $res[<span class="string">'geoplugin_countryName'</span>];</span><br><span class="line">        <span class="comment">// 省份</span></span><br><span class="line">        $data[<span class="string">'province'</span>] = $res[<span class="string">'geoplugin_regionName'</span>];</span><br><span class="line">        <span class="comment">// 城市</span></span><br><span class="line">        $data[<span class="string">'city'</span>] = $res[<span class="string">'geoplugin_city'</span>];</span><br><span class="line">        <span class="comment">// 经度</span></span><br><span class="line">        $data[<span class="string">'latitude'</span>] = $res[<span class="string">'geoplugin_latitude'</span>];</span><br><span class="line">        <span class="comment">// 纬度</span></span><br><span class="line">        $data[<span class="string">'longitude'</span>] = $res[<span class="string">'geoplugin_longitude'</span>];</span><br><span class="line">        <span class="comment">// 其他值，根据需要自定义</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="发红包，金额随机"><a href="#发红包，金额随机" class="headerlink" title="发红包，金额随机"></a>发红包，金额随机</h3><p>逢年过节的，在微信群里各种红包，你发了多少，你又抢了多少呢，一般群里的红包，都是拼手气的红包，作为一个程序员小哥哥小姐姐，是否甘心只抢红包而不想一下这个红包是怎么肥四的吗？我知道，你肯定有想的，只不过抢红包太忙了，没顾得过来而已，大家都懂的，那这种粗活，还是让我来就好了。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 发红包，金额随机</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> int $total 红包金额</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> int $num 红包个数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> float $min 红包最小金额</span></span><br><span class="line"><span class="comment"> * @<span class="doctag">@return</span> array</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get_red_packet</span><span class="params">($total = <span class="number">0</span>, $num = <span class="number">1</span>, $min = <span class="number">0.01</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $data = [];</span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">1</span>; $i &lt; $num; $i++) &#123;</span><br><span class="line">        <span class="comment">// 随机金额安全上限控制</span></span><br><span class="line">        $safe_total = ($total - ($num - $i) * $min) / ($num - $i);</span><br><span class="line">        $money = mt_rand($min * <span class="number">100</span>, $safe_total * <span class="number">100</span>) / <span class="number">100</span>;</span><br><span class="line">        $total -= $money;</span><br><span class="line">        <span class="comment">// sort为领取顺序，money为红包金额，balance为领取后的余额</span></span><br><span class="line">        $data[] = [</span><br><span class="line">            <span class="string">'sort'</span> =&gt; $i,</span><br><span class="line">            <span class="string">'money'</span> =&gt; $money,</span><br><span class="line">            <span class="string">'balance'</span> =&gt; $total</span><br><span class="line">        ];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 最后一个红包</span></span><br><span class="line">    $data[] = [</span><br><span class="line">        <span class="string">'sort'</span> =&gt; $num,</span><br><span class="line">        <span class="string">'money'</span> =&gt; $total,</span><br><span class="line">        <span class="string">'balance'</span> =&gt; <span class="number">0</span></span><br><span class="line">    ];</span><br><span class="line">    <span class="keyword">return</span> $data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="获取文字的首字母"><a href="#获取文字的首字母" class="headerlink" title="获取文字的首字母"></a>获取文字的首字母</h3><p>获取文字的首字母，一般什么情况下会遇到这种需求呢，我之前做过一个需求，就是城市名称定位，直接根据首字母定位到所有以这个首字母开头的城市，节省了很大的搜索时间，我们的手机通讯录，也是有这个搜索的，大家可以看一下，那么这类是怎么获取首字母的呢，我们一起来讨论一下吧……</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取文字的首字母</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $str 文字字符串</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> string</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get_first_char</span><span class="params">($str = <span class="string">''</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $first_char = $str[<span class="number">0</span>];</span><br><span class="line">    <span class="comment">// 判断是否为字符串</span></span><br><span class="line">    <span class="keyword">if</span> (ord($first_char) &gt;= ord(<span class="string">"A"</span>) &amp;&amp; ord($first_char) &lt;= ord(<span class="string">"z"</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> strtoupper($first_char);</span><br><span class="line">    &#125;</span><br><span class="line">    $str = iconv(<span class="string">"UTF-8"</span>, <span class="string">"gb2312"</span>, $str);</span><br><span class="line">    $asc = ord($str[<span class="number">0</span>]) * <span class="number">256</span> + ord($str[<span class="number">1</span>]) - <span class="number">65536</span>;</span><br><span class="line">    $first_char = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">if</span> ($asc &gt;= <span class="number">-20319</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-20284</span>) $first_char = <span class="string">"A"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-20283</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-19776</span>) $first_char = <span class="string">"B"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-19775</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-19219</span>) $first_char = <span class="string">"C"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-19218</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-18711</span>) $first_char = <span class="string">"D"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-18710</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-18527</span>) $first_char = <span class="string">"E"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-18526</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-18240</span>) $first_char = <span class="string">"F"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-18239</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-17923</span>) $first_char = <span class="string">"G"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-17922</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-17418</span>) $first_char = <span class="string">"H"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-17417</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-16475</span>) $first_char = <span class="string">"J"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-16474</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-16213</span>) $first_char = <span class="string">"K"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-16212</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-15641</span>) $first_char = <span class="string">"L"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-15640</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-15166</span>) $first_char = <span class="string">"M"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-15165</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-14923</span>) $first_char = <span class="string">"N"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-14922</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-14915</span>) $first_char = <span class="string">"O"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-14914</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-14631</span>) $first_char = <span class="string">"P"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-14630</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-14150</span>) $first_char = <span class="string">"Q"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-14149</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-14091</span>) $first_char = <span class="string">"R"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-14090</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-13319</span>) $first_char = <span class="string">"S"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-13318</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-12839</span>) $first_char = <span class="string">"T"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-12838</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-12557</span>) $first_char = <span class="string">"W"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-12556</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-11848</span>) $first_char = <span class="string">"X"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-11847</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-11056</span>) $first_char = <span class="string">"Y"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ($asc &gt;= <span class="number">-11055</span> <span class="keyword">and</span> $asc &lt;= <span class="number">-10247</span>) $first_char = <span class="string">"Z"</span>;</span><br><span class="line">    <span class="keyword">return</span> $first_char;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="删除指定目录下的文件夹和文件"><a href="#删除指定目录下的文件夹和文件" class="headerlink" title="删除指定目录下的文件夹和文件"></a>删除指定目录下的文件夹和文件</h3><p>有一天，领导给你一个小任务，说让你写一个定时任务，在固定时间清除一下某个文件夹下的全部文件和空文件夹，这种小需求，对于你来说当然是洒洒水啦，但是呢，此时此刻，你正在陪女票聊天，正火热那种，超过一分钟不回信息回家就要跪键盘那种，哪里走得开去分心干这些小事啊，不过呢，幸好有我在，这种小事，我肯定帮你做好了，你拿去就可以交差了。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 删除指定目录下的文件夹和文件</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $path 目录路径</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delete_dir</span><span class="params">($path = <span class="string">''</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 为空默认当前目录</span></span><br><span class="line">    <span class="keyword">if</span> ($path == <span class="string">''</span>) &#123;</span><br><span class="line">        $path = realpath(<span class="string">'.'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 判断目录是否存在</span></span><br><span class="line">    <span class="keyword">if</span> (!is_dir($path)) &#123;</span><br><span class="line">        <span class="keyword">exit</span>(<span class="string">'目录【'</span> . $path . <span class="string">'】不存在'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 删除path目录最后的/</span></span><br><span class="line">    <span class="keyword">if</span> (substr($path, <span class="number">-1</span>, <span class="number">1</span>) == <span class="string">'/'</span>) &#123;</span><br><span class="line">        $path = substr_replace($path, <span class="string">''</span>, <span class="number">-1</span>, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 扫描一个文件夹内的所有文件夹和文件</span></span><br><span class="line">    $file_arr = scandir($path);</span><br><span class="line">    <span class="keyword">foreach</span> ($file_arr <span class="keyword">as</span> $file) &#123;</span><br><span class="line">        <span class="comment">// 排除当前目录.与父级目录..</span></span><br><span class="line">        <span class="keyword">if</span> ($file != <span class="string">"."</span> &amp;&amp; $file != <span class="string">".."</span>) &#123;</span><br><span class="line">            <span class="comment">// 如果是目录则递归子目录</span></span><br><span class="line">            $this_file = $path . DIRECTORY_SEPARATOR . $file;</span><br><span class="line">            <span class="keyword">if</span> (is_dir($this_file)) &#123;</span><br><span class="line">                <span class="comment">// 继续循环遍历子目录</span></span><br><span class="line">                delete_dir($this_file);</span><br><span class="line">                <span class="comment">// 删除空文件夹</span></span><br><span class="line">                @rmdir($this_file);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (is_file($this_file)) &#123;</span><br><span class="line">                <span class="comment">// 文件类型直接删除</span></span><br><span class="line">                unlink($this_file);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="自定义函数源码"><a href="#自定义函数源码" class="headerlink" title="自定义函数源码"></a>自定义函数源码</h3><p>为了方便，我把我整理的全部自定义函数，都放到一个文件中，并且上传到同性交友网站GitHub上了，方便交流和使用，也方便大家帮我排错，需要的同学自取即可，我会不定时更新，地址如下：</p>
+<p>函数源码地址：<a href="https://github.com/gxcuizy/Blog/blob/master/code/common.php" target="_blank" rel="noopener">https://github.com/gxcuizy/Blog/blob/master/code/common.php</a></p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>我后续会慢慢更新其他的实用自定义函数，如果大家有其他好玩的、好用的欢迎分享出来，大家一起学习和交流。对了，如果有说的不对的或者错误的地方，请大家指出来，我会努力改进，谢谢。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_img.jpg" alt="gxcuizy 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay_img.jpg" alt="gxcuizy 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+            <a href="/tags/函数/" rel="tag"># 函数</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/26/深圳某程序员竟敢公众场合高端黑舍友，就不怕有生命危险吗/" rel="next" title="【惊呆了】深圳某程序员竟敢公众场合高端黑舍友，就不怕有生命危险吗？">
+                <i class="fa fa-chevron-left"></i> 【惊呆了】深圳某程序员竟敢公众场合高端黑舍友，就不怕有生命危险吗？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/06/Python3自动生成MySQL数据字典的markdown文本/" rel="prev" title="Python3自动生成MySQL数据字典的markdown文本">
+                Python3自动生成MySQL数据字典的markdown文本 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2020/05/06/【五】PHP实用自定义函数-功能篇/"
+           data-title="【五】PHP实用自定义函数-功能篇" data-url="blog.y0701.com/2020/05/06/【五】PHP实用自定义函数-功能篇/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/me.jpg"
+                alt="gxcuizy" />
+            
+              <p class="site-author-name" itemprop="name">gxcuizy</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/gxcuizy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:gxcuizy@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/59b0de6e5188250f4850ea06" target="_blank" title="JueJin">
+                      
+                        <i class="fa fa-fw fa-paperclip"></i>JueJin</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/cuizhongyi" target="_blank" title="SegmentFault">
+                      
+                        <i class="fa fa-fw fa-list-alt"></i>SegmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取指定长度的随机字符串"><span class="nav-text">获取指定长度的随机字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#统计文章中文字和图片的数量"><span class="nav-text">统计文章中文字和图片的数量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#格式化打印输出内容"><span class="nav-text">格式化打印输出内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过IP地址获取位置信息"><span class="nav-text">通过IP地址获取位置信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发红包，金额随机"><span class="nav-text">发红包，金额随机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取文字的首字母"><span class="nav-text">获取文字的首字母</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除指定目录下的文件夹和文件"><span class="nav-text">删除指定目录下的文件夹和文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义函数源码"><span class="nav-text">自定义函数源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后"><span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gxcuizy</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问用户
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-beta.2/lazyload.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'wROinty9rwhkmksGHfecnhTP-gzGzoHsz',
+        appKey: 'PbESEvuTejxDH31XqBEDnxvX',
+        placeholder: '请输入您的留言',
+        avatar:'wavatar',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+
+    var infoEle = document.querySelector('#comments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+      infoEle.childNodes.forEach(function(item) {
+        item.parentNode.removeChild(item);
+      });
+    }
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+  <!-- 页面点击效果 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+</body>
+</html>
