@@ -80,7 +80,7 @@
 
 
 
-  <meta name="keywords" content="gxcuizy,cuizy,blog,Hexo,Next,博客,个人博客,php,python,cuizhongyi,cui" />
+  <meta name="keywords" content="PHP,Swoole,Cygwin," />
 
 
 
@@ -91,17 +91,49 @@
 
 
 
-<meta name="description" content="我是如此的平凡，却又如此的幸运！">
-<meta name="keywords" content="gxcuizy blog,gxcuizy,cuizy,blog,hexo,next,cuizhongyi,php,python">
-<meta property="og:type" content="website">
-<meta property="og:title" content="gxcuizy&#39;s blog">
-<meta property="og:url" content="blog.y0701.com/tags/MySQL/index.html">
+<meta name="description" content="前言昨天，在本地安装Swoole调试环境的时候，遇到好几个坑，因为我的电脑是Windows系统，所以安装的是cygwin，但是过程并不顺利，接连出现安装终端的问题，并一步步查资料排坑，最终也顺利安装成功了，为了让其他人也能一次性就安装成功，省掉很多麻烦闹心事，我特地写了这边文章，希望对有需要的人有所帮助。 下载SwooleSwoole下载地址：https://github.com/swoole/">
+<meta name="keywords" content="PHP,Swoole,Cygwin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【完整版】在Windows系统上安装Cygwin搭建Swoole测试环境">
+<meta property="og:url" content="blog.y0701.com/2020/05/28/【完整版】在Windows系统上安装Cygwin搭建Swoole测试环境/index.html">
 <meta property="og:site_name" content="gxcuizy&#39;s blog">
-<meta property="og:description" content="我是如此的平凡，却又如此的幸运！">
+<meta property="og:description" content="前言昨天，在本地安装Swoole调试环境的时候，遇到好几个坑，因为我的电脑是Windows系统，所以安装的是cygwin，但是过程并不顺利，接连出现安装终端的问题，并一步步查资料排坑，最终也顺利安装成功了，为了让其他人也能一次性就安装成功，省掉很多麻烦闹心事，我特地写了这边文章，希望对有需要的人有所帮助。 下载SwooleSwoole下载地址：https://github.com/swoole/">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://image-static.segmentfault.com/250/045/2500453365-5ecf1d31a1550_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/114/161/1141615996-5ece24cbb3990_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/261/448/2614483268-5ece254f6eefc_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/251/387/2513874148-5ece26ac45f2a_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/185/933/1859332603-5ece2717719ac_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/511/612/511612212-5ece27d10dc34_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/124/955/1249553303-5ece28347bbf9_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/388/344/3883441440-5ece28be5c566_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/232/577/232577193-5ece295ac415e_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/215/182/2151824634-5ece2c195f8c3_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/346/735/346735380-5ece2d250f771_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/223/758/2237586392-5ece2ec0ee72b_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/357/754/3577547791-5ece30e05878c_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/287/332/2873325843-5ece30915f2f3_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/369/961/3699611256-5ece313e71c1b_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/388/483/3884839399-5ece31d25e1f8_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/171/121/1711215636-5ece325beca06_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/105/041/1050417720-5ece329c0726d_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/328/246/3282466629-5ece3505b23b7_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/390/744/3907447418-5ece33393b1a1_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/378/566/3785662233-5ece357372ebd_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/759/821/759821391-5ece365fb3e45_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/231/656/2316566083-5ece388f00fc4_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/385/623/3856230176-5ece3a1b5effd_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/370/054/3700541166-5ecf102faffcf_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/409/346/4093461782-5ecf121983431_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/269/446/2694463883-5ecf1340b2d8d_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/183/507/1835071155-5ecf14e6a7a00_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/158/032/1580328822-5ecf160775578_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/398/139/3981397264-5ecf1726287b3_articlex">
+<meta property="og:updated_time" content="2020-05-28T02:19:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gxcuizy&#39;s blog">
-<meta name="twitter:description" content="我是如此的平凡，却又如此的幸运！">
+<meta name="twitter:title" content="【完整版】在Windows系统上安装Cygwin搭建Swoole测试环境">
+<meta name="twitter:description" content="前言昨天，在本地安装Swoole调试环境的时候，遇到好几个坑，因为我的电脑是Windows系统，所以安装的是cygwin，但是过程并不顺利，接连出现安装终端的问题，并一步步查资料排坑，最终也顺利安装成功了，为了让其他人也能一次性就安装成功，省掉很多麻烦闹心事，我特地写了这边文章，希望对有需要的人有所帮助。 下载SwooleSwoole下载地址：https://github.com/swoole/">
+<meta name="twitter:image" content="https://image-static.segmentfault.com/250/045/2500453365-5ecf1d31a1550_articlex">
 
 
 
@@ -131,13 +163,13 @@
 
 
 
-  <link rel="canonical" href="blog.y0701.com/tags/MySQL/"/>
+  <link rel="canonical" href="blog.y0701.com/2020/05/28/【完整版】在Windows系统上安装Cygwin搭建Swoole测试环境/"/>
 
 
 
 
 
-  <title>标签: MySQL | gxcuizy's blog</title>
+  <title>【完整版】在Windows系统上安装Cygwin搭建Swoole测试环境 | gxcuizy's blog</title>
   
 
 
@@ -166,7 +198,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -304,138 +336,340 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>MySQL<small>标签</small>
-        </h2>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="blog.y0701.com/2020/05/28/【完整版】在Windows系统上安装Cygwin搭建Swoole测试环境/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gxcuizy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gxcuizy's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2020/05/06/Python3自动生成MySQL数据字典的markdown文本/" itemprop="url">
-              
-                <span itemprop="name">Python3自动生成MySQL数据字典的markdown文本</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">【完整版】在Windows系统上安装Cygwin搭建Swoole测试环境</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-05-06T15:09:16+08:00"
-              content="2020-05-06" >
-          05-06
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-28T09:56:08+08:00">
+                2020-05-28
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/05/28/【完整版】在Windows系统上安装Cygwin搭建Swoole测试环境/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2020/05/28/【完整版】在Windows系统上安装Cygwin搭建Swoole测试环境/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 点击量：
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/21/关于MySQL优化的几点总结/" itemprop="url">
-              
-                <span itemprop="name">关于MySQL优化的几点总结</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-21T17:06:16+08:00"
-              content="2018-09-21" >
-          09-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/08/27/通过Python爬取三级城市地址库（支持MySQL和JSON格式）/" itemprop="url">
-              
-                <span itemprop="name">通过Python爬取国家统计局省市区三级地址库（支持MySQL和JSON格式）</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-27T10:09:29+08:00"
-              content="2018-08-27" >
-          08-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/08/10/Python通过跳板机连接远程MySQL/" itemprop="url">
-              
-                <span itemprop="name">Python通过跳板机连接远程MySQL</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-10T10:35:09+08:00"
-              content="2018-08-10" >
-          08-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p><img src="https://image-static.segmentfault.com/250/045/2500453365-5ecf1d31a1550_articlex" alt=""></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>昨天，在本地安装<code>Swoole</code>调试环境的时候，遇到好几个坑，因为我的电脑是<code>Windows</code>系统，所以安装的是<code>cygwin</code>，但是过程并不顺利，接连出现安装终端的问题，并一步步查资料排坑，最终也顺利安装成功了，为了让其他人也能一次性就安装成功，省掉很多麻烦闹心事，我特地写了这边文章，希望对有需要的人有所帮助。</p>
+<h3 id="下载Swoole"><a href="#下载Swoole" class="headerlink" title="下载Swoole"></a>下载Swoole</h3><p>Swoole下载地址：<a href="https://github.com/swoole/swoole-src/releases" target="_blank" rel="noopener">https://github.com/swoole/swoole-src/releases</a></p>
+<a id="more"></a>
+<p><img src="https://image-static.segmentfault.com/114/161/1141615996-5ece24cbb3990_articlex" alt=""></p>
+<p>在浏览器中打开下载地址，滑动到下载位置，可以下载<code>zip</code>文件包或者<code>tar.gz</code>文件包，下载完成等着后面备用。</p>
+<h3 id="下载cygwin"><a href="#下载cygwin" class="headerlink" title="下载cygwin"></a>下载cygwin</h3><p>cygwin下载地址：<a href="https://www.cygwin.com/" target="_blank" rel="noopener">https://www.cygwin.com/</a></p>
+<p><img src="https://image-static.segmentfault.com/261/448/2614483268-5ece254f6eefc_articlex" alt=""></p>
+<p>在浏览器中打开<code>cygwin</code>官网，下滑到<code>Installing Cygwin</code>部分，点击<code>setup-x86_64.exe</code>下载<code>exe</code>文件即可</p>
+<h3 id="安装cygwin"><a href="#安装cygwin" class="headerlink" title="安装cygwin"></a>安装cygwin</h3><p>找到刚才下载的<code>setup-x86_64.exe</code>文件，双击打开，就开始安装cygwin</p>
+<ul>
+<li>第一步：打开安装界面，直接点击下一步</li>
+</ul>
+<p><img src="https://image-static.segmentfault.com/251/387/2513874148-5ece26ac45f2a_articlex" alt=""></p>
+<ul>
+<li>第二步：选择下载源，我们直接默认选择<code>Install from Internet</code>，然后点击下一步</li>
+</ul>
+<p><img src="https://image-static.segmentfault.com/185/933/1859332603-5ece2717719ac_articlex" alt=""></p>
+<ul>
+<li>第三步：选择安装目录，可以在输入框中直接修改安装目录，或者点击<code>Browse</code>选择目录，点击下一步</li>
+</ul>
+<p><img src="https://image-static.segmentfault.com/511/612/511612212-5ece27d10dc34_articlex" alt=""></p>
+<ul>
+<li>第四步：选择包下载的目录，可以在输入框中直接修改目录，或者点击<code>Browse</code>选择目录，点击下一步</li>
+</ul>
+<p><img src="https://image-static.segmentfault.com/124/955/1249553303-5ece28347bbf9_articlex" alt=""></p>
+<ul>
+<li>第五步：选择网络服务器，直接默认就行了，点击继续下一步</li>
+</ul>
+<p><img src="https://image-static.segmentfault.com/388/344/3883441440-5ece28be5c566_articlex" alt=""></p>
+<ul>
+<li>第六步：选择一个下载服务器网址，我们选择<code>http://mirrors.metapeer.com</code>，在这里，我们也可以自己添加163的下载服务器，地址为<code>http://mirrors.163.com/cygwin/</code>，选定继续下一步</li>
+</ul>
+<p><img src="https://image-static.segmentfault.com/232/577/232577193-5ece295ac415e_articlex" alt=""></p>
+<ul>
+<li>第七步：选择需要安装的软件包界面，<code>View</code>下拉选择<code>Category</code>选项</li>
+</ul>
+<p><img src="https://image-static.segmentfault.com/215/182/2151824634-5ece2c195f8c3_articlex" alt=""></p>
+<ul>
+<li>第八步：搜索并选择需要安装的软件包</li>
+</ul>
+<p>gcc-core，在<code>Search</code>中搜索<code>gcc-core</code>，展开<code>Devel</code>，找到下图中的蓝色选中项，在<code>New</code>栏，双击选择即可</p>
+<p><img src="https://image-static.segmentfault.com/346/735/346735380-5ece2d250f771_articlex" alt=""></p>
+<p>php和php-devel，在<code>Search</code>中搜索<code>php</code>，展开<code>Interpreters</code>，找到下图中的蓝色选中项，在<code>New</code>栏，双击选择即可，切记<code>php</code>和<code>php-devel</code>两项都要选择</p>
+<p><img src="https://image-static.segmentfault.com/223/758/2237586392-5ece2ec0ee72b_articlex" alt=""></p>
+<p>libpcre-devel，在<code>Search</code>中搜索<code>libpcre-devel</code>，展开<code>Libs</code>，找到下图中的蓝色选中项，在<code>New</code>栏，双击选择即可</p>
+<p><img src="https://image-static.segmentfault.com/357/754/3577547791-5ece30e05878c_articlex" alt=""></p>
+<p>autoconf-archive，在<code>Search</code>中搜索<code>autoconf-archive</code>，展开<code>Devel</code>，找到下图中的蓝色选中项，在<code>New</code>栏，双击选择即可</p>
+<p><img src="https://image-static.segmentfault.com/287/332/2873325843-5ece30915f2f3_articlex" alt=""></p>
+<p>gcc-objc++，在<code>Search</code>中搜索<code>gcc-objc++</code>，展开<code>Devel</code>，找到下图中的蓝色选中项，在<code>New</code>栏，双击选择即可</p>
+<p><img src="https://image-static.segmentfault.com/369/961/3699611256-5ece313e71c1b_articlex" alt=""></p>
+<p>libc++-devel，在<code>Search</code>中搜索<code>libc++-devel</code>，展开<code>Devel</code>，找到下图中的蓝色选中项，在<code>New</code>栏，双击选择即可</p>
+<p><img src="https://image-static.segmentfault.com/388/483/3884839399-5ece31d25e1f8_articlex" alt=""></p>
+<p>libc++1，在<code>Search</code>中搜索<code>libc++1</code>，展开<code>Devel</code>，找到下图中的蓝色选中项，在<code>New</code>栏，双击选择即可</p>
+<p><img src="https://image-static.segmentfault.com/171/121/1711215636-5ece325beca06_articlex" alt=""></p>
+<p>php-json，在<code>Search</code>中搜索<code>php-json</code>，展开<code>PHP</code>，找到下图中的蓝色选中项，在<code>New</code>栏，双击选择即可</p>
+<p><img src="https://image-static.segmentfault.com/105/041/1050417720-5ece329c0726d_articlex" alt=""></p>
+<p>pcre2，在<code>Search</code>中搜索<code>pcre2</code>，展开<code>Text</code>，找到下图中的蓝色选中项，在<code>New</code>栏，双击选择即可</p>
+<p><img src="https://image-static.segmentfault.com/328/246/3282466629-5ece3505b23b7_articlex" alt=""></p>
+<p>libpcre2-devel，在<code>Search</code>中搜索<code>libpcre2-devel</code>，展开<code>Libs</code>，找到下图中的蓝色选中项，在<code>New</code>栏，双击选择即可</p>
+<p><img src="https://image-static.segmentfault.com/390/744/3907447418-5ece33393b1a1_articlex" alt=""></p>
+<ul>
+<li>最后一步，选择完全部的软件包，点击下一步，直到安装完成，时间可能有点久，耐心等一下</li>
+</ul>
+<p><img src="https://image-static.segmentfault.com/378/566/3785662233-5ece357372ebd_articlex" alt=""></p>
+<h3 id="编译安装Swoole"><a href="#编译安装Swoole" class="headerlink" title="编译安装Swoole"></a>编译安装Swoole</h3><ul>
+<li>解压并放到home目录</li>
+</ul>
+<p>解压上面下载的<code>Swoole</code>压缩包，放到<code>cygwin</code>的安装目录下的<code>home</code>目录中，为了方便，并改名为<code>Swoole</code>，当然可以不改</p>
+<p><img src="https://image-static.segmentfault.com/759/821/759821391-5ece365fb3e45_articlex" alt=""></p>
+<ul>
+<li>打开cygwin并且进入Swoole目录</li>
+</ul>
+<p>双击运行Cygwin软件，然后通过命令<code>cd /home/swool/</code>，进入<code>Swoole</code>解压的源程序代码</p>
+<p><img src="https://image-static.segmentfault.com/231/656/2316566083-5ece388f00fc4_articlex" alt=""></p>
+<ul>
+<li>生成编译的配置文件</li>
+</ul>
+<p>在<code>Swoole</code>的根目录下，执行命令<code>phpize</code>，可以生成编译的配置文件configure</p>
+<p><img src="https://image-static.segmentfault.com/385/623/3856230176-5ece3a1b5effd_articlex" alt=""></p>
+<ul>
+<li>编译配置并检测环境且编译安装</li>
+</ul>
+<p>上面生成编译的配置文件后，再输入命令<code>./configure &amp;&amp; make &amp;&amp; make install</code>，然后就是等待编译安装<code>Swoole</code>完成</p>
+<p><img src="https://image-static.segmentfault.com/370/054/3700541166-5ecf102faffcf_articlex" alt=""></p>
+<h3 id="检测Swoole安装是否成功"><a href="#检测Swoole安装是否成功" class="headerlink" title="检测Swoole安装是否成功"></a>检测Swoole安装是否成功</h3><ul>
+<li>查看Swoole扩展是否开启</li>
+</ul>
+<p>安装完成后，我们输入命令<code>php --ini</code>，可以查找到<code>php.ini</code>配置文件的目录位置，可以发现，配置文件的目录在<code>/etc/php.ini</code>，然后通过<code>vi</code>编辑查看命令<code>vi /etc/php.ini</code>，并且进入到文件的最后一行，然后发现，已经有了一行<code>extension=swoole.dll</code>的扩展配置，这是因为在编译安装的时候，已经把这个模块编译进了<code>php</code>。</p>
+<p><img src="https://image-static.segmentfault.com/409/346/4093461782-5ecf121983431_articlex" alt=""></p>
+<p>然后我们再通过命令<code>php -m</code>查看一下是否真的有这个扩展了呢，从下图可以发现，确实已经有了<code>swoole</code>的扩展</p>
+<p><img src="https://image-static.segmentfault.com/269/446/2694463883-5ecf1340b2d8d_articlex" alt=""></p>
+<h3 id="测试Swoole环境"><a href="#测试Swoole环境" class="headerlink" title="测试Swoole环境"></a>测试Swoole环境</h3><ul>
+<li>选择并进入测试目录</li>
+</ul>
+<p>在我们下载的<code>Swoole</code>源代码中，有很多示例，我们可以直接运行进行测试，进入到<code>examples</code>目录，里面的全都是示例代码，我们选择<code>http/server.php</code>进行测试，然后<code>cd http/</code>进入到<code>http</code>目录</p>
+<p><img src="https://image-static.segmentfault.com/183/507/1835071155-5ecf14e6a7a00_articlex" alt=""></p>
+<ul>
+<li>执行php程序</li>
+</ul>
+<p>上面已经进入到<code>http</code>目录，并且发现，当前目录下有一个<code>server.php</code>的文件，我们可以通过命令<code>php server.php</code>执行</p>
+<p><img src="https://image-static.segmentfault.com/158/032/1580328822-5ecf160775578_articlex" alt=""></p>
+<ul>
+<li>浏览器运行测试</li>
+</ul>
+<p>我们打开<code>server.php</code>文件，有一行代码<code>$http = new swoole_http_server(&quot;0.0.0.0&quot;, 9501);</code>，开启<code>swoole</code>服务的端口为<code>9501</code>，那么我们可以直接在浏览器地址栏输入<code>127.0.0.1:9501</code>或者<code>localhost:9501</code>并访问，显示<code>Hello Swoole.</code>，则说明<code>Swoole</code>安装成功了！</p>
+<p><img src="https://image-static.segmentfault.com/398/139/3981397264-5ecf1726287b3_articlex" alt=""></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>只要按照文章一步一步的安装，应该能一次性安装成功，因为我是一步一个坑踩过来的，并且已经把坑填上了，不要夸我，会骄傲的。大家在安装过程中，如有任何问题可以直接留言给我，我看到会及时回复并帮助解决的，大家如果有其他更好的想法，也环境分析出来和大家交流，谢谢！</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_img.jpg" alt="gxcuizy 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay_img.jpg" alt="gxcuizy 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+            <a href="/tags/Swoole/" rel="tag"># Swoole</a>
+          
+            <a href="/tags/Cygwin/" rel="tag"># Cygwin</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/26/【五】PHP实用自定义函数-功能篇/" rel="next" title="【五】PHP实用自定义函数-功能篇">
+                <i class="fa fa-chevron-left"></i> 【五】PHP实用自定义函数-功能篇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -443,6 +677,17 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2020/05/28/【完整版】在Windows系统上安装Cygwin搭建Swoole测试环境/"
+           data-title="【完整版】在Windows系统上安装Cygwin搭建Swoole测试环境" data-url="blog.y0701.com/2020/05/28/【完整版】在Windows系统上安装Cygwin搭建Swoole测试环境/">
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -463,8 +708,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -547,6 +801,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载Swoole"><span class="nav-text">下载Swoole</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载cygwin"><span class="nav-text">下载cygwin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装cygwin"><span class="nav-text">安装cygwin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译安装Swoole"><span class="nav-text">编译安装Swoole</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测Swoole安装是否成功"><span class="nav-text">检测Swoole安装是否成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试Swoole环境"><span class="nav-text">测试Swoole环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -703,6 +973,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
