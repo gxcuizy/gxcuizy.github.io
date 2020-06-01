@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "f3f6c502"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+      
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="PHP,Swoole,聊天室,WebSocket,即时通讯," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言前段时间，不是刚搭建好本地开发环境，那怎么也得搞点事情啊，看了下Swoole开发文档，就先试试WebSocket弄一下即时通讯吧，那就安排一下聊天室，开搞…… Swoole是什么 Swoole 是一个 PHP 的 协程 高性能 网络通信引擎，使用 C/C++ 语言编写，提供了多种通信协议的网络服务器和客户端模块。可以方便快速的实现 TCP/UDP服务、高性能Web、WebSocket服务、物">
+<meta name="keywords" content="PHP,Swoole,聊天室,WebSocket,即时通讯">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Swoole的WebSocket实现聊天室即时通讯功能">
+<meta property="og:url" content="blog.y0701.com/2020/06/01/基于Swoole的WebSocket实现聊天室即时通讯功能/index.html">
+<meta property="og:site_name" content="gxcuizy&#39;s blog">
+<meta property="og:description" content="前言前段时间，不是刚搭建好本地开发环境，那怎么也得搞点事情啊，看了下Swoole开发文档，就先试试WebSocket弄一下即时通讯吧，那就安排一下聊天室，开搞…… Swoole是什么 Swoole 是一个 PHP 的 协程 高性能 网络通信引擎，使用 C/C++ 语言编写，提供了多种通信协议的网络服务器和客户端模块。可以方便快速的实现 TCP/UDP服务、高性能Web、WebSocket服务、物">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://image-static.segmentfault.com/136/195/1361957441-5ed45c4b268a6_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/262/538/262538780-5ed494dd34075_articlex">
+<meta property="og:updated_time" content="2020-06-01T05:49:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于Swoole的WebSocket实现聊天室即时通讯功能">
+<meta name="twitter:description" content="前言前段时间，不是刚搭建好本地开发环境，那怎么也得搞点事情啊，看了下Swoole开发文档，就先试试WebSocket弄一下即时通讯吧，那就安排一下聊天室，开搞…… Swoole是什么 Swoole 是一个 PHP 的 协程 高性能 网络通信引擎，使用 C/C++ 语言编写，提供了多种通信协议的网络服务器和客户端模块。可以方便快速的实现 TCP/UDP服务、高性能Web、WebSocket服务、物">
+<meta name="twitter:image" content="https://image-static.segmentfault.com/136/195/1361957441-5ed45c4b268a6_articlex">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="blog.y0701.com/2020/06/01/基于Swoole的WebSocket实现聊天室即时通讯功能/"/>
+
+
+
+
+
+  <title>基于Swoole的WebSocket实现聊天室即时通讯功能 | gxcuizy's blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?79a24eb542940d706401923128bd4415";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gxcuizy's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/photos/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="blog.y0701.com/2020/06/01/基于Swoole的WebSocket实现聊天室即时通讯功能/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gxcuizy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gxcuizy's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">基于Swoole的WebSocket实现聊天室即时通讯功能</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-01T13:29:31+08:00">
+                2020-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/06/01/基于Swoole的WebSocket实现聊天室即时通讯功能/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2020/06/01/基于Swoole的WebSocket实现聊天室即时通讯功能/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 点击量：
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://image-static.segmentfault.com/136/195/1361957441-5ed45c4b268a6_articlex" alt=""></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前段时间，不是刚搭建好本地开发环境，那怎么也得搞点事情啊，看了下<a href="https://wiki.swoole.com/" target="_blank" rel="noopener">Swoole开发文档</a>，就先试试WebSocket弄一下即时通讯吧，那就安排一下聊天室，开搞……</p>
+<h3 id="Swoole是什么"><a href="#Swoole是什么" class="headerlink" title="Swoole是什么"></a>Swoole是什么</h3><blockquote>
+<p>Swoole 是一个 PHP 的 协程 高性能 网络通信引擎，使用 C/C++ 语言编写，提供了多种通信协议的网络服务器和客户端模块。可以方便快速的实现 TCP/UDP服务、高性能Web、WebSocket服务、物联网、实时通讯、游戏、微服务等，使 PHP 不再局限于传统的 Web 领域。</p>
+</blockquote>
+<p>从官方介绍中可以看到，<code>Swoole</code>支持<code>WebSocket服务</code>，我们就利用这个来快速开发一个简易的聊天室。</p>
+<a id="more"></a>
+<h3 id="聊天室效果"><a href="#聊天室效果" class="headerlink" title="聊天室效果"></a>聊天室效果</h3><p>首先进入到项目根目录下，执行命令<code>php SwooleChat.php</code>开启<code>WebSocket</code>服务，然后双击<code>chat.html</code>文件在浏览器中打开，就进入了聊天界面了，就可以开始愉快的吹水了……</p>
+<p><img src="https://image-static.segmentfault.com/262/538/262538780-5ed494dd34075_articlex" alt=""></p>
+<h3 id="服务器端（SwooleChat-php）"><a href="#服务器端（SwooleChat-php）" class="headerlink" title="服务器端（SwooleChat.php）"></a>服务器端（SwooleChat.php）</h3><p>从<a href="https://wiki.swoole.com/#/start/start_ws_server" target="_blank" rel="noopener">官方文档-WebSocket 服务器</a>可以看到，PHP服务器端主要有<code>onOpen</code>、 <code>onMessage</code>和<code>onClose</code>，这三个事件的作用如下：</p>
+<ul>
+<li>onOpen：监听WebSocket连接打开事件</li>
+<li>onMessage：监听WebSocket消息事件</li>
+<li>onClose：监听WebSocket连接关闭事件</li>
+</ul>
+<h4 id="onOpen监听WebSocket连接打开"><a href="#onOpen监听WebSocket连接打开" class="headerlink" title="onOpen监听WebSocket连接打开"></a>onOpen监听WebSocket连接打开</h4><p>新用户开启一个WebSocket连接，都会走<code>onOpen</code>事件，我根据官方的例子简单封装一下，用户创建连接后，用户信息存入<code>MySQL</code>数据库中，并且通知其他在线用户。对了，提醒一下，这里用到了<code>MySQL</code>，如果没有安装的，请先安装相关扩展。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 监听WebSocket连接打开</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">open</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;ws-&gt;on(<span class="string">'open'</span>, <span class="function"><span class="keyword">function</span> <span class="params">($ws, $request)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 用户存入数据库</span></span><br><span class="line">        <span class="keyword">$this</span>-&gt;initConn();</span><br><span class="line">        $user_name = $request-&gt;get[<span class="string">'user_name'</span>];</span><br><span class="line">        $fd = $request-&gt;fd;</span><br><span class="line">        $sql = <span class="string">"INSERT INTO chat_user (fd, user_name, add_time) VALUES ($fd, '&#123;$user_name&#125;', "</span> . time() . <span class="string">")"</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;conn-&gt;query($sql);</span><br><span class="line">        <span class="comment">// 推送上线通知</span></span><br><span class="line">        <span class="keyword">$this</span>-&gt;return[<span class="string">'type'</span>] = <span class="string">'on'</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;return[<span class="string">'msg'</span>] = <span class="string">'欢迎【'</span> . $user_name . <span class="string">'】进入聊天室'</span>;</span><br><span class="line">        <span class="comment">// 用户列表</span></span><br><span class="line">        $sql = <span class="string">"SELECT fd,user_name FROM chat_user WHERE online_status = 1"</span>;</span><br><span class="line">        $result = <span class="keyword">$this</span>-&gt;conn-&gt;query($sql);</span><br><span class="line">        $user_list = [];</span><br><span class="line">        <span class="keyword">if</span> (mysqli_num_rows($result) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// 给其他用户推送上线通知</span></span><br><span class="line">            <span class="keyword">while</span> ($row = mysqli_fetch_assoc($result)) &#123;</span><br><span class="line">                $user_list[] = [<span class="string">'fd'</span> =&gt; $row[<span class="string">'fd'</span>], <span class="string">'name'</span> =&gt; $row[<span class="string">'user_name'</span>]];</span><br><span class="line">                <span class="keyword">if</span> ($row[<span class="string">'fd'</span>] != $fd) &#123;</span><br><span class="line">                    <span class="keyword">$this</span>-&gt;return[<span class="string">'data'</span>] = [<span class="string">'fd'</span> =&gt; $fd, <span class="string">'name'</span> =&gt; $user_name];</span><br><span class="line">                    $ws-&gt;push($row[<span class="string">'fd'</span>], json_encode(<span class="keyword">$this</span>-&gt;return));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 在线用户</span></span><br><span class="line">        <span class="keyword">$this</span>-&gt;return[<span class="string">'type'</span>] = <span class="string">'open'</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;return[<span class="string">'data'</span>] = [<span class="string">'user_list'</span> =&gt; $user_list];</span><br><span class="line">        $ws-&gt;push($fd, json_encode(<span class="keyword">$this</span>-&gt;return));</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="onMessage监听WebSocket消息"><a href="#onMessage监听WebSocket消息" class="headerlink" title="onMessage监听WebSocket消息"></a>onMessage监听WebSocket消息</h4><p>客户端发送的消息，需要推送给聊天室内的其他人，并且告知其他用户，这条信息是谁什么时间发送的。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 监听WebSocket消息</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">message</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;ws-&gt;on(<span class="string">'message'</span>, <span class="function"><span class="keyword">function</span> <span class="params">($ws, $frame)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;initConn();</span><br><span class="line">        <span class="comment">// 聊天消息</span></span><br><span class="line">        $fd = $frame-&gt;fd;</span><br><span class="line">        $message = $frame-&gt;data;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;return[<span class="string">'type'</span>] = <span class="string">'chat'</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;return[<span class="string">'msg'</span>] = $message;</span><br><span class="line">        <span class="comment">// 用户名称</span></span><br><span class="line">        $sql = <span class="string">"SELECT user_name FROM chat_user WHERE fd = &#123;$fd&#125; LIMIT 1"</span>;</span><br><span class="line">        $res = <span class="keyword">$this</span>-&gt;conn-&gt;query($sql);</span><br><span class="line">        $user = $res-&gt;fetch_assoc();</span><br><span class="line">        $user_name = $user[<span class="string">'user_name'</span>];</span><br><span class="line">        <span class="comment">// 用户列表</span></span><br><span class="line">        $sql = <span class="string">"SELECT fd,user_name FROM chat_user WHERE online_status = 1 ORDER BY id desc"</span>;</span><br><span class="line">        $result = <span class="keyword">$this</span>-&gt;conn-&gt;query($sql);</span><br><span class="line">        <span class="keyword">if</span> (mysqli_num_rows($result) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// 推送发送的消息</span></span><br><span class="line">            <span class="keyword">while</span> ($row = mysqli_fetch_assoc($result)) &#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;return[<span class="string">'data'</span>] = [<span class="string">'user_name'</span> =&gt; $user_name, <span class="string">'from'</span> =&gt; $fd, <span class="string">'to'</span> =&gt; $row[<span class="string">'fd'</span>], <span class="string">'time'</span> =&gt; date(<span class="string">'Y-m-d H:i:s'</span>)];</span><br><span class="line">                $ws-&gt;push($row[<span class="string">'fd'</span>], json_encode(<span class="keyword">$this</span>-&gt;return));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="onClose监听WebSocket连接关闭"><a href="#onClose监听WebSocket连接关闭" class="headerlink" title="onClose监听WebSocket连接关闭"></a>onClose监听WebSocket连接关闭</h4><p>当客户端连接关闭的时候，需要处理用户状态为离线，并且告知其他在线用户，该用户已下线离开聊天室。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 监听WebSocket连接关闭</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">close</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;ws-&gt;on(<span class="string">'close'</span>, <span class="function"><span class="keyword">function</span> <span class="params">($ws, $fd)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;initConn();</span><br><span class="line">        <span class="comment">// 用户下线</span></span><br><span class="line">        $sql = <span class="string">"UPDATE chat_user SET online_status = 0 WHERE fd = $fd"</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;conn-&gt;query($sql);</span><br><span class="line">        <span class="comment">// 用户名称</span></span><br><span class="line">        $sql = <span class="string">"SELECT user_name FROM chat_user WHERE fd = &#123;$fd&#125; LIMIT 1"</span>;</span><br><span class="line">        $res = <span class="keyword">$this</span>-&gt;conn-&gt;query($sql);</span><br><span class="line">        $user = $res-&gt;fetch_assoc();</span><br><span class="line">        $user_name = $user[<span class="string">'user_name'</span>];</span><br><span class="line">        <span class="comment">// 用户列表</span></span><br><span class="line">        $sql = <span class="string">"SELECT fd,user_name FROM chat_user WHERE online_status = 1 ORDER BY id desc"</span>;</span><br><span class="line">        $result = <span class="keyword">$this</span>-&gt;conn-&gt;query($sql);</span><br><span class="line">        <span class="keyword">if</span> (mysqli_num_rows($result) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// 给其他用户推送下线通知</span></span><br><span class="line">            <span class="keyword">while</span> ($row = mysqli_fetch_assoc($result)) &#123;</span><br><span class="line">                <span class="keyword">if</span> ($row[<span class="string">'fd'</span>] != $fd) &#123;</span><br><span class="line">                    <span class="keyword">$this</span>-&gt;return[<span class="string">'type'</span>] = <span class="string">'off'</span>;</span><br><span class="line">                    <span class="keyword">$this</span>-&gt;return[<span class="string">'msg'</span>] = <span class="string">'【'</span> . $user_name . <span class="string">'】离开聊天室'</span>;</span><br><span class="line">                    <span class="keyword">$this</span>-&gt;return[<span class="string">'data'</span>] = [<span class="string">'fd'</span> =&gt; $fd];</span><br><span class="line">                    $ws-&gt;push($row[<span class="string">'fd'</span>], json_encode(<span class="keyword">$this</span>-&gt;return));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="客户端（chat-html）"><a href="#客户端（chat-html）" class="headerlink" title="客户端（chat.html）"></a>客户端（chat.html）</h3><h4 id="HTML界面"><a href="#HTML界面" class="headerlink" title="HTML界面"></a>HTML界面</h4><p>界面，为了简单快速，我用了<a href="https://v3.bootcss.com/getting-started/" target="_blank" rel="noopener">Bootstrap</a>，可以快速写简单的一个聊天室页面</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>聊天室<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"</span> <span class="attr">integrity</span>=<span class="string">"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"</span> <span class="attr">integrity</span>=<span class="string">"sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"page-header"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">h2</span>&gt;</span>基于Swoole的WebSocket聊天室<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-xs-9 col-sm-9 col-md-9"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group send-message"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">"message"</span> <span class="attr">rows</span>=<span class="string">"5"</span> <span class="attr">class</span>=<span class="string">"form-control col-xs-12 col-sm-12 col-md-12"</span></span></span><br><span class="line"><span class="tag">                          <span class="attr">placeholder</span>=<span class="string">"请输入聊天内容"</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-info btn-block send-button"</span>&gt;</span>发送<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-xs-3 col-sm-3 col-md-3"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">h3</span>&gt;</span>在线用户<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table table-hover online-user"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">th</span>&gt;</span>FD编号<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">th</span>&gt;</span>用户名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"</span> <span class="attr">integrity</span>=<span class="string">"sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="JS交互"><a href="#JS交互" class="headerlink" title="JS交互"></a>JS交互</h4><p>同样的，我们从实例中也看到，客户端的主要事件和服务器端是一样的，也就是，客户端建立<code>ws</code>连接后，需要处理来自于服务器端推送的各种事件对应的消息，主要处理上下线消息通知以及普通聊天消息等；为了省事，这里用户名我直接随机获取了，千万别说我懒哈。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="comment">// 随机用户名</span></span><br><span class="line">    <span class="keyword">var</span> user_name = <span class="string">'user-'</span> + <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">10000</span> + <span class="number">1</span>);</span><br><span class="line">    <span class="comment">// 建立ws连接</span></span><br><span class="line">    <span class="keyword">var</span> wsServer = <span class="string">'ws://127.0.0.1:9502?user_name='</span> + user_name;</span><br><span class="line">    <span class="keyword">var</span> websocket = <span class="keyword">new</span> WebSocket(wsServer);</span><br><span class="line">    websocket.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">evt</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> data = jQuery.parseJSON(evt.data);</span><br><span class="line">        <span class="built_in">console</span>.log(data);</span><br><span class="line">        <span class="keyword">if</span> (data.type == <span class="string">'open'</span>) &#123;</span><br><span class="line">            <span class="comment">// 刚连接，初始化用户数据</span></span><br><span class="line">            <span class="keyword">var</span> user_list = data.data.user_list;</span><br><span class="line">            <span class="keyword">var</span> open_html = <span class="string">''</span>;</span><br><span class="line">            $.each(user_list, <span class="function"><span class="keyword">function</span> (<span class="params">k, val</span>) </span>&#123;</span><br><span class="line">                open_html += <span class="string">'&lt;tr data-id="'</span> + val.fd + <span class="string">'"&gt;&lt;td&gt;'</span> + val.fd + <span class="string">'&lt;/td&gt; &lt;td&gt;'</span> + val.name + <span class="string">'&lt;/td&gt; &lt;/tr&gt;'</span>;</span><br><span class="line">            &#125;);</span><br><span class="line">            $(<span class="string">'.online-user'</span>).append(open_html);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (data.type == <span class="string">'chat'</span>) &#123;</span><br><span class="line">            <span class="comment">// 聊天消息推送</span></span><br><span class="line">            <span class="keyword">var</span> is_myself = <span class="string">''</span>;</span><br><span class="line">            <span class="keyword">if</span> (data.data.from == data.data.to) &#123;</span><br><span class="line">                is_myself = <span class="string">' text-right'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">var</span> chat_html = <span class="string">'&lt;div class="panel panel-info"&gt;'</span> +</span><br><span class="line">                    <span class="string">'&lt;div class="panel-heading '</span> + is_myself + <span class="string">'"&gt;【'</span> + data.data.user_name + <span class="string">'】 '</span> + data.data.time + <span class="string">'&lt;/div&gt;'</span> +</span><br><span class="line">                    <span class="string">'&lt;div class="panel-body '</span> + is_myself + <span class="string">'"&gt;'</span> + data.msg +</span><br><span class="line">                    <span class="string">'&lt;/div&gt;&lt;/div&gt;'</span>;</span><br><span class="line">            $(<span class="string">'.send-message'</span>).before(chat_html);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (data.type == <span class="string">'on'</span>) &#123;</span><br><span class="line">            <span class="comment">// 新用户连接</span></span><br><span class="line">            <span class="keyword">var</span> on_html = <span class="string">'&lt;tr data-id="'</span> + data.data.fd + <span class="string">'"&gt;&lt;td&gt;'</span> + data.data.fd + <span class="string">'&lt;/td&gt; &lt;td&gt;'</span> + data.data.name + <span class="string">'&lt;/td&gt; &lt;/tr&gt;'</span>;</span><br><span class="line">            $(<span class="string">'.online-user'</span>).append(on_html);</span><br><span class="line">            <span class="comment">// 上线欢迎</span></span><br><span class="line">            <span class="keyword">var</span> notice_html = <span class="string">'&lt;div class="panel panel-info"&gt;'</span> +</span><br><span class="line">                    <span class="string">'&lt;div class="panel-body text-center"&gt;'</span> + data.msg +</span><br><span class="line">                    <span class="string">'&lt;/div&gt;&lt;/div&gt;'</span>;</span><br><span class="line">            $(<span class="string">'.send-message'</span>).before(notice_html);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (data.type == <span class="string">'off'</span>) &#123;</span><br><span class="line">            <span class="comment">// 用户关闭连接</span></span><br><span class="line">            $(<span class="string">'.online-user'</span>).find(<span class="string">'tr[data-id='</span> + data.data.fd + <span class="string">']'</span>).remove();</span><br><span class="line">            <span class="comment">// 下线提醒</span></span><br><span class="line">            <span class="keyword">var</span> off_html = <span class="string">'&lt;div class="panel panel-info"&gt;'</span> +</span><br><span class="line">                    <span class="string">'&lt;div class="panel-body text-center"&gt;'</span> + data.msg +</span><br><span class="line">                    <span class="string">'&lt;/div&gt;&lt;/div&gt;'</span>;</span><br><span class="line">            $(<span class="string">'.send-message'</span>).before(off_html);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    websocket.onopen = <span class="function"><span class="keyword">function</span> (<span class="params">evt</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"Connected to WebSocket server."</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    websocket.onclose = <span class="function"><span class="keyword">function</span> (<span class="params">evt</span>) </span>&#123;</span><br><span class="line">        alert(<span class="string">'服务器已断开连接，即将开始重连'</span>);</span><br><span class="line">        <span class="built_in">window</span>.location.reload();</span><br><span class="line">    &#125;;</span><br><span class="line">    websocket.onerror = <span class="function"><span class="keyword">function</span> (<span class="params">evt, e</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Error occured: '</span> + evt.data);</span><br><span class="line">    &#125;;</span><br><span class="line">    $(<span class="string">".send-button"</span>).off(<span class="string">'click'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> message = $(<span class="string">"textarea[name=message]"</span>).val().trim();</span><br><span class="line">        <span class="keyword">if</span> (message == <span class="string">''</span>) &#123;</span><br><span class="line">            alert(<span class="string">'请输入聊天内容……'</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        websocket.send(message);</span><br><span class="line">        $(<span class="string">"textarea[name=message]"</span>).val(<span class="string">''</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="完整源码"><a href="#完整源码" class="headerlink" title="完整源码"></a>完整源码</h3><p>为了方便，我肯定会把完整源码分享出来的，虽然上面说了一堆核心的代码，但是并凑起来运行还是挺费劲的，作为一个有良心的搬砖工人，我肯定会给大家那种只要环境没问题，就可以直接运行跑起来嗨的代码的，你可能要说了：<code>BB is easy, Show me the code.</code>，好吧，我已经把源码上传到<a href="https://github.com/gxcuizy/Blog/blob/master/chat" target="_blank" rel="noopener">GitHub</a>交友网站了，大家可以去上面查看即可。</p>
+<ul>
+<li><p>聊天室完整源码：<a href="https://github.com/gxcuizy/Blog/blob/master/chat" target="_blank" rel="noopener">https://github.com/gxcuizy/Blog/blob/master/chat</a></p>
+</li>
+<li><p>服务器端源码：<a href="https://github.com/gxcuizy/Blog/blob/master/chat/SwooleChat.php" target="_blank" rel="noopener">SwooleChat.php</a></p>
+</li>
+<li><p>客户端源码：<a href="https://github.com/gxcuizy/Blog/blob/master/chat/chat.html" target="_blank" rel="noopener">chat.html</a></p>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这只是一个简单的聊天室，仅供学习参考和交流使用，如有任何问题或者不明白的，多可以留言与我沟通，共同学习和进步，谢谢。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_img.jpg" alt="gxcuizy 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay_img.jpg" alt="gxcuizy 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+            <a href="/tags/Swoole/" rel="tag"># Swoole</a>
+          
+            <a href="/tags/聊天室/" rel="tag"># 聊天室</a>
+          
+            <a href="/tags/WebSocket/" rel="tag"># WebSocket</a>
+          
+            <a href="/tags/即时通讯/" rel="tag"># 即时通讯</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/28/【完整版】在Windows系统上安装Cygwin搭建Swoole测试环境/" rel="next" title="【完整版】在Windows系统上安装Cygwin搭建Swoole测试环境">
+                <i class="fa fa-chevron-left"></i> 【完整版】在Windows系统上安装Cygwin搭建Swoole测试环境
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2020/06/01/基于Swoole的WebSocket实现聊天室即时通讯功能/"
+           data-title="基于Swoole的WebSocket实现聊天室即时通讯功能" data-url="blog.y0701.com/2020/06/01/基于Swoole的WebSocket实现聊天室即时通讯功能/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/me.jpg"
+                alt="gxcuizy" />
+            
+              <p class="site-author-name" itemprop="name">gxcuizy</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/gxcuizy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:gxcuizy@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/59b0de6e5188250f4850ea06" target="_blank" title="JueJin">
+                      
+                        <i class="fa fa-fw fa-paperclip"></i>JueJin</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/cuizhongyi" target="_blank" title="SegmentFault">
+                      
+                        <i class="fa fa-fw fa-list-alt"></i>SegmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Swoole是什么"><span class="nav-text">Swoole是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聊天室效果"><span class="nav-text">聊天室效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器端（SwooleChat-php）"><span class="nav-text">服务器端（SwooleChat.php）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#onOpen监听WebSocket连接打开"><span class="nav-text">onOpen监听WebSocket连接打开</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#onMessage监听WebSocket消息"><span class="nav-text">onMessage监听WebSocket消息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#onClose监听WebSocket连接关闭"><span class="nav-text">onClose监听WebSocket连接关闭</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端（chat-html）"><span class="nav-text">客户端（chat.html）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML界面"><span class="nav-text">HTML界面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JS交互"><span class="nav-text">JS交互</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完整源码"><span class="nav-text">完整源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gxcuizy</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问用户
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-beta.2/lazyload.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'wROinty9rwhkmksGHfecnhTP-gzGzoHsz',
+        appKey: 'PbESEvuTejxDH31XqBEDnxvX',
+        placeholder: '请输入您的留言',
+        avatar:'wavatar',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+
+    var infoEle = document.querySelector('#comments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+      infoEle.childNodes.forEach(function(item) {
+        item.parentNode.removeChild(item);
+      });
+    }
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+  <!-- 页面点击效果 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+</body>
+</html>
