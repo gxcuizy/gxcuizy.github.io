@@ -100,7 +100,7 @@
 <meta property="og:description" content="抛出问题 问题1：日常开发中，我们都会遇到接口类的请求，各种各样的第三方接口，以及内部接口等，大家都是怎么方便快捷的维护这些接口的快速请求呢？ 问题2：面对第三方的接口，对接的时候记得，后续查找会不会觉得找不到在哪了呢？或者查找归类比较麻烦呢？ 问题3：类似的第三方接口，你是否写重复的方法调用和处理结果呢？ ……  如果你有上面的类似问题，是否会考虑优化呢？也就是把几户一样的接口做成配置化，不管">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://image-static.segmentfault.com/270/946/2709466764-6030b88952faa_articlex">
-<meta property="og:updated_time" content="2021-03-02T06:57:35.000Z">
+<meta property="og:updated_time" content="2021-03-02T08:24:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="API接口请求的配置化封装">
 <meta name="twitter:description" content="抛出问题 问题1：日常开发中，我们都会遇到接口类的请求，各种各样的第三方接口，以及内部接口等，大家都是怎么方便快捷的维护这些接口的快速请求呢？ 问题2：面对第三方的接口，对接的时候记得，后续查找会不会觉得找不到在哪了呢？或者查找归类比较麻烦呢？ 问题3：类似的第三方接口，你是否写重复的方法调用和处理结果呢？ ……  如果你有上面的类似问题，是否会考虑优化呢？也就是把几户一样的接口做成配置化，不管">
@@ -411,6 +411,7 @@
 <li>……</li>
 </ul>
 <p>如果你有上面的类似问题，是否会考虑优化呢？也就是把几户一样的接口做成配置化，不管是调用还是后期维护都比较方便呢？本着“方便他人，造福自己”的开发原则，必须从优处理，安排！</p>
+<a id="more"></a>
 <h3 id="API接口例子"><a href="#API接口例子" class="headerlink" title="API接口例子"></a>API接口例子</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 接口1</span></span><br><span class="line">地址： $url = <span class="string">'https://www.test.com/api/test'</span>;</span><br><span class="line">参数： $param = <span class="keyword">array</span>(<span class="string">'id'</span> =&gt; <span class="number">1</span>, <span class="string">'code'</span> =&gt; <span class="string">'123'</span>, <span class="string">'status'</span> =&gt; <span class="number">1</span>);</span><br><span class="line">返回： <span class="keyword">array</span>(<span class="string">'code'</span> =&gt; <span class="number">200</span>, <span class="string">'msg'</span> =&gt; <span class="string">''</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 接口2</span></span><br><span class="line">地址： $url = <span class="string">'https://www.test.com/api/test2'</span>;</span><br><span class="line">参数： $param = <span class="keyword">array</span>(<span class="string">'type'</span> =&gt; <span class="number">1</span>, <span class="string">'num'</span> =&gt; <span class="string">''</span>);</span><br><span class="line">返回： <span class="keyword">array</span>(<span class="string">'code'</span> =&gt; <span class="number">200</span>, <span class="string">'msg'</span> =&gt; <span class="string">''</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 接口N</span></span><br></pre></td></tr></table></figure>
 <p>针对上面的两个接口，如果做成配置化的请求，也就是，写好统一的请求入口，对于后续新增同样接口，只需要根据格式配置接口地址以及请求参数即可。</p>
 <h3 id="接口请求类设计原则"><a href="#接口请求类设计原则" class="headerlink" title="接口请求类设计原则"></a>接口请求类设计原则</h3><ol>

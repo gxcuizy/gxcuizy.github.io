@@ -100,7 +100,7 @@
 <meta property="og:description" content="业务需求一个几十万条数据的Excel表格，现在需要拼接其中某一列的全部数据为一个字符串，例如下面简短的几行表格数据：    id code price num     11 22 33 44   22 33 44 55   33 44 55 66   44 55 66 77   55 66 77 88   66 77 88 99    现在需要将code的这一列用逗号,拼接为字符串，并且每个单元">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://image-static.segmentfault.com/220/090/2200901345-603dd975d6797_articlex">
-<meta property="og:updated_time" content="2021-03-02T06:22:38.000Z">
+<meta property="og:updated_time" content="2021-03-02T08:24:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用pandas读取表格数据并进行单行数据拼接">
 <meta name="twitter:description" content="业务需求一个几十万条数据的Excel表格，现在需要拼接其中某一列的全部数据为一个字符串，例如下面简短的几行表格数据：    id code price num     11 22 33 44   22 33 44 55   33 44 55 66   44 55 66 77   55 66 77 88   66 77 88 99    现在需要将code的这一列用逗号,拼接为字符串，并且每个单元">
@@ -454,6 +454,7 @@
 </tbody>
 </table>
 <p>现在需要将<code>code</code>的这一列用逗号<code>,</code>拼接为字符串，并且每个单元格数据都用单引号包含，需要拼接成字符串<code>&#39;22&#39;,&#39;33&#39;,&#39;44&#39;,&#39;55&#39;,&#39;66&#39;,&#39;77&#39;</code>，这样的情况，我们需要怎么处理呢？当然方式有很多……</p>
+<a id="more"></a>
 <h3 id="多行文本批量处理"><a href="#多行文本批量处理" class="headerlink" title="多行文本批量处理"></a>多行文本批量处理</h3><p>有的时候，我们会遇到需要同时处理多行文本的情况，很多文本编辑器都支持批量操作多行文本，这里我主要说一下<code>Sublime Text</code>，下面是操作的快捷键，有需要的可以尝试用一下，确实挺方便的。</p>
 <ol>
 <li>选中需要操作的多行，按下<code>Ctr+Shift+L</code>即可同时编辑这些行</li>
